@@ -1,7 +1,7 @@
 # Prerequisites
 *.d
 
-.idea
+ .idea
 cmake-build-*
 *.bak_*
 .DS_Store
