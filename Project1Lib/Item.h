@@ -8,6 +8,8 @@
 #ifndef PROJECT1_ITEM_H
 #define PROJECT1_ITEM_H
 
+#include "Game.h"
+
 class Game;
 
 class Item {

@@ -3,6 +3,7 @@
  * @author Zongyuan Li
  */
 
+#include "pch.h"
 #include "Item.h"
 #include "Game.h"
 
