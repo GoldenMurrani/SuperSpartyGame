@@ -5,15 +5,22 @@
  *
  */
 
-#ifndef PROJECT1LIB_MAINFRAME_H
-#define PROJECT1LIB_MAINFRAME_H
+#ifndef PROJECT1_MAINFRAME_H
+#define PROJECT1_MAINFRAME_H
 
-class MainFrame : public wxFrame{
+/**
+ * The top-level (main) frame of the application
+ */
+class MainFrame : public wxFrame {
+
 private:
 
+
+
 public:
+
     void Initialize();
 
 };
 
-#endif //PR_MAINFRAME_H
+#endif //PROJECT1_MAINFRAME_H
