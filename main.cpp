@@ -1,7 +1,9 @@
-#include <iostream>
+/**
+ * file main.cpp
+ *
+ * @author Yousif Murrani
+ */
 
- int main()
-{
-    std::cout << "Hello, Team PAC-Man!" << std::endl;
-    return 0;
-}
+#include "GameApp.h"
+
+wxIMPLEMENT_APP(GameApp);
