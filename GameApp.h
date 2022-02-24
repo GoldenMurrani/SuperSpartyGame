@@ -10,15 +10,12 @@
 
 #include <wx/wx.h>
 
-/**
- * Main class for app
- */
 class GameApp : public wxApp
 {
-    private:
+private:
 
-    public:
-        virtual bool OnInit();
+public:
+    virtual bool OnInit();
 };
 
 #endif //PROJECT1_GAMEAPP_H
