@@ -1,7 +1,8 @@
-#include <iostream>
+/**
+ * @file main.cpp
+ * @author Matthew Hofmann
+ *
+ * Main entry point for Game project.
+ * */
 
- int main()
-{
-    std::cout << "Hello, Team PAC-Man!" << std::endl;
-    return 0;
-}
+wxIMPLEMENT_APP(AquariumApp);
