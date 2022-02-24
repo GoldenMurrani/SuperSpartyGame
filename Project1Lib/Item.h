@@ -8,8 +8,6 @@
 #ifndef PROJECT1_ITEM_H
 #define PROJECT1_ITEM_H
 
-#include "Game.h"
-
 class Game;
 
 class Item {
@@ -27,7 +25,6 @@ private:
     /// The bitmap we can display for this fish
     std::unique_ptr<wxBitmap> mItemBitmap;
 
-    bool mMirror = false;   ///< True mirrors the item image
 
 protected:
     Item(Game *game, const std::wstring &filename);

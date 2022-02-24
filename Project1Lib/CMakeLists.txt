@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+#cmake_minimum_required(VERSION 3.20)
 project(Project1Lib)
 
 set(SOURCE_FILES Game.cpp Game.h Item.cpp Item.h pch.h MainFrame.cpp MainFrame.h ids.h)

@@ -1,6 +1,6 @@
 /**
  * @file main.cpp
- * @author your_name_here
+ * @author Zongyuan Li
  */
 
 #include "pch.h"
