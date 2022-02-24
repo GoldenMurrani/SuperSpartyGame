@@ -1,13 +1,14 @@
- cmake_minimum_required(VERSION 3.21)
- project(Project1Lib)
+cmake_minimum_required(VERSION 3.20)
+project(AquariumLib)
 
- set(SOURCE_FILES)
+set(SOURCE_FILES Game.cpp Game.h Item.cpp Item.h)
 
- set(wxBUILD_PRECOMP OFF)
- find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)
+set(wxBUILD_PRECOMP OFF)
+find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)
 
- include(${wxWidgets_USE_FILE})
+include(${wxWidgets_USE_FILE})
 
- add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
+add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
 
- target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
+#target_precompile_headers(${PROJECT_NAME} PRIVATE pch.h)
