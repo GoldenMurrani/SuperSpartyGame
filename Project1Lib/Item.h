@@ -8,12 +8,14 @@
 #ifndef PROJECT1_ITEM_H
 #define PROJECT1_ITEM_H
 
+#include "Game.h"
+
 class Game;
 
 class Item {
 private:
     /// The game window this item in going to be in
-    Game mGame;
+    Game *mGame;
 
     // Item location in the aquarium
     double  mX = 0;     ///< X location for the center of the item
@@ -93,6 +95,6 @@ public:
      */
     int GetHeight() {return mItemBitmap->GetHeight(); }
 };
-};
+
 
 #endif //PROJECT1_ITEM_H
