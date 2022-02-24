@@ -1,8 +1,9 @@
 /**
  * @file main.cpp
- * @author Matthew Hofmann
- *
- * Main entry point for Game project.
- * */
+ * @author your_name_here
+ */
 
-wxIMPLEMENT_APP(AquariumApp);
+#include "pch.h"
+#include "GameApp.h"
+
+wxIMPLEMENT_APP(GameApp);
