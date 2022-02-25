@@ -1,11 +1,17 @@
 /**
  * @file GameApp.cpp
- * @author ymurr
+ * @author Yousif Murrani
  */
 
 #include "pch.h"
 #include "GameApp.h"
 #include <MainFrame.h>
+
+#ifdef WIN32
+#define _CRTDBG_MAP_ALLOC
+#include <cstdlib>
+#include <crtdbg.h>
+#endif
 
 /**
 * Initialize application
@@ -13,6 +19,10 @@
 
 bool GameApp::OnInit()
 {
+    #ifdef WIN32
+    _CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+    #endif
+
     if(!wxApp::OnInit())
         return false;
 

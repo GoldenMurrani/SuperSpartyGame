@@ -1,6 +1,6 @@
 /**
  * @file GameApp.h
- * @author ymurr
+ * @author Yousif Murrani
  *
  *
  */
@@ -8,7 +8,6 @@
 #ifndef PROJECT1_GAMEAPP_H
 #define PROJECT1_GAMEAPP_H
 
-#include <wx/wx.h>
 
 class GameApp : public wxApp
 {

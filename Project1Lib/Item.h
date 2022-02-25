@@ -27,7 +27,7 @@ private:
 
 
 protected:
-    Item(Game *game, const std::wstring &filename);
+    Item(Game *game);
 
 public:
     virtual ~Item();
