@@ -28,10 +28,6 @@ public:
     void operator=(const Enemy &) = delete;
 
     Enemy(Game* game, const std::wstring &filename);
-
-    void Draw(wxDC* dc);
-
-    bool HitTest(int x, int y);
 };
 
 #endif //PROJECT1_ENEMY_H
