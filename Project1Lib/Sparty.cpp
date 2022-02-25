@@ -6,7 +6,7 @@
 #include "pch.h"
 #include "Sparty.h"
 #include "Game.h"
-#include <String>
+#include <string>
 
 using namespace std;
 
