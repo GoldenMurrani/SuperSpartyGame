@@ -28,6 +28,7 @@ public:
     /// Assignment operator
     void operator=(const Sparty &) = delete;
 
+    /// Sparty constructor
     Sparty(Game* game, const std::wstring &filename);
 };
 
