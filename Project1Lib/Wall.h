@@ -2,12 +2,15 @@
  * @file Wall.h
  * @author Vijay
  *
- *
+ * Base class for the item Wall.
  */
 
 #ifndef PROJECT1_WALL_H
 #define PROJECT1_WALL_H
 #include "Item.h"
+/**
+* Base class for the item Wall.
+*/
 class Wall : public Item {
 private:
     /// The game window this item in going to be in
@@ -40,7 +43,7 @@ public:
      */
     int GetHeight() const { return mItemBitmap->GetHeight(); }
 
-    void SpartyGnome();
+    //void SpartyGnome();
 
 };
 

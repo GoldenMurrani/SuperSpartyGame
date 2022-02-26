@@ -15,8 +15,8 @@
 
 /**
 * Initialize application
+ * @return
 */
-
 bool GameApp::OnInit()
 {
     #ifdef WIN32

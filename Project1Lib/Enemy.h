@@ -2,7 +2,7 @@
  * @file Enemy.h
  * @author Michael Than
  *
- *
+ * Base class for Enemy item.
  */
 
 #ifndef PROJECT1_ENEMY_H
@@ -10,6 +10,9 @@
 
 #include "Item.h"
 
+/**
+* Base class for Enemy item.
+*/
 class Enemy : public Item{
 private:
     /// The underlying Enemy image
@@ -27,6 +30,7 @@ public:
     /// Assignment operator
     void operator=(const Enemy &) = delete;
 
+    /// Enemy constructor
     Enemy(Game* game, const std::wstring &filename);
 };
 

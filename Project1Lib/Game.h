@@ -2,7 +2,7 @@
  * @file Game.h
  * @author Zongyuan Li
  *
- *
+ *  Main class that will represent our game.
  */
 
 #ifndef PROJECT1_GAME_H
@@ -11,6 +11,9 @@
 #include <memory>
 #include <random>
 #include "Item.h"
+#include "Sparty.h"
+#include "Background.h"
+
 
 /**
  * Main class that will represent our game
@@ -23,8 +26,20 @@ private:
     /// All of the items to populate our game
     std::vector<std::shared_ptr<Item>> mItems;
 
+    /// Game area height in virtual pixels
+    const static int Height = 1024;
+
+    /// scale for game window
+    double mScale;
+
+    /// Sparty item
+    Sparty *mSparty;
+
+    /// Background item
+    Background *mItemBackground;
+
 public:
-    void OnDraw(wxDC *dc);
+    void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 
     Game();
 
@@ -35,6 +50,8 @@ public:
     void Update(double elapsed);
 
     void Clear();
+
+
 
 //    void XmlItem(wxXmlNode* node);
 //

@@ -9,7 +9,9 @@
 #define PROJECT1_GAMEVIEW_H
 
 #include "Game.h"
-
+/**
+Main class that will represent our game view
+ */
 class GameView : public wxWindow{
 private:
     /// An object that describes our Game

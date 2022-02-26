@@ -3,7 +3,7 @@
  * @file Sparty.h
  * @author Michael Than
  *
- *
+ * Base class for the item Spartu.
  */
 
 #ifndef PROJECT1_SPARTY_H
@@ -11,6 +11,9 @@
 
 #include "Item.h"
 
+/**
+* Base class for the item Spartu.
+*/
 class Sparty : public Item{
 private:
     /// The underlying sparty image
@@ -28,6 +31,7 @@ public:
     /// Assignment operator
     void operator=(const Sparty &) = delete;
 
+    /// Sparty constructor
     Sparty(Game* game, const std::wstring &filename);
 };
 

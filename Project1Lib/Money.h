@@ -2,12 +2,16 @@
  * @file Money.h
  * @author Vijay
  *
- *
+ * Base class for the item money.
  */
 
 #ifndef PROJECT1_MONEY_H
 #define PROJECT1_MONEY_H
 #include "Item.h"
+
+/**
+* Base class for the item money.
+*/
 class Money : public Item{
 private:
     /// The underlying money image
@@ -27,7 +31,7 @@ public:
 
     Money(Game* game, const std::wstring &filename);
 
-    void OnClear();
+    //void OnClear();
 
 };
 

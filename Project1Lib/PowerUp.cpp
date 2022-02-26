@@ -13,6 +13,7 @@ const wstring powerUpImage = L"images/stanley.png";
 
 /**
 * PowerUp Constructor
+ * @param game
 */
 PowerUp::PowerUp(Game* game) : Item(game, powerUpImage)
 {

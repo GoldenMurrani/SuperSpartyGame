@@ -16,6 +16,7 @@ const wstring ItemImageName = L"images/gnome.png";
 /**
  * Constructor
  * @param game Game the sparty is a member of
+ * @param filename File that sets mItem to bitmap
  */
 Sparty::Sparty(Game *game, const std::wstring &filename) : Item(game, filename)
 {

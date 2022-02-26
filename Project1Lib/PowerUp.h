@@ -2,7 +2,7 @@
  * @file PowerUp.h
  * @author Yousif Murrani
  *
- *
+ * Base class for the item PowerUp.
  */
 
 #ifndef PROJECT1_POWERUP_H
@@ -10,6 +10,9 @@
 
 #include "Item.h"
 
+/**
+* Base class for the item PowerUp.
+*/
 class PowerUp : public Item
 {
 private:

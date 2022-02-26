@@ -9,7 +9,7 @@
 #include <string>
 using namespace std;
 
-/// Fish filename
+/// Door filename
 const wstring DoorImageName = L"images/door.png";
 
 /**

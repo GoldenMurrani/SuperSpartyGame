@@ -2,12 +2,18 @@
  * @file Platform.h
  * @author Vijay
  *
- *
+ * Base class for the item platform.
  */
 
 #ifndef PROJECT1_PLATFORM_H
 #define PROJECT1_PLATFORM_H
 #include "Item.h"
+
+
+/**
+* Base class for the item platform.
+*/
+
 class Platform : public Item {
 private:
     /// The game window this item in going to be in
@@ -52,7 +58,7 @@ public:
      */
     int GetHeight() const { return mItemBitmap->GetHeight(); }
 
-    void OnDraw(wxDC *dc);
+    //void OnDraw(wxDC *dc);
 
 };
 

@@ -1,8 +1,8 @@
 /**
  * @file MainFrame.h
- * @author malpi
+ * @author Matthew Hofmann
  *
- *
+ * The top-level (main) frame of the application
  */
 
 #ifndef PROJECT1_MAINFRAME_H

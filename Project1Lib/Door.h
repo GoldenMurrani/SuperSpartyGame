@@ -2,7 +2,7 @@
  * @file Door.h
  * @author Zongyuan Li
  *
- *
+ *Base class for door item
  */
 
 #ifndef PROJECT1_DOOR_H
@@ -10,6 +10,9 @@
 
 #include "Item.h"
 
+/**
+* Base class for Door item.
+*/
 class Door : public Item {
 private:
 
