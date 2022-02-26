@@ -27,6 +27,7 @@ public:
     /// Assignment operator
     void operator=(const Enemy &) = delete;
 
+    /// Enemy constructor
     Enemy(Game* game, const std::wstring &filename);
 };
 
