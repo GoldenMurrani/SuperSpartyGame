@@ -6,6 +6,7 @@
 #include "pch.h"
 
 #include <wx/dcbuffer.h>
+#include <wx/graphics.h>
 #include "GameView.h"
 #include "ids.h"
 
@@ -44,12 +45,13 @@ void GameView::OnPaint(wxPaintEvent& event)
     mGame.Update(elapsed);
 
     wxAutoBufferedPaintDC dc(this);
-
     wxBrush background(*wxWHITE);
     dc.SetBackground(background);
     dc.Clear();
 
-    mGame.OnDraw(&dc);
+    auto size = GetClientSize();
+    auto graphics = std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create(dc));
+    mGame.OnDraw(graphics, size.GetWidth(), size.GetHeight());
 }
 
 

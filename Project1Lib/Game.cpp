@@ -6,20 +6,44 @@
 
 #include "pch.h"
 #include "Game.h"
+#include <wx/graphics.h>
+#include "Sparty.h"
+#include "Background.h"
 
 using namespace std;
 
 /**
  * Draw the game
- * @param dc The device context to draw on
+ * @param graphics The device context to draw on
+ * @param width width of the window
+ * @param height height of the window
  */
-void Game::OnDraw(wxDC* dc)
+void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
 {
-    dc->DrawBitmap(*mBackground, 0, 0);
-    for (auto item: mItems)
-    {
-        item->Draw(dc);
-    }
+
+
+    //
+    // Automatic Scaling
+    //
+    mScale = double(height) / double(Height);
+    graphics->Scale(mScale, mScale);
+
+    auto virtualWidth = (double)width/mScale;
+    graphics->PushState();
+
+    // Compute the amount to scroll in the X dimension
+    auto xOffset = (double)-mSparty->GetX() + virtualWidth / 2.0f;
+
+
+
+    //
+    // Draw in virtual pixels on the graphics context
+    //
+
+
+    mItemBackground->Draw(graphics, xOffset);
+
+    graphics->PopState();
 }
 
 /**

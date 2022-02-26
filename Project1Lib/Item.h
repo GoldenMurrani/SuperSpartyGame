@@ -15,14 +15,14 @@ private:
     /// The game window this item in going to be in
     Game *mGame;
 
-    // Item location in the aquarium
+    // Item location on screen
     double  mX = 0;     ///< X location for the center of the item
     double  mY = 0;     ///< Y location for the center of the item
 
-    /// The underlying fish image
+    /// The underlying item image
     std::unique_ptr<wxImage> mItemImage;
 
-    /// The bitmap we can display for this fish
+    /// The bitmap we can display for this item
     std::unique_ptr<wxBitmap> mItemBitmap;
 
 
