@@ -46,6 +46,12 @@ public:
 
     void Accept(ItemVisitor* visitor);
 
+    /**
+     * Get the sparty character in game
+     * @return the shared pointer of the sparty item in game
+     */
+    std::shared_ptr<Sparty> GetSparty() {return mSparty; }
+
 //    void XmlItem(wxXmlNode* node);
 //
 //    void Save(const wxString& filename);

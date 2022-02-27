@@ -1,7 +1,7 @@
 #cmake_minimum_required(VERSION 3.20)
 project(Project1Lib)
 
-set(SOURCE_FILES Game.cpp Game.h Item.cpp Item.h pch.h MainFrame.cpp MainFrame.h GameView.cpp GameView.h ids.h Enemy.cpp Enemy.h Sparty.cpp Sparty.h Door.cpp Door.h Wall.cpp Wall.h Platform.cpp Platform.h Money.cpp Money.h PowerUp.cpp PowerUp.h Background.cpp Background.h ItemVisitor.cpp ItemVisitor.h)
+set(SOURCE_FILES Game.cpp Game.h Item.cpp Item.h pch.h MainFrame.cpp MainFrame.h GameView.cpp GameView.h ids.h Enemy.cpp Enemy.h Sparty.cpp Sparty.h Door.cpp Door.h Wall.cpp Wall.h Platform.cpp Platform.h Money.cpp Money.h PowerUp.cpp PowerUp.h Background.cpp Background.h ItemVisitor.cpp ItemVisitor.h MoneyVisitor.cpp MoneyVisitor.h)
 
 set(wxBUILD_PRECOMP OFF)
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)
