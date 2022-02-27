@@ -47,8 +47,6 @@ public:
 
     void Clear();
 
-
-
 //    void XmlItem(wxXmlNode* node);
 //
 //    void Save(const wxString& filename);

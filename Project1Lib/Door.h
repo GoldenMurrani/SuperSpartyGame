@@ -26,7 +26,7 @@ public:
     /// Assignment operator
     void operator=(const Door&) = delete;
 
-    Door(Game* game);
+    Door(Game* game, const std::wstring &filename);
 };
 
 #endif //PROJECT1_DOOR_H

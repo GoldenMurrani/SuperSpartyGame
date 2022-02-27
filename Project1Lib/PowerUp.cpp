@@ -13,8 +13,9 @@ const wstring powerUpImage = L"images/stanley.png";
 
 /**
 * PowerUp Constructor
- * @param game
+ * @param game game this item is a member of
+ * @param filename the name of image file
 */
-PowerUp::PowerUp(Game* game) : Item(game, powerUpImage)
+PowerUp::PowerUp(Game* game, const std::wstring &filename) : Item(game, filename)
 {
 }

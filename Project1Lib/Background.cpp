@@ -8,13 +8,14 @@
 
 using namespace std;
 
-/// Sparty filename
+/// Background filename
 const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
 
 /**
  * Constructor
- * @param game
+ * @param game game this item is in
+ * @param filename the name of image file
  */
-Background::Background(Game* game) : Item(game, BackgroundImageName)
+Background::Background(Game* game, const std::wstring &filename) : Item(game, filename)
 {
 }

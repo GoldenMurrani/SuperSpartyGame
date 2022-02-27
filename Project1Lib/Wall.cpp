@@ -12,6 +12,7 @@ using namespace std;
 const wstring wallOneImageName = L"images/wall1.png";
 /// Wall image file 2
 const wstring wallTwoImageName = L"images/wall2.png";
+
 /**
  * Constructor
  * @param game Game the Enemy is a member of

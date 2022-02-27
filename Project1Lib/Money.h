@@ -32,7 +32,6 @@ public:
     Money(Game* game, const std::wstring &filename);
 
     //void OnClear();
-
 };
 
 #endif //PROJECT1_MONEY_H

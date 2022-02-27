@@ -5,31 +5,30 @@
 
 
 #include "pch.h"
-#include "Game.h"
 #include <wx/graphics.h>
+#include "Game.h"
 #include "Sparty.h"
 #include "Background.h"
 
 using namespace std;
 
-
-/// Initial fish X location
-const int InitialX = 200;
-
-///// Initial fish Y location
-const int InitialY = 200;
-
 /// Game area height in virtual pixels
 const static int Height = 1024;
+
+///background image temporary
+const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
+///gnome image temporary
+const wstring GnomeImageName = L"images/gnome.png";
+
 
 /**
  * Game Constructor
  */
 Game::Game()
 {
-    mBackground = make_shared<Background>(this);
+    mBackground = make_shared<Background>(this, BackgroundImageName);
     mBackground->SetLocation(512,512);
-    mSparty = make_shared<Sparty>(this);
+    mSparty = make_shared<Sparty>(this, GnomeImageName);
     mSparty->SetLocation(512,Height/2);
 }
 
@@ -58,7 +57,6 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     //
     // Draw in virtual pixels on the graphics context
     //
-    // INSERT DRAWING CODE HERE
 
     mBackground->Draw(graphics);
     mSparty->Draw(graphics);

@@ -18,6 +18,6 @@ const wstring EnemyImageName = L"images/UofM.png";
  * @param game Game the Enemy is a member of
  * @param filename file that the enemy is assigned to
  */
-Enemy::Enemy(Game *game, const std::wstring &filename) : Item(game, EnemyImageName)
+Enemy::Enemy(Game *game, const std::wstring &filename) : Item(game, filename)
 {
 }

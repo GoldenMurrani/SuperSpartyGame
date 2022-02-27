@@ -15,11 +15,11 @@
 */
 class Enemy : public Item{
 private:
-    /// The underlying Enemy image
-    std::unique_ptr<wxImage> mItemImage;
-
-    /// The bitmap we can display for this Enemy
-    std::unique_ptr<wxBitmap> mItemBitmap;
+//    /// The underlying Enemy image
+//    std::unique_ptr<wxImage> mItemImage;
+//
+//    /// The bitmap we can display for this Enemy
+//    std::unique_ptr<wxBitmap> mItemBitmap;
 public:
     /// Default constructor (disabled)
     Enemy() = delete;

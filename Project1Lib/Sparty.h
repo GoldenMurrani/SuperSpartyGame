@@ -16,11 +16,11 @@
 */
 class Sparty : public Item{
 private:
-    /// The underlying sparty image
-    std::unique_ptr<wxImage> mItemImage;
-
-    /// The bitmap we can display for this sparty
-    std::unique_ptr<wxBitmap> mItemBitmap;
+//    /// The underlying sparty image
+//    std::unique_ptr<wxImage> mItemImage;
+//
+//    /// The bitmap we can display for this sparty
+//    std::unique_ptr<wxBitmap> mItemBitmap;
 public:
     /// Default constructor (disabled)
     Sparty() = delete;
@@ -31,8 +31,7 @@ public:
     /// Assignment operator
     void operator=(const Sparty &) = delete;
 
-    /// Sparty constructor
-    Sparty(Game* game);
+    Sparty(Game* game, const std::wstring &filename);
 };
 
 #endif //PROJECT1_SPARTY_H

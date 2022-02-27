@@ -15,11 +15,7 @@
 class Background : public Item
 {
 private:
-    /// The underlying background image
-    std::unique_ptr<wxImage> mItemImage;
 
-    /// The bitmap we can display for this background
-    std::unique_ptr<wxBitmap> mItemBitmap;
 public:
     /// Default constructor (disabled)
     Background() = delete;
@@ -31,7 +27,7 @@ public:
     void operator=(const Background &) = delete;
 
     /// Background constructor
-    Background(Game *game);
+    Background(Game *game, const std::wstring &filename);
 };
 
 #endif //PROJECT1_BACKGROUND_H
