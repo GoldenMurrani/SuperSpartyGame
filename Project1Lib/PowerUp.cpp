@@ -17,5 +17,4 @@ const wstring powerUpImage = L"images/stanley.png";
 */
 PowerUp::PowerUp(Game* game) : Item(game, powerUpImage)
 {
-
 }

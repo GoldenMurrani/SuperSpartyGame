@@ -19,6 +19,4 @@ const wstring wallTwoImageName = L"images/wall2.png";
  */
 Wall::Wall(Game *game, const std::wstring &filename) : Item(game, filename)
 {
-    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap = make_unique<wxBitmap>(*mItemImage);
 }

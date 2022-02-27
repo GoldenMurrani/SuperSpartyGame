@@ -20,6 +20,4 @@ const wstring MoneyTwoImageName = L"images/money1000.png";
  */
 Money::Money(Game *game, const std::wstring &filename) : Item(game, filename)
 {
-    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap = make_unique<wxBitmap>(*mItemImage);
 }

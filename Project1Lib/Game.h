@@ -22,21 +22,17 @@
 class Game {
 
 private:
-    std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use
-    /// All of the items to populate our game
-    std::vector<std::shared_ptr<Item>> mItems;
-
-    /// Game area height in virtual pixels
-    const static int Height = 1024;
-
     /// scale for game window
     double mScale;
 
     /// Sparty item
-    Sparty *mSparty;
+    std::shared_ptr<Sparty> mSparty;
 
     /// Background item
-    Background *mItemBackground;
+    std::shared_ptr<Background> mBackground;
+
+    /// All of the items to populate our game
+    std::vector<std::shared_ptr<Item>> mItems;
 
 public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);

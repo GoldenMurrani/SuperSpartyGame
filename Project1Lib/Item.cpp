@@ -4,6 +4,8 @@
  */
 
 #include "pch.h"
+#include <wx/graphics.h>
+
 #include "Item.h"
 #include "Game.h"
 
@@ -74,11 +76,11 @@ bool Item::HitTest(int x, int y)
  * Draw this item
  * @param dc Device context to draw on
  */
-void Item::Draw(wxDC *dc)
+void Item::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-    double wid = mItemBitmap->GetWidth();
-    double hit = mItemBitmap->GetHeight();
-    dc->DrawBitmap(*mItemBitmap,
-            int(GetX() - wid / 2),
-            int(GetY() - hit / 2));
+    int wid = mItemBitmap->GetWidth();
+    int hit = mItemBitmap->GetHeight();
+    graphics->DrawBitmap(*mItemBitmap,
+            (int)GetX() - wid / 2, (int)GetY() - hit / 2,
+            wid + 1, hit);
 }

@@ -12,6 +12,28 @@
 
 using namespace std;
 
+
+/// Initial fish X location
+const int InitialX = 200;
+
+///// Initial fish Y location
+const int InitialY = 200;
+
+/// Game area height in virtual pixels
+const static int Height = 1024;
+
+/**
+ * Game Constructor
+ */
+Game::Game()
+{
+    mBackground = make_shared<Background>(this);
+    mBackground->SetLocation(512,512);
+    mSparty = make_shared<Sparty>(this);
+    mSparty->SetLocation(512,Height/2);
+}
+
+
 /**
  * Draw the game
  * @param graphics The device context to draw on
@@ -20,8 +42,6 @@ using namespace std;
  */
 void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
 {
-
-
     //
     // Automatic Scaling
     //
@@ -29,30 +49,26 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     graphics->Scale(mScale, mScale);
 
     auto virtualWidth = (double)width/mScale;
-    graphics->PushState();
-
     // Compute the amount to scroll in the X dimension
     auto xOffset = (double)-mSparty->GetX() + virtualWidth / 2.0f;
 
-
+    graphics->PushState();
+    graphics->Translate(xOffset, 0);
 
     //
     // Draw in virtual pixels on the graphics context
     //
+    // INSERT DRAWING CODE HERE
 
+    mBackground->Draw(graphics);
+    mSparty->Draw(graphics);
 
-    mItemBackground->Draw(graphics, xOffset);
+    for (auto item : mItems)
+    {
+        item->Draw(graphics);
+    }
 
     graphics->PopState();
-}
-
-/**
- * Game Constructor
- */
-Game::Game()
-{
-    mBackground = make_unique<wxBitmap>(
-            L"images/backgroundColorDesert.png", wxBITMAP_TYPE_ANY);
 }
 
 /**

@@ -11,15 +11,13 @@
 using namespace std;
 
 /// Sparty filename
-const wstring ItemImageName = L"images/gnome.png";
+const wstring GnomeImageName = L"images/gnome.png";
 
 /**
  * Constructor
  * @param game Game the sparty is a member of
  * @param filename File that sets mItem to bitmap
  */
-Sparty::Sparty(Game *game, const std::wstring &filename) : Item(game, filename)
+Sparty::Sparty(Game *game) : Item(game, GnomeImageName)
 {
-    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap = make_unique<wxBitmap>(*mItemImage);
 }

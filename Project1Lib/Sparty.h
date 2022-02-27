@@ -32,7 +32,7 @@ public:
     void operator=(const Sparty &) = delete;
 
     /// Sparty constructor
-    Sparty(Game* game, const std::wstring &filename);
+    Sparty(Game* game);
 };
 
 #endif //PROJECT1_SPARTY_H

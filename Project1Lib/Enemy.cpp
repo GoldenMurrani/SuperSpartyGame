@@ -11,15 +11,13 @@
 using namespace std;
 
 /// Enemy filename
-const wstring ItemImageName = L"images/UofM.png";
+const wstring EnemyImageName = L"images/UofM.png";
 
 /**
  * Constructor
  * @param game Game the Enemy is a member of
  * @param filename file that the enemy is assigned to
  */
-Enemy::Enemy(Game *game, const std::wstring &filename) : Item(game, filename)
+Enemy::Enemy(Game *game, const std::wstring &filename) : Item(game, EnemyImageName)
 {
-    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap = make_unique<wxBitmap>(*mItemImage);
 }

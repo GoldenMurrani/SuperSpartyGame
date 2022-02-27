@@ -15,8 +15,6 @@
 class Background : public Item
 {
 private:
-    std::unique_ptr<wxBitmap> mBackground;  ///< Background image to use
-
     /// The underlying background image
     std::unique_ptr<wxImage> mItemImage;
 
@@ -34,9 +32,6 @@ public:
 
     /// Background constructor
     Background(Game *game);
-
-    /// Draw function
-    void Draw(std::shared_ptr<wxGraphicsContext> graphics, int scrollX);
 };
 
 #endif //PROJECT1_BACKGROUND_H
