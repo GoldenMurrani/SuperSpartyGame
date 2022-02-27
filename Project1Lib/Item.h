@@ -8,6 +8,8 @@
 #ifndef PROJECT1_ITEM_H
 #define PROJECT1_ITEM_H
 
+#include "ItemVisitor.h"
+
 class Game;
 
 /**
@@ -93,6 +95,12 @@ public:
      * @return Item height in pixels
      */
     int GetHeight() {return mItemBitmap->GetHeight(); }
+
+    /**
+    * Accept a visitor
+     * @param visitor The visitor we accept
+     */
+    virtual void Accept(ItemVisitor* visitor) {};
 };
 
 

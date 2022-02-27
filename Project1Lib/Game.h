@@ -28,9 +28,6 @@ private:
     /// Sparty item
     std::shared_ptr<Sparty> mSparty;
 
-    /// Background item
-    std::shared_ptr<Background> mBackground;
-
     /// All of the items to populate our game
     std::vector<std::shared_ptr<Item>> mItems;
 
@@ -46,6 +43,8 @@ public:
     void Update(double elapsed);
 
     void Clear();
+
+    void Accept(ItemVisitor* visitor);
 
 //    void XmlItem(wxXmlNode* node);
 //
@@ -64,6 +63,59 @@ public:
 //     * @return Aquarium height in pixels
 //     */
 //    int GetHeight() const { return mBackground->GetHeight(); }
+
+    /** Iterator that iterates over the items */
+    class Iter
+    {
+    public:
+        /** Constructor
+         * @param game The game we are iterating over
+         * @param pos Position in the collection
+         */
+        Iter(Game* game, int pos) : mGame(game), mPos(pos) {}
+
+        /**
+         * Compare two iterators
+         * @param other The other iterator we are comparing to
+         * @return  true if this position is not equal to the other position
+        */
+        bool operator!=(const Iter& other) const
+        {
+            return mPos != other.mPos;
+        }
+
+        /**
+         * Get value at current position
+         * @return Value at mPos in the collection
+         */
+        std::shared_ptr<Item> operator *() const { return mGame->mItems[mPos]; }
+
+        /**
+         * Increment the iterator
+         * @return Reference to this iterator */
+        const Iter& operator++()
+        {
+            mPos++;
+            return *this;
+        }
+
+    private:
+        Game* mGame;   ///< Game we are iterating over
+        int mPos;       ///< Position in the collection
+    };
+
+    /**
+     * Get an iterator for the beginning of the collection
+     * @return Iter object at position 0
+     */
+    Iter begin() { return Iter(this, 0); }
+
+    /**
+     * Get an iterator for the end of the collection
+     * @return Iter object at position past the end
+     */
+    Iter end() { return Iter(this, mItems.size()); }
+
 };
 
 #endif //PROJECT1_GAME_H

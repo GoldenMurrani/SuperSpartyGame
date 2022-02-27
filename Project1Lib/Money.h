@@ -32,6 +32,12 @@ public:
     Money(Game* game, const std::wstring &filename);
 
     //void OnClear();
+
+    /**
+     * Accept a visitor
+     * @param visitor The visitor we accept
+     */
+    void Accept(ItemVisitor* visitor) override { visitor->VisitMoney(this); }
 };
 
 #endif //PROJECT1_MONEY_H

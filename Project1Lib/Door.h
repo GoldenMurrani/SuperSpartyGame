@@ -27,6 +27,12 @@ public:
     void operator=(const Door&) = delete;
 
     Door(Game* game, const std::wstring &filename);
+
+    /**
+     * Accept a visitor
+     * @param visitor The visitor we accept
+     */
+    void Accept(ItemVisitor* visitor) override { visitor->VisitDoor(this); }
 };
 
 #endif //PROJECT1_DOOR_H
