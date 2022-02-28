@@ -13,7 +13,7 @@
 #include "Item.h"
 #include "Sparty.h"
 #include "Background.h"
-
+#include "Level.h"
 
 /**
  * Main class that will represent our game
@@ -30,6 +30,11 @@ private:
 
     /// All of the items to populate our game
     std::vector<std::shared_ptr<Item>> mItems;
+
+    /// Background item
+    std::shared_ptr<Background> mBackground;
+
+    Level *mLevel0;
 
 public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);

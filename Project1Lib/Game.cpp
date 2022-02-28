@@ -18,14 +18,24 @@ const static int Height = 1024;
 ///gnome image temporary
 const wstring GnomeImageName = L"images/gnome.png";
 
+/// Temp image background
+const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
+
+/// Level 0 file loacation
+const wstring Level0 = L"levels/level0.xml";
+
 
 /**
  * Game Constructor
  */
 Game::Game()
 {
+    mBackground = make_shared<Background>(this, BackgroundImageName);
+    mBackground->SetLocation(512,512);
     mSparty = make_shared<Sparty>(this, GnomeImageName);
     mSparty->SetLocation(512,Height/2);
+    mLevel0 ->Load(Level0);
+
 }
 
 
@@ -53,6 +63,7 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     //
     // Draw in virtual pixels on the graphics context
     //
+    mBackground->Draw(graphics);
     mSparty->Draw(graphics);
 
     for (auto item : mItems)
