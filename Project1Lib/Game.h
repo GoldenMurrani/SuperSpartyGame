@@ -34,7 +34,8 @@ private:
     /// Background item
     std::shared_ptr<Background> mBackground;
 
-    Level *mLevel0;
+     ///
+    std::shared_ptr<Level> mLevel0;
 
 public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);

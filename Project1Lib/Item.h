@@ -10,6 +10,7 @@
 
 #include "ItemVisitor.h"
 
+class Level;
 class Game;
 
 /**
@@ -17,7 +18,9 @@ class Game;
 */
 class Item {
 private:
-    /// The game window this item in going to be in
+
+
+/// The game window this item in going to be in
     Game *mGame;
 
     // Item location on screen
@@ -25,14 +28,28 @@ private:
     double  mY = 0;     ///< Y location for the center of the item
 
     /// The underlying item image
-    std::unique_ptr<wxImage> mItemImage;
+    std::unique_ptr<wxImage> mItemImage1;
 
     /// The bitmap we can display for this item
-    std::unique_ptr<wxBitmap> mItemBitmap;
+    std::unique_ptr<wxBitmap> mItemBitmap1;
 
+    /// The underlying item image
+    std::unique_ptr<wxImage> mItemImage2;
+
+    /// The bitmap we can display for this item
+    std::unique_ptr<wxBitmap> mItemBitmap2;
+    /// The underlying item image
+    std::unique_ptr<wxImage> mItemImage3;
+
+    /// The bitmap we can display for this item
+    std::unique_ptr<wxBitmap> mItemBitmap3;
 
 protected:
     Item(Game *game, const std::wstring &filename);
+    Item(Level* level, const std::wstring& filename, const std::wstring& filename2, const std::wstring& filename3);
+    Item(Level* level, const std::wstring& filename);
+
+    Item(Level* p_level);
 
 public:
     virtual ~Item();
@@ -88,19 +105,20 @@ public:
      * Get the width of the item
      * @return Item width in pixels
      */
-    int GetWidth() {return mItemBitmap->GetWidth(); }
+    int GetWidth() {return mItemBitmap1->GetWidth(); }
 
     /**
      * Get the height of the item
      * @return Item height in pixels
      */
-    int GetHeight() {return mItemBitmap->GetHeight(); }
+    int GetHeight() {return mItemBitmap1->GetHeight(); }
 
     /**
     * Accept a visitor
      * @param visitor The visitor we accept
      */
     virtual void Accept(ItemVisitor* visitor) {};
+
 };
 
 

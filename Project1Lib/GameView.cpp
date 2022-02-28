@@ -64,14 +64,14 @@ void GameView::OnTimer(wxTimerEvent& event)
     Refresh();
 }
 
-void GameView::AddMenus(wxFrame* mainFrame, wxMenuBar *menuBar, wxMenu* fileMenu, wxMenu* viewMenu)
-{
+//void GameView::AddMenus(wxFrame* mainFrame, wxMenuBar *menuBar, wxMenu* fileMenu, wxMenu* viewMenu)
+//{
     // The file and view menus are defined by MainFrame. You can
     // add things to them here.
     //  fileMenu->Append(...)
     //  viewMenu->Append(...)
 
-    auto landscapingMenu = new wxMenu();
+ //   auto landscapingMenu = new wxMenu();
 
 
-}
+//}

@@ -9,7 +9,7 @@
 #define PROJECT1_PLATFORM_H
 #include "Item.h"
 
-
+class Level;
 /**
 * Base class for the item platform.
 */
@@ -18,6 +18,7 @@ class Platform : public Item {
 private:
     //Platform is inherits from Item, every private member variable defined here and function should directly use item base class
     // no need to define here again
+
 
 //    /// The game window this item in going to be in
 //    Game *mGame;
@@ -29,6 +30,10 @@ private:
 //    /// Item location in the Game
 //    double  mX = 0;     ///< X location for the center of the item
 //    double  mY = 0;     ///< Y location for the center of the item
+      Level *mLevel;
+      wxString mPlatformLeftImage;
+      wxString mPlatformMidImage;
+      wxString mPlatformRightImage;
 public:
     /// Default constructor (disabled)
     Platform() = delete;
@@ -38,6 +43,9 @@ public:
 
     /// Assignment operator
     void operator=(const Platform&) = delete;
+
+    Platform(Level* level, std::wstring filename, std::wstring filename2, std::wstring filename3);
+
 //    /**
 //    * The X location of the item
 //    * @return X location in pixels

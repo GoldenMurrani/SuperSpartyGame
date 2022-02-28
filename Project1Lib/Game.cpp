@@ -34,6 +34,7 @@ Game::Game()
     mBackground->SetLocation(512,512);
     mSparty = make_shared<Sparty>(this, GnomeImageName);
     mSparty->SetLocation(512,Height/2);
+    mLevel0 = make_shared<Level>(this);
     mLevel0 ->Load(Level0);
 
 }
