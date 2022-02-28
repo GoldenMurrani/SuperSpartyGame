@@ -15,6 +15,7 @@ Main class that will represent our game view
  */
 class GameView : public wxWindow{
 private:
+
     /// An object that describes our Game
     Game mGame;
     /// The timer that allows for animation
@@ -31,6 +32,8 @@ public:
     void Initialize(wxFrame *parent);
 
     void OnTimer(wxTimerEvent& event);
+
+    void AddMenus(wxFrame* mainFrame, wxMenuBar* menuBar, wxMenu* fileMenu, wxMenu* viewMenu);
 };
 
 #endif //PROJECT1_GAMEVIEW_H
