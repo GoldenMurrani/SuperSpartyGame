@@ -30,7 +30,7 @@ public:
      int GetCash() const { return mCash; }
 
      /**
-      * Increases the amount of cash
+      * Increases the amount of cash when a player hits a Money item
       * @param x
       */
      void AdjustCash(int x) { mCash += x; }

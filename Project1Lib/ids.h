@@ -13,7 +13,10 @@
 * ID values for our program.
 */
 enum IDs {
-
+    IDM_LEVELZERO = wxID_HIGHEST + 1,
+    IDM_LEVELONE,
+    IDM_LEVELTWO,
+    IDM_LEVELTHREE
 };
 
 

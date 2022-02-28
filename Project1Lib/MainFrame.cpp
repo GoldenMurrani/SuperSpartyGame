@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "MainFrame.h"
 #include "GameView.h"
+#include "ids.h"
 
 /**
  * Initialize the MainFrame window.
@@ -35,6 +36,7 @@ void MainFrame::Initialize()
     auto menuBar = new wxMenuBar( );
 
     auto fileMenu = new wxMenu();
+    auto levelMenu = new wxMenu();
     auto helpMenu = new wxMenu();
 
     fileMenu->Append(wxID_EXIT, "E&xit\tAlt-X", "Quit this program");
@@ -43,7 +45,13 @@ void MainFrame::Initialize()
     helpMenu->Append(wxID_ABOUT, "&About\tF1", "Show about dialog");
 
     menuBar->Append(fileMenu, L"&File" );
+    menuBar->Append(levelMenu, L"&Level");
     menuBar->Append(helpMenu, L"&Help");
+
+    levelMenu->Append(IDM_LEVELZERO, L"&Level 0", L"Go to Level 0");
+    levelMenu->Append(IDM_LEVELONE, L"&Level 1", L"Go to Level 1");
+    levelMenu->Append(IDM_LEVELTWO, L"&Level 2", L"Go to Level 2");
+    levelMenu->Append(IDM_LEVELTHREE, L"&Level 3", L"Go to Level 3");
 
     SetMenuBar( menuBar );
 
