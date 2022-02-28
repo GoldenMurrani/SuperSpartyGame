@@ -9,6 +9,7 @@
 #include "Game.h"
 #include "Sparty.h"
 #include "Background.h"
+#include "Enemy.h"
 
 using namespace std;
 
@@ -17,6 +18,9 @@ const static int Height = 1024;
 
 ///gnome image temporary
 const wstring GnomeImageName = L"images/gnome.png";
+
+///enemy image temporary
+const wstring EnemyImageName = L"images/UofM.png";
 
 /// Temp image background
 const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
@@ -33,10 +37,10 @@ Game::Game()
     mBackground = make_shared<Background>(this, BackgroundImageName);
     mBackground->SetLocation(512,512);
     mSparty = make_shared<Sparty>(this, GnomeImageName);
+    this->Add(mSparty);
     mSparty->SetLocation(512,Height/2);
     mLevel0 = make_shared<Level>(this);
     mLevel0 ->Load(Level0);
-
 }
 
 
