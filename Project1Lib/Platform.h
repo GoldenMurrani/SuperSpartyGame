@@ -16,16 +16,19 @@
 
 class Platform : public Item {
 private:
-    /// The game window this item in going to be in
-    Game *mGame;
-    /// The underlying Platform image
-    std::unique_ptr<wxImage> mItemImage;
+    //Platform is inherits from Item, every private member variable defined here and function should directly use item base class
+    // no need to define here again
 
-    /// The bitmap we can display for this platform
-    std::unique_ptr<wxBitmap> mItemBitmap;
-    /// Item location in the Game
-    double  mX = 0;     ///< X location for the center of the item
-    double  mY = 0;     ///< Y location for the center of the item
+//    /// The game window this item in going to be in
+//    Game *mGame;
+//    /// The underlying Platform image
+//    std::unique_ptr<wxImage> mItemImage;
+//
+//    /// The bitmap we can display for this platform
+//    std::unique_ptr<wxBitmap> mItemBitmap;
+//    /// Item location in the Game
+//    double  mX = 0;     ///< X location for the center of the item
+//    double  mY = 0;     ///< Y location for the center of the item
 public:
     /// Default constructor (disabled)
     Platform() = delete;
@@ -35,30 +38,35 @@ public:
 
     /// Assignment operator
     void operator=(const Platform&) = delete;
-    /**
-    * The X location of the item
-    * @return X location in pixels
-    */
-    double GetX() const { return mX; }
-
-    /**
-     * The Y location of the item
-     * @return Y location in pixels
-     */
-    double GetY() const { return mY; }
-    /**
-     * Get the width of the Wall
-     * @return Wall width in pixels
-     */
-    int GetWidth() const { return mItemBitmap->GetWidth(); }
-
-    /**
-     * Get the height of the Wall
-     * @return Wall height in pixels
-     */
-    int GetHeight() const { return mItemBitmap->GetHeight(); }
+//    /**
+//    * The X location of the item
+//    * @return X location in pixels
+//    */
+//    double GetX() const { return mX; }
+//
+//    /**
+//     * The Y location of the item
+//     * @return Y location in pixels
+//     */
+//    double GetY() const { return mY; }
+//    /**
+//     * Get the width of the Wall
+//     * @return Wall width in pixels
+//     */
+//    int GetWidth() const { return mItemBitmap->GetWidth(); }
+//
+//    /**
+//     * Get the height of the Wall
+//     * @return Wall height in pixels
+//     */
+//    int GetHeight() const { return mItemBitmap->GetHeight(); }
 
     //void OnDraw(wxDC *dc);
+    /**
+     * Accept a visitor
+     * @param visitor The visitor we accept
+     */
+    void Accept(ItemVisitor* visitor) override { visitor->VisitPlatform(this); }
 
 };
 

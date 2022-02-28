@@ -49,6 +49,12 @@ public:
 //    double GetY() const { return mY; }
 
     PowerUp(Game *game, const std::wstring &filename);
+
+    /**
+     * Accept a visitor
+     * @param visitor The visitor we accept
+     */
+    void Accept(ItemVisitor* visitor) override { visitor->VisitPowerUp(this); }
 };
 
 #endif //PROJECT1_POWERUP_H

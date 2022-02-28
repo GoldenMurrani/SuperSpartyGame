@@ -15,8 +15,6 @@ using namespace std;
 /// Game area height in virtual pixels
 const static int Height = 1024;
 
-///background image temporary
-const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
 ///gnome image temporary
 const wstring GnomeImageName = L"images/gnome.png";
 
@@ -26,8 +24,6 @@ const wstring GnomeImageName = L"images/gnome.png";
  */
 Game::Game()
 {
-    mBackground = make_shared<Background>(this, BackgroundImageName);
-    mBackground->SetLocation(512,512);
     mSparty = make_shared<Sparty>(this, GnomeImageName);
     mSparty->SetLocation(512,Height/2);
 }
@@ -57,8 +53,6 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     //
     // Draw in virtual pixels on the graphics context
     //
-
-    mBackground->Draw(graphics);
     mSparty->Draw(graphics);
 
     for (auto item : mItems)
@@ -133,6 +127,18 @@ void Game::Update(double elapsed)
 void Game::Clear()
 {
     mItems.clear();
+}
+
+/**
+ * Accept a visitor for the collection
+ * @param visitor The visitor for the collection
+ */
+void Game::Accept(ItemVisitor* visitor)
+{
+    for (auto item : mItems)
+    {
+        item->Accept(visitor);
+    }
 }
 
 ///**
