@@ -21,3 +21,12 @@ const wstring GnomeImageName = L"images/gnome.png";
 Sparty::Sparty(Game *game, const std::wstring &filename) : Item(game, filename)
 {
 }
+
+/**
+* Handle updates for sparty
+* @param elapsed the time before last update
+*/
+void Sparty::Update(double elapsed)
+{
+    SetLocation(GetX() + xVel * elapsed,GetY() + yVel * elapsed);
+}

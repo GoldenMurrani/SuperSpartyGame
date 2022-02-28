@@ -20,6 +20,7 @@ private:
 //
 //    /// The bitmap we can display for this Enemy
 //    std::unique_ptr<wxBitmap> mItemBitmap;
+    int mSpeedY = 50;
 public:
     /// Default constructor (disabled)
     Enemy() = delete;
@@ -38,6 +39,16 @@ public:
      * @param visitor The visitor we accept
      */
     void Accept(ItemVisitor* visitor) override { visitor->VisitEnemy(this); }
+
+    /**
+    * Handle updates in time of our enemy
+    *
+    * This is called before we draw and allows us to
+    * move our enemy. We add our speed times the amount
+     * of time that has elapsed.
+    * @param elapsed Time elapsed since the class call
+     */
+    void Update(double elapsed);
 };
 
 #endif //PROJECT1_ENEMY_H

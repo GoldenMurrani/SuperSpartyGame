@@ -101,6 +101,11 @@ public:
      * @param visitor The visitor we accept
      */
     virtual void Accept(ItemVisitor* visitor) {};
+
+    /**
+     * Get the pointer to the Aquarium object
+     * @return Pointer to Aquarium object
+     */
 };
 
 

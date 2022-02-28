@@ -29,6 +29,9 @@ void GameView::Initialize(wxFrame* parent)
     Bind(wxEVT_TIMER, &GameView::OnTimer, this);
 
     mStopWatch.Start();
+
+    Bind(wxEVT_KEY_DOWN, &GameView::OnKeyDown, this);
+    Bind(wxEVT_KEY_UP, &GameView::OnKeyUp, this);
 }
 
 /**
@@ -72,6 +75,39 @@ void GameView::AddMenus(wxFrame* mainFrame, wxMenuBar *menuBar, wxMenu* fileMenu
     //  viewMenu->Append(...)
 
     auto landscapingMenu = new wxMenu();
+}
+
+void GameView::OnKeyDown(wxKeyEvent& event)
+{
+    switch (event.GetKeyCode())
+    {
+    case WXK_RIGHT:
+        // right arrow pressed
+        mGame.GetSparty()->SetXVel(HorizontalSpeed);
+        break;
+
+    case WXK_LEFT:
+        // left arrow pressed
+        mGame.GetSparty()->SetXVel(-HorizontalSpeed);
+        break;
+
+    case WXK_SPACE:
+        // space bar pressed
+        mGame.GetSparty()->SetYVel(JumpSpeed);
+        break;
+    }
+}
 
 
+void GameView::OnKeyUp(wxKeyEvent& event)
+{
+    switch (event.GetKeyCode())
+    {
+    case WXK_RIGHT:
+        mGame.GetSparty()->SetXVel(0);
+        break;
+    case WXK_LEFT:
+        mGame.GetSparty()->SetXVel(0);
+        break;
+    }
 }
