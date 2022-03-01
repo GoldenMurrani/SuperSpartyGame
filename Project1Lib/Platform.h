@@ -30,14 +30,15 @@ private:
 //    /// Item location in the Game
 //    double  mX = 0;     ///< X location for the center of the item
 //    double  mY = 0;     ///< Y location for the center of the item
-      Level *mLevel;
+      //Level *mLevel;
       wxString mPlatformLeftImage;
       wxString mPlatformMidImage;
       wxString mPlatformRightImage;
+      double mWidth = 0;
+      double mHeight = 0;
 public:
     /// Default constructor (disabled)
     Platform() = delete;
-
     /// Copy constructor (disabled)
     Platform(const Platform&) = delete;
 
@@ -76,6 +77,7 @@ public:
      */
     void Accept(ItemVisitor* visitor) override { visitor->VisitPlatform(this); }
 
+    void XmlLoad(wxXmlNode* node) override;
 };
 
 #endif //PROJECT1_PLATFORM_H

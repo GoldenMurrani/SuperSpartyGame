@@ -8,6 +8,7 @@
 #include <wx/graphics.h>
 #include "ids.h"
 #include "GameView.h"
+#include "Game.h"
 
 using namespace std;
 
@@ -23,6 +24,8 @@ void GameView::Initialize(wxFrame* parent)
     Create(parent, wxID_ANY);
     SetBackgroundStyle(wxBG_STYLE_PAINT);
     Bind(wxEVT_PAINT, &GameView::OnPaint, this);
+    //parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel0, this, IDM_LEVELZERO);
+
 
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);
@@ -32,6 +35,7 @@ void GameView::Initialize(wxFrame* parent)
 
     Bind(wxEVT_KEY_DOWN, &GameView::OnKeyDown, this);
     Bind(wxEVT_KEY_UP, &GameView::OnKeyUp, this);
+
 }
 
 /**
@@ -67,15 +71,6 @@ void GameView::OnTimer(wxTimerEvent& event)
     Refresh();
 }
 
-void GameView::AddMenus(wxFrame* mainFrame, wxMenuBar *menuBar, wxMenu* fileMenu, wxMenu* viewMenu)
-{
-    // The file and view menus are defined by MainFrame. You can
-    // add things to them here.
-    //  fileMenu->Append(...)
-    //  viewMenu->Append(...)
-
-    auto landscapingMenu = new wxMenu();
-}
 
 void GameView::OnKeyDown(wxKeyEvent& event)
 {
@@ -98,7 +93,10 @@ void GameView::OnKeyDown(wxKeyEvent& event)
     }
 }
 
+void GameView::OnLoadLevel0(wxCommandEvent event)
+{
 
+}
 void GameView::OnKeyUp(wxKeyEvent& event)
 {
     switch (event.GetKeyCode())

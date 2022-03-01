@@ -1,6 +1,6 @@
 /**
  * @file MainFrame.cpp
- * @author malpi
+ * @author Matthew Hofmann
  */
 
 #include "pch.h"
@@ -40,8 +40,6 @@ void MainFrame::Initialize()
     auto helpMenu = new wxMenu();
 
     fileMenu->Append(wxID_EXIT, "E&xit\tAlt-X", "Quit this program");
-//    fileMenu->Append(wxID_SAVEAS, "Save &As...\tCtrl-S", L"Save aquarium as...");
-//    fileMenu->Append(wxID_OPEN, "Open &File...\tCtrl-F", L"Open aquarium file...");
     helpMenu->Append(wxID_ABOUT, "&About\tF1", "Show about dialog");
 
     menuBar->Append(fileMenu, L"&File" );
@@ -58,6 +56,7 @@ void MainFrame::Initialize()
     CreateStatusBar( 1, wxSTB_SIZEGRIP, wxID_ANY );
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnExit, this, wxID_EXIT);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnAbout, this, wxID_ABOUT);
+
 }
 
 /**

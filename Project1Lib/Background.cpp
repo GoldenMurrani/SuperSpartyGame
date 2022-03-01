@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "Background.h"
+#include "Level.h"
 
 using namespace std;
 
@@ -16,6 +17,22 @@ const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
  * @param game game this item is in
  * @param filename the name of image file
  */
-Background::Background(Game* game, const std::wstring &filename) : Item(game, filename)
+Background::Background(Level* level, const std::wstring &filename) : Item(level, filename)
 {
+}
+
+/**
+ * Load the attributes for an item node.
+ *
+ * This is the  base class version that loads the attributes
+ * common to all items. Override this to load custom attributes
+ * for specific items.
+ *
+ * @param node The Xml node we are loading the item from
+ */
+void Background::XmlLoad(wxXmlNode *node)
+{
+    Item::XmlLoad(node);
+
+
 }

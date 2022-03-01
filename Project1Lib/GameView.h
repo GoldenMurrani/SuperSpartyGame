@@ -33,11 +33,12 @@ public:
 
     void OnTimer(wxTimerEvent& event);
 
-    void AddMenus(wxFrame* mainFrame, wxMenuBar* menuBar, wxMenu* fileMenu, wxMenu* viewMenu);
 
     void OnKeyDown(wxKeyEvent& event);
 
     void OnKeyUp(wxKeyEvent& event);
+
+    void OnLoadLevel0(wxCommandEvent event);
 };
 
 #endif //PROJECT1_GAMEVIEW_H

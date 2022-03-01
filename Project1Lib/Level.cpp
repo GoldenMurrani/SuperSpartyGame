@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "Level.h"
 #include "Platform.h"
+#include "Background.h"
 
 using namespace::std;
 
@@ -25,12 +26,15 @@ void Level::Load(const wxString &filename)
 {
     wxXmlDocument xmlDoc;
     if (!xmlDoc.Load(filename)) {
-        wxMessageBox(L"Unable to load Aquarium file");
+        wxMessageBox(L"Unable to load Level file");
         return;
     }
 
     // Get the XML document root node
     auto root = xmlDoc.GetRoot();
+
+    //Grab Root Level information
+    LevelInfoSetter(root);
 
     //
     // Traverse the children of the root
@@ -88,16 +92,24 @@ void Level::XmlLevel(wxXmlNode* node)
     if (name == "platform")
     {
         auto idType = node->GetAttribute(L"id");
-        if (idType == "i004")
-        {
-           nodeChildren = XmlType(name, idType);
-           item = make_shared<Platform>(this, nodeChildren[0], nodeChildren[1], nodeChildren[2]);
-        }
-        else
-        {
+        if (idType=="i004") {
             nodeChildren = XmlType(name, idType);
             item = make_shared<Platform>(this, nodeChildren[0], nodeChildren[1], nodeChildren[2]);
         }
+        else {
+            nodeChildren = XmlType(name, idType);
+            item = make_shared<Platform>(this, nodeChildren[0], nodeChildren[1], nodeChildren[2]);
+        }
+    }
+    else if (name == "background")
+    {
+            auto idType = node->GetAttribute(L"id");
+            nodeChildren = XmlType(name, idType);
+            item = make_shared<Background>(this, nodeChildren[0]);
+
+    }
+    if (item != nullptr)
+    {
         item -> XmlLoad(node);
         Add(item);
     }
@@ -125,6 +137,7 @@ vector<std::wstring> Level::XmlType(wxString nodeName,  wxString typeId)
     }
 
 }
+
 /**
  *  Gets children for all declarations and makes them viable.
  *
@@ -146,6 +159,11 @@ vector<std::wstring> Level::GetNodeChildren(wxXmlNode *node)
         auto rightImage = node->GetAttribute(L"right-image");
         attributes.insert(attributes.end(), { leftImage, midImage, rightImage});
     }
+    else
+    {
+        auto image = node->GetAttribute(L"image");
+        attributes.insert(attributes.end(), {image});
+    }
     for (auto nodeItems : attributes)
     {
         nodeItems = imagePath + nodeItems;
@@ -164,6 +182,19 @@ vector<std::wstring> Level::GetNodeChildren(wxXmlNode *node)
 void Level::Add(std::shared_ptr<Item> item)
 {
     mItems.push_back(item);
+}
+
+/**
+ * Sets all the level base information
+ * @param node Node that is being worked on
+ */
+void Level::LevelInfoSetter(wxXmlNode* node)
+{
+    node->GetAttribute(L"width", L"0").ToDouble(&mWidth);
+    node->GetAttribute(L"height", L"0").ToDouble(&mHeight);
+    node->GetAttribute(L"start-y", L"0").ToDouble(&mStartY);
+    node->GetAttribute(L"start-x", L"0").ToDouble(&mStartx);
+
 }
 
 

@@ -34,8 +34,8 @@ const wstring Level0 = L"levels/level0.xml";
  */
 Game::Game()
 {
-    mBackground = make_shared<Background>(this, BackgroundImageName);
-    mBackground->SetLocation(512,512);
+    //mBackground = make_shared<Background>(this, BackgroundImageName);
+    //mBackground->SetLocation(512,512);
     mSparty = make_shared<Sparty>(this, GnomeImageName);
     this->Add(mSparty);
     mSparty->SetLocation(512,Height/2);
@@ -68,7 +68,6 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     //
     // Draw in virtual pixels on the graphics context
     //
-    mBackground->Draw(graphics);
     mSparty->Draw(graphics);
 
     for (auto item : mItems)

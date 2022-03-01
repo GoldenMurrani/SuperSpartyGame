@@ -10,7 +10,7 @@
 
 using namespace std;
 
-Platform::Platform(Level* level, std::wstring filename, std::wstring filename2, std::wstring filename3) :Item(mLevel, filename, filename2, filename3)
+Platform::Platform(Level* level, std::wstring filename, std::wstring filename2, std::wstring filename3) :Item(level, filename, filename2, filename3)
 {
 
     //auto leftImage = node->GetAttribute(L"left-image");
@@ -24,12 +24,19 @@ Platform::Platform(Level* level, std::wstring filename, std::wstring filename2, 
 }
 
 
-/// Platform image files
-//const wstring platformImageName = L"images/platformIndustrial_057.png";
-//const wstring platformTwoImageName = L"images/platformIndustrial_059.png";
-//const wstring platformThreeImageName = L"images/platformIndustrial_060.png";
-//const wstring platformFourImageName = L"images/platformIndustrial_061.png";/
-//const wstring snowImageName = L"images/snow.png";
-//const wstring snowLeftImageName = L"images/snowLeft.png";
-//const wstring snowMidImageName = L"images/snowMid.png";
-//const wstring snowRightImageName = L"images/snowRight.png";
+/**
+ * Load the attributes for an item node.
+ *
+ * This is the  base class version that loads the attributes
+ * common to all items. Override this to load custom attributes
+ * for specific items.
+ *
+ * @param node The Xml node we are loading the item from
+ */
+void Platform::XmlLoad(wxXmlNode *node)
+{
+    Item::XmlLoad(node);
+    node->GetAttribute(L"width", L"0").ToCDouble(&mWidth);
+    node->GetAttribute(L"height", L"0").ToDouble(&mHeight);
+
+}

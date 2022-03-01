@@ -12,6 +12,7 @@
 /**
 * Base class for moving background
 */
+
 class Background : public Item
 {
 private:
@@ -27,7 +28,9 @@ public:
     void operator=(const Background &) = delete;
 
     /// Background constructor
-    Background(Game *game, const std::wstring &filename);
+    Background(Level *level, const std::wstring &filename);
+
+    void XmlLoad(wxXmlNode* node) override;
 };
 
 #endif //PROJECT1_BACKGROUND_H
