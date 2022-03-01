@@ -24,6 +24,8 @@ private:
     /// Vector that holds the levels Items
     std::vector<std::shared_ptr<Item>> mItems;
 
+private:
+
     /// Vector that hold the levels declarations
     std::vector<wxXmlNode*> mVecDec;
 
@@ -43,7 +45,12 @@ private:
 
 public:
 
-   void Load(const wxString &filename);
+    double GetWidth() {return mWidth;};
+    double GetHeight() {return mHeight;};
+    double GetStartX() {return mStartx;};
+    double GetStartY() {return mStartY;};
+
+    void Load(const wxString &filename);
 
    void XmlDeclare(wxXmlNode* node);
 
@@ -64,6 +71,9 @@ public:
     void Add(std::shared_ptr<Item> item);
 
     void LevelInfoSetter(wxXmlNode* node);
+
+    const std::vector<std::shared_ptr<Item>>& GetItems() {return mItems;};
+
 };
 
 #endif //PROJECT1_LEVEL_H

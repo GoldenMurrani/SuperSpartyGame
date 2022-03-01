@@ -25,6 +25,9 @@ private:
     /// scale for game window
     double mScale;
 
+    /// Current Level
+    int mCurrentLevel;
+
     /// Sparty item
     std::shared_ptr<Sparty> mSparty;
 
@@ -34,8 +37,25 @@ private:
     /// Background item
     std::shared_ptr<Background> mBackground;
 
-     ///
+     /// Level zero
     std::shared_ptr<Level> mLevel0;
+
+    /// Contains all the levels to be selected from
+    std::vector<std::shared_ptr<Level>> mLevels;
+
+    /// Level width
+    double mWidth = 0;
+
+    /// Level height
+    double mHeight = 0;
+
+    /// Sparty start x loaction
+    double mStartx = 0;
+
+    /// Sparty start y loaction
+    double mStartY = 0;
+
+
 
 public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
@@ -51,6 +71,10 @@ public:
     void Clear();
 
     void Accept(ItemVisitor* visitor);
+
+    void SetLevel(int numLevel);
+
+    void SetItems(int numLevel);
 
     /**
      * Get the sparty character in game
@@ -128,6 +152,7 @@ public:
      */
     Iter end() { return Iter(this, mItems.size()); }
 
+    void SetItems();
 };
 
 #endif //PROJECT1_GAME_H

@@ -37,10 +37,10 @@ Game::Game()
     //mBackground = make_shared<Background>(this, BackgroundImageName);
     //mBackground->SetLocation(512,512);
     mSparty = make_shared<Sparty>(this, GnomeImageName);
-    this->Add(mSparty);
-    mSparty->SetLocation(512,Height/2);
     mLevel0 = make_shared<Level>(this);
     mLevel0 ->Load(Level0);
+    mLevels.push_back(mLevel0);
+
 }
 
 
@@ -55,7 +55,7 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     //
     // Automatic Scaling
     //
-    mScale = double(height) / double(Height);
+    mScale = double(mHeight) / double(Height);
     graphics->Scale(mScale, mScale);
 
     auto virtualWidth = (double)width/mScale;
@@ -155,6 +155,33 @@ void Game::Accept(ItemVisitor* visitor)
         item->Accept(visitor);
     }
 }
+
+/**
+ * Sets the current Level
+ * @param numLevel
+ */
+void Game::SetLevel(int numLevel)
+{
+    mCurrentLevel = numLevel;
+    SetItems();
+}
+
+void Game::SetItems()
+{
+    Clear();
+    mWidth = mLevels[mCurrentLevel]->GetWidth();
+    mHeight = mLevels[mCurrentLevel]->GetHeight();
+    mStartx = mLevels[mCurrentLevel]->GetStartX();
+    mStartY = mLevels[mCurrentLevel]->GetStartY();
+    for (auto item : mLevels[mCurrentLevel]->GetItems())
+    {
+        mItems.push_back(item);
+    }
+
+    mSparty ->SetLocation(mStartx, mStartY);
+    this->Add(mSparty);
+}
+
 
 ///**
 // * Save the aquarium as a .aqua XML file.

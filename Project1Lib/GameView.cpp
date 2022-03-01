@@ -24,7 +24,7 @@ void GameView::Initialize(wxFrame* parent)
     Create(parent, wxID_ANY);
     SetBackgroundStyle(wxBG_STYLE_PAINT);
     Bind(wxEVT_PAINT, &GameView::OnPaint, this);
-    //parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel0, this, IDM_LEVELZERO);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel0, this, IDM_LEVELZERO);
 
 
     mTimer.SetOwner(this);
@@ -93,9 +93,9 @@ void GameView::OnKeyDown(wxKeyEvent& event)
     }
 }
 
-void GameView::OnLoadLevel0(wxCommandEvent event)
+void GameView::OnLoadLevel0(wxCommandEvent& event)
 {
-
+    mGame.SetLevel(0);
 }
 void GameView::OnKeyUp(wxKeyEvent& event)
 {

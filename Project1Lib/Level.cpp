@@ -200,6 +200,8 @@ void Level::LevelInfoSetter(wxXmlNode* node)
 
 
 
+
+
 //auto leftImage = node->GetAttribute(L"left-image");
 //auto midImage = node->GetAttribute(L"mid-image");
 //auto rightImage = node->GetAttribute(L"right-image");
