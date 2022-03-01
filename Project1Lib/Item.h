@@ -119,6 +119,7 @@ public:
      */
     virtual void Accept(ItemVisitor* visitor) {};
 
+    virtual void XmlLoad(wxXmlNode* node);
 };
 
 

@@ -3,12 +3,8 @@
  * @author malpi
  */
 
-
-
-
 #include "pch.h"
 #include "Level.h"
-#include "Declerations.h"
 #include "Platform.h"
 
 using namespace::std;
@@ -44,11 +40,11 @@ void Level::Load(const wxString &filename)
     for (; child; child = child->GetNext()) {
         auto name = child->GetName();
         if (name=="declarations") {
-            XmlDeclare(child);
+             XmlDeclare(child);
         }
 
             if (name==L"items") {
-                //XmlItem(child);
+                XmlItem(child);
             }
     }
 }
@@ -61,35 +57,69 @@ void Level::XmlDeclare(wxXmlNode* node)
 {
     auto child = node->GetChildren();
     for (; child; child = child->GetNext()) {
-      XmlType(child);
+      mVecDec.push_back(child);
 
     }
 
 }
 
 /**
+ *
+ * @param node
+ */
+void Level::XmlItem(wxXmlNode* node)
+{
+    auto child = node->GetChildren();
+    for (; child; child = child->GetNext())
+    {
+        XmlLevel(child);
+    }
+}
+/**
  *  Sends declarations out to constructors and saves item pointers
  * @param node
  */
-void Level::XmlType(wxXmlNode* node)
+void Level::XmlLevel(wxXmlNode* node)
 {
     shared_ptr<Item> item;
     vector<std::wstring> nodeChildren;
     auto name = node->GetName();
-    if (node !=nullptr)
-    {
-         nodeChildren = GetNodeChildren(node);
-    }
+
     if (name == "platform")
     {
         auto idType = node->GetAttribute(L"id");
         if (idType == "i004")
         {
-            item = make_shared<Platform>(this, nodeChildren[0], nodeChildren[1], nodeChildren[2]);
+           nodeChildren = XmlType(name, idType);
+           item = make_shared<Platform>(this, nodeChildren[0], nodeChildren[1], nodeChildren[2]);
         }
         else
         {
+            nodeChildren = XmlType(name, idType);
             item = make_shared<Platform>(this, nodeChildren[0], nodeChildren[1], nodeChildren[2]);
+        }
+        item -> XmlLoad(node);
+        Add(item);
+    }
+}
+
+
+/**
+ *  Sends declarations out to constructors and saves item pointers
+ * @param node
+ *
+ */
+vector<std::wstring> Level::XmlType(wxString nodeName,  wxString typeId)
+{
+    vector<std::wstring> nodeChildren;
+    for (wxXmlNode * nodes : mVecDec)
+    {
+        auto name = nodes->GetName();
+        auto id = nodes->GetAttribute(L"id");
+        if ((nodeName == name) && (typeId == id))
+        {
+            nodeChildren = GetNodeChildren(nodes);
+            return nodeChildren;
         }
 
     }
@@ -130,6 +160,15 @@ vector<std::wstring> Level::GetNodeChildren(wxXmlNode *node)
     return finalAttributes;
 
 }
+
+void Level::Add(std::shared_ptr<Item> item)
+{
+    mItems.push_back(item);
+}
+
+
+
+
 //auto leftImage = node->GetAttribute(L"left-image");
 //auto midImage = node->GetAttribute(L"mid-image");
 //auto rightImage = node->GetAttribute(L"right-image");
