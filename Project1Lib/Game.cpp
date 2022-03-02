@@ -48,7 +48,6 @@ Game::Game()
     mLevel2 ->Load(Level2);
     mLevels.push_back(mLevel2);
 
-
 }
 
 
@@ -124,6 +123,9 @@ void Game::Update(double elapsed)
     {
         item->Update(elapsed);
     }
+//    mLevel0->CollisionTest(mSparty);
+    mLevel1->CollisionTest(mSparty);
+//    mLevel2->CollisionTest(mSparty);
 }
 
 /**

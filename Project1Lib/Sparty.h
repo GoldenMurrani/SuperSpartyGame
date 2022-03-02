@@ -30,9 +30,10 @@ private:
     /// the amount of money this sparty have
     int mMoney = 0;
 
-    int xVel = 0;
-    int yVel = 0;
-    bool isJumping = false;
+    int mXVel = 0;
+    int mYVel = 0;
+
+    bool mIsGround = true;
 public:
     /// Default constructor (disabled)
     Sparty() = delete;
@@ -67,15 +68,17 @@ public:
      * Updates the Y velocity of the sparty item.
      * @param vel the value we want the velocity to be
      */
-    void SetYVel(int vel) { yVel = vel; }
+    void SetYVel(int vel) { mYVel = vel; }
 
     /**
      * Updates the X velocity of the sparty item.
      * @param vel the value we want the velocity to be
      */
-    void SetXVel(int vel) { xVel = vel; }
+    void SetXVel(int vel) { mXVel = vel; }
 
-    void SetJumping(int jump) { isJumping = jump; }
+    void SetIsGround(bool isGround) {mIsGround = isGround; }
+
+    bool IsGround() {return mIsGround; }
 };
 
 #endif //PROJECT1_SPARTY_H

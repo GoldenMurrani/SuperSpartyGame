@@ -10,6 +10,7 @@
 
 #include "Item.h"
 #include "Declarations.h"
+#include "Sparty.h"
 
 class Game;
 
@@ -20,6 +21,9 @@ private:
 
     /// Game object item is in
     Game *mGame;
+
+    // Sparty item
+    std::shared_ptr<Sparty> mSparty;
 
     /// Vector that holds the levels Items
     std::vector<std::shared_ptr<Item>> mItems;
@@ -73,6 +77,59 @@ public:
     void LevelInfoSetter(wxXmlNode* node);
 
     const std::vector<std::shared_ptr<Item>>& GetItems() {return mItems;};
+
+    void CollisionTest(std::shared_ptr<Item> item);
+
+    /** Iterator that iterates over the city tiles */
+    class Iter
+    {
+    public:
+        /** Constructor
+         * @param city The city we are iterating over
+         * @param pos Position in the collection
+         */
+        Iter(Level* level, int pos) : mLevel(level), mPos(pos) {}
+
+        /**
+         * Compare two iterators
+         * @param other The other iterator we are comparing to
+         * @return  true if this position is not equal to the other position
+        */
+        bool operator!=(const Iter& other) const
+        {
+            return mPos != other.mPos;
+        }
+
+        /**
+         * Get value at current position
+         * @return Value at mPos in the collection
+         */
+        std::shared_ptr<Item> operator *() const { return mLevel->mItems[mPos]; }
+
+        /**
+         * Increment the iterator
+         * @return Reference to this iterator */
+        const Iter& operator++()
+        {
+            mPos++;
+            return *this;
+        }
+
+    private:
+        Level* mLevel;   ///< City we are iterating over
+        int mPos;       ///< Position in the collection
+    };
+    /**
+     * Get an iterator for the beginning of the collection
+     * @return Iter object at position 0
+     */
+    Iter begin() { return Iter(this, 0); }
+
+    /**
+     * Get an iterator for the end of the collection
+     * @return Iter object at position past the end
+     */
+    Iter end() { return Iter(this, mItems.size()); }
 
 };
 

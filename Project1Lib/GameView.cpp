@@ -13,7 +13,7 @@
 using namespace std;
 
 /// Frame duration in milliseconds
-const int FrameDuration = 30;
+const int FrameDuration = 10;
 
 /**
  * Initialize the game view class.
@@ -116,6 +116,7 @@ void GameView::OnKeyDown(wxKeyEvent& event)
 
     case WXK_SPACE:
         // space bar pressed
+        mGame.GetSparty()->SetIsGround(false);
         mGame.GetSparty()->SetYVel(JumpSpeed);
         break;
     }

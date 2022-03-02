@@ -10,6 +10,9 @@
 #include "Enemy.h"
 #include "Door.h"
 #include "PowerUp.h"
+#include "Wall.h"
+#include "IsPlatformVisitor.h"
+#include "Game.h"
 
 using namespace::std;
 
@@ -19,6 +22,7 @@ using namespace::std;
  */
 Level::Level(Game* game) : mGame(game)
 {
+    mSparty = game->GetSparty();
 }
 
 /**
@@ -129,6 +133,12 @@ void Level::XmlLevel(wxXmlNode* node)
         nodeChildren = XmlType(name, idType);
         item = make_shared<PowerUp>(this, nodeChildren[0]);
     }
+    else if (name == "wall")
+    {
+        auto idType = node->GetAttribute(L"id");
+        nodeChildren = XmlType(name, idType);
+        item = make_shared<Wall>(this, nodeChildren[0]);
+    }
 
     if (item != nullptr)
     {
@@ -194,8 +204,6 @@ vector<std::wstring> Level::GetNodeChildren(wxXmlNode *node)
         std::wstring newString = nodeItems.wxString::ToStdWstring();
         finalAttributes.push_back(newString);
 
-
-
     }
     return finalAttributes;
 
@@ -220,7 +228,23 @@ void Level::LevelInfoSetter(wxXmlNode* node)
 }
 
 
+void Level::CollisionTest(shared_ptr<Item> item)
+{
+    bool isGround = false;
+    for (auto levelItem : mItems)
+    {
+        if (levelItem->CollisionTest(item))
+        {
+            IsPlatformVisitor platformCheck;
+            levelItem->Accept(&platformCheck);
 
+            //add to landscape vector
+            if(platformCheck.IsPlatform())
+                isGround = true;
+        }
+    }
+    mSparty->SetIsGround(isGround);
+}
 
 
 

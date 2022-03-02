@@ -21,6 +21,12 @@ private:
 //
 //    /// The bitmap we can display for this Wall
 //    std::unique_ptr<wxBitmap> mItemBitmap;
+    double mWidth = 0;
+
+    double mHeight = 0;
+
+    std::unique_ptr<wxImage> mItemImage;
+    std::unique_ptr<wxBitmap> mItemBitmap;
 public:
     /// Default constructor (disabled)
     Wall() = delete;
@@ -31,7 +37,7 @@ public:
     /// Assignment operator
     void operator=(const Wall&) = delete;
 
-    Wall(Game* game, const std::wstring &filename);
+    Wall(Level* level, const std::wstring &filename);
 //    /**
 //     * Get the width of the Wall
 //     * @return Wall width in pixels
@@ -52,6 +58,9 @@ public:
      */
     void Accept(ItemVisitor* visitor) override { visitor->VisitWall(this); }
 
+    void XmlLoad(wxXmlNode *node);
+
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 };
 
 #endif //PROJECT1_WALL_H

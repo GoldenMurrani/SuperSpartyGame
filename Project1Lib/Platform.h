@@ -50,8 +50,9 @@ private:
     /// The bitmap we can display for this item
     std::unique_ptr<wxBitmap> mItemBitmap3;
 
-      double mWidth = 0;
-      double mHeight = 0;
+    double mWidth = 0;
+
+    double mHeight = 0;
 public:
     /// Default constructor (disabled)
     Platform() = delete;

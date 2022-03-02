@@ -33,10 +33,20 @@ private:
     /// The bitmap we can display for this item
     std::unique_ptr<wxBitmap> mItemBitmap1;
 
+    /// The underlying item image
+    std::unique_ptr<wxImage> mItemImage2;
 
+    /// The bitmap we can display for this item
+    std::unique_ptr<wxBitmap> mItemBitmap2;
+    /// The underlying item image
+    std::unique_ptr<wxImage> mItemImage3;
+
+    /// The bitmap we can display for this item
+    std::unique_ptr<wxBitmap> mItemBitmap3;
 
 protected:
     Item(Game *game, const std::wstring &filename);
+    Item(Level* level, const std::wstring& filename, const std::wstring& filename2, const std::wstring& filename3);
     Item(Level* level, const std::wstring& filename);
 
     Item(Level* p_level);
@@ -110,6 +120,8 @@ public:
     virtual void Accept(ItemVisitor* visitor) {};
 
     virtual void XmlLoad(wxXmlNode* node);
+
+    bool CollisionTest(std::shared_ptr<Item> item);
 };
 
 
