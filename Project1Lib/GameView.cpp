@@ -73,28 +73,6 @@ void GameView::OnTimer(wxTimerEvent& event)
     Refresh();
 }
 
-
-void GameView::OnKeyDown(wxKeyEvent& event)
-{
-    switch (event.GetKeyCode())
-    {
-    case WXK_RIGHT:
-        // right arrow pressed
-        mGame.GetSparty()->SetXVel(HorizontalSpeed);
-        break;
-
-    case WXK_LEFT:
-        // left arrow pressed
-        mGame.GetSparty()->SetXVel(-HorizontalSpeed);
-        break;
-
-    case WXK_SPACE:
-        // space bar pressed
-        mGame.GetSparty()->SetYVel(JumpSpeed);
-        break;
-    }
-}
-
 /**
  * Sets Level 0 after option is pressed
  * @param event
@@ -122,6 +100,26 @@ void GameView::OnLoadLevel2(wxCommandEvent& event)
     mGame.SetLevel(2);
 }
 
+void GameView::OnKeyDown(wxKeyEvent& event)
+{
+    switch (event.GetKeyCode())
+    {
+    case WXK_RIGHT:
+        // right arrow pressed
+        mGame.GetSparty()->SetXVel(HorizontalSpeed);
+        break;
+
+    case WXK_LEFT:
+        // left arrow pressed
+        mGame.GetSparty()->SetXVel(-HorizontalSpeed);
+        break;
+
+    case WXK_SPACE:
+        // space bar pressed
+        mGame.GetSparty()->SetYVel(JumpSpeed);
+        break;
+    }
+}
 void GameView::OnKeyUp(wxKeyEvent& event)
 {
     switch (event.GetKeyCode())

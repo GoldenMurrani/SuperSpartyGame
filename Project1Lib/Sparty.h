@@ -29,13 +29,10 @@ class Sparty : public Item{
 private:
     /// the amount of money this sparty have
     int mMoney = 0;
-//    /// The underlying sparty image
-//    std::unique_ptr<wxImage> mItemImage;
-//
-//    /// The bitmap we can display for this sparty
-//    std::unique_ptr<wxBitmap> mItemBitmap;
+
     int xVel = 0;
     int yVel = 0;
+    bool isJumping = false;
 public:
     /// Default constructor (disabled)
     Sparty() = delete;
@@ -66,10 +63,19 @@ public:
      */
     void Update(double elapsed);
 
+    /**
+     * Updates the Y velocity of the sparty item.
+     * @param vel the value we want the velocity to be
+     */
     void SetYVel(int vel) { yVel = vel; }
 
+    /**
+     * Updates the X velocity of the sparty item.
+     * @param vel the value we want the velocity to be
+     */
     void SetXVel(int vel) { xVel = vel; }
 
+    void SetJumping(int jump) { isJumping = jump; }
 };
 
 #endif //PROJECT1_SPARTY_H

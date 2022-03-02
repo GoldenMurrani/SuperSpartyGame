@@ -28,5 +28,19 @@ Sparty::Sparty(Game *game, const std::wstring &filename) : Item(game, filename)
 */
 void Sparty::Update(double elapsed)
 {
-    SetLocation(GetX() + xVel * elapsed,GetY() + yVel * elapsed);
+    //Sideways Movement
+    double newX = GetX() + xVel * elapsed;
+
+    //Jumping
+    double newYVel = yVel + Gravity * elapsed;
+    if (GetY() > 540 & newYVel > 0)
+    {
+        newYVel = 0;
+    }
+    double newY = GetY() + newYVel * elapsed;
+
+    yVel = newYVel;
+
+    SetLocation(newX, newY);
+
 }

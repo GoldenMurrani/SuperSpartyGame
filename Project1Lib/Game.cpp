@@ -185,8 +185,8 @@ void Game::SetItems()
         mItems.push_back(item);
     }
 
-    mSparty ->SetLocation(mStartx, mStartY);
     Add(mSparty);
+    mSparty ->SetLocation(mStartx, mStartY);
 }
 
 
