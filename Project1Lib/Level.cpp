@@ -9,6 +9,7 @@
 #include "Background.h"
 #include "Enemy.h"
 #include "Door.h"
+#include "PowerUp.h"
 
 using namespace::std;
 
@@ -121,6 +122,12 @@ void Level::XmlLevel(wxXmlNode* node)
         auto idType = node->GetAttribute(L"id");
         nodeChildren = XmlType(name, idType);
         item = make_shared<Door>(this, nodeChildren[0]);
+    }
+    else if (name == "tuition-up")
+    {
+        auto idType = node->GetAttribute(L"id");
+        nodeChildren = XmlType(name, idType);
+        item = make_shared<PowerUp>(this, nodeChildren[0]);
     }
 
     if (item != nullptr)

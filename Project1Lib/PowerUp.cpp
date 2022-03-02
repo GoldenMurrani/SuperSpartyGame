@@ -13,9 +13,19 @@ const wstring powerUpImage = L"images/stanley.png";
 
 /**
 * PowerUp Constructor
- * @param game game this item is a member of
+ * @param level level this item is a member of
  * @param filename the name of image file
 */
-PowerUp::PowerUp(Game* game, const std::wstring &filename) : Item(game, filename)
+PowerUp::PowerUp(Level *level, const std::wstring &filename) : Item(level, filename)
 {
+}
+
+/**
+ * Loads attributes for item node
+ *
+ * Base class, override for specific items
+ */
+ void PowerUp::XmlLoad(wxXmlNode *node)
+{
+     Item::XmlLoad(node);
 }

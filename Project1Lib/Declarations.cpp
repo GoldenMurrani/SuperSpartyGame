@@ -75,6 +75,11 @@ vector<std::wstring> Declarations::GetNodeChildren(wxXmlNode *node)
         auto image = node->GetAttribute(L"image");
         attributes.insert(attributes.end(), { image });
     }
+    if (name == "tuition-up")
+    {
+        auto image = node->GetAttribute(L"image");
+        attributes.insert(attributes.end(), { image });
+    }
 
     for (auto nodeItems : attributes)
     {

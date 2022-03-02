@@ -48,7 +48,17 @@ public:
 //     */
 //    double GetY() const { return mY; }
 
-    PowerUp(Game *game, const std::wstring &filename);
+    /**
+     * Constructor
+     */
+    PowerUp(Level* level, const std::wstring &filename);
+
+    /**
+     * Load attributes for an item node
+     *
+     * Base class, override for specific items
+     */
+     void XmlLoad(wxXmlNode *node);
 
     /**
      * Accept a visitor
