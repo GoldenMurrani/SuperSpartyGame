@@ -1,6 +1,6 @@
 /**
  * @file Level.h
- * @author malpi
+ * @author Matthew Hofmann
  *
  *
  */
@@ -9,7 +9,6 @@
 #define PROJECT1_LEVEL_H
 
 #include "Item.h"
-#include "Declarations.h"
 #include "Sparty.h"
 
 class Game;
