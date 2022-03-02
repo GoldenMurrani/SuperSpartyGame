@@ -91,21 +91,6 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
  */
 void Game::Add(std::shared_ptr<Item> item)
 {
-    item->SetLocation(100, 100);
-    bool checkedAll = false;
-    while (!checkedAll)
-    {
-        checkedAll = true;
-        for (auto fish: mItems)
-        {
-            if (fish->DistanceTo(item)<1)
-            {
-                item->SetLocation(item->GetX()+10, item->GetY()+10);
-                checkedAll = false;
-                break;
-            }
-        }
-    }
     mItems.push_back(item);
 }
 

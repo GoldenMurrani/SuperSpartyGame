@@ -31,9 +31,25 @@ private:
 //    double  mX = 0;     ///< X location for the center of the item
 //    double  mY = 0;     ///< Y location for the center of the item
       //Level *mLevel;
-      wxString mPlatformLeftImage;
-      wxString mPlatformMidImage;
-      wxString mPlatformRightImage;
+
+
+    /// The underlying item image
+    std::unique_ptr<wxImage> mItemImage1;
+
+    /// The bitmap we can display for this item
+    std::unique_ptr<wxBitmap> mItemBitmap1;
+
+    /// The underlying item image
+    std::unique_ptr<wxImage> mItemImage2;
+
+    /// The bitmap we can display for this item
+    std::unique_ptr<wxBitmap> mItemBitmap2;
+    /// The underlying item image
+    std::unique_ptr<wxImage> mItemImage3;
+
+    /// The bitmap we can display for this item
+    std::unique_ptr<wxBitmap> mItemBitmap3;
+
       double mWidth = 0;
       double mHeight = 0;
 public:
@@ -78,6 +94,8 @@ public:
     void Accept(ItemVisitor* visitor) override { visitor->VisitPlatform(this); }
 
     void XmlLoad(wxXmlNode* node) override;
+
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 };
 
 #endif //PROJECT1_PLATFORM_H

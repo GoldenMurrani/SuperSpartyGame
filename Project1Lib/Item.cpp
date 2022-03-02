@@ -37,22 +37,6 @@ Item::Item(Level* level, const std::wstring& filename)
 
 
 /**
- * Constructor
- * @param Level The game this item is a member of
- * @param filename The name of the file to display for this item
- * @param filename2 The name of the file to display for this item
- * @param filename3 The name of the file to display for this item
- */
-Item::Item(Level* level, const std::wstring & filename, const std::wstring& filename2, const std::wstring& filename3)
-{
-    mItemImage1 = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap1 = make_unique<wxBitmap>(*mItemImage1);
-    mItemImage2 = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap2 = make_unique<wxBitmap>(*mItemImage2);
-    mItemImage3 = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap3 = make_unique<wxBitmap>(*mItemImage3);
-}
-/**
  * Destructor
  */
 Item::~Item()
