@@ -27,7 +27,8 @@ const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
 
 /// Level 0 file loacation
 const wstring Level0 = L"levels/level0.xml";
-
+const wstring Level1 = L"levels/level1.xml";
+const wstring Level2 = L"levels/level2.xml";
 
 /**
  * Game Constructor
@@ -40,6 +41,13 @@ Game::Game()
     mLevel0 = make_shared<Level>(this);
     mLevel0 ->Load(Level0);
     mLevels.push_back(mLevel0);
+    mLevel1 = make_shared<Level>(this);
+    mLevel1 ->Load(Level1);
+    mLevels.push_back(mLevel1);
+    mLevel2 = make_shared<Level>(this);
+    mLevel2 ->Load(Level2);
+    mLevels.push_back(mLevel2);
+
 
 }
 
@@ -55,7 +63,7 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     //
     // Automatic Scaling
     //
-    mScale = double(mHeight) / double(Height);
+    mScale = double(width) / double(height);
     graphics->Scale(mScale, mScale);
 
     auto virtualWidth = (double)width/mScale;
@@ -68,7 +76,6 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     //
     // Draw in virtual pixels on the graphics context
     //
-    mSparty->Draw(graphics);
 
     for (auto item : mItems)
     {
@@ -179,7 +186,7 @@ void Game::SetItems()
     }
 
     mSparty ->SetLocation(mStartx, mStartY);
-    this->Add(mSparty);
+    Add(mSparty);
 }
 
 

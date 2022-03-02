@@ -39,6 +39,10 @@ public:
     void OnKeyUp(wxKeyEvent& event);
 
     void OnLoadLevel0(wxCommandEvent& event);
+
+    void OnLoadLevel1(wxCommandEvent& event);
+
+    void OnLoadLevel2(wxCommandEvent& event);
 };
 
 #endif //PROJECT1_GAMEVIEW_H

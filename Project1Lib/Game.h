@@ -40,6 +40,12 @@ private:
      /// Level zero
     std::shared_ptr<Level> mLevel0;
 
+    /// Level one
+    std::shared_ptr<Level> mLevel1;
+
+    /// Level two
+    std::shared_ptr<Level> mLevel2;
+
     /// Contains all the levels to be selected from
     std::vector<std::shared_ptr<Level>> mLevels;
 
