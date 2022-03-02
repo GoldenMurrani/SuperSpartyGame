@@ -32,7 +32,7 @@ public:
     void operator=(const Enemy &) = delete;
 
     /// Enemy constructor
-    Enemy(Game* game, const std::wstring &filename);
+    Enemy(Level* level, const std::wstring &filename);
 
     /**
      * Accept a visitor
@@ -49,6 +49,17 @@ public:
     * @param elapsed Time elapsed since the class call
      */
     void Update(double elapsed);
+
+    /**
+    * Load the attributes for an item node.
+     *
+     * This is the  base class version that loads the attributes
+     * common to all items. Override this to load custom attributes
+    * for specific items.
+    *
+    * @param node The Xml node we are loading the item from
+     */
+    void XmlLoad(wxXmlNode *node);
 };
 
 #endif //PROJECT1_ENEMY_H

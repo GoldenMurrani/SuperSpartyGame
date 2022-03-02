@@ -65,6 +65,17 @@ vector<std::wstring> Declarations::GetNodeChildren(wxXmlNode *node)
         auto rightImage = node->GetAttribute(L"right-image");
         attributes.insert(attributes.end(), { leftImage, midImage, rightImage});
     }
+    if (name=="villain")
+    {
+        auto image = node->GetAttribute(L"image");
+        attributes.insert(attributes.end(), { image });
+    }
+    if (name=="door")
+    {
+        auto image = node->GetAttribute(L"image");
+        attributes.insert(attributes.end(), { image });
+    }
+
     for (auto nodeItems : attributes)
     {
         nodeItems = imagePath + nodeItems;

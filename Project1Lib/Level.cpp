@@ -7,6 +7,8 @@
 #include "Level.h"
 #include "Platform.h"
 #include "Background.h"
+#include "Enemy.h"
+#include "Door.h"
 
 using namespace::std;
 
@@ -108,6 +110,19 @@ void Level::XmlLevel(wxXmlNode* node)
             item = make_shared<Background>(this, nodeChildren[0]);
 
     }
+    else if (name == "villain")
+    {
+        auto idType = node->GetAttribute(L"id");
+        nodeChildren = XmlType(name, idType);
+        item = make_shared<Enemy>(this, nodeChildren[0]);
+    }
+    else if (name == "door")
+    {
+        auto idType = node->GetAttribute(L"id");
+        nodeChildren = XmlType(name, idType);
+        item = make_shared<Door>(this, nodeChildren[0]);
+    }
+
     if (item != nullptr)
     {
         item -> XmlLoad(node);

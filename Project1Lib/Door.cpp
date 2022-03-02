@@ -17,6 +17,20 @@ const wstring DoorImageName = L"images/door.png";
  * @param game Game this door is a member of
  * @param filename the name of image file
  */
-Door::Door(Game *game, const std::wstring &filename) : Item(game, filename)
+Door::Door(Level *Level, const std::wstring &filename) : Item(Level, filename)
 {
+}
+
+/**
+ * Load the attributes for an item node.
+ *
+ * This is the  base class version that loads the attributes
+ * common to all items. Override this to load custom attributes
+ * for specific items.
+ *
+ * @param node The Xml node we are loading the item from
+ */
+void Door::XmlLoad(wxXmlNode *node)
+{
+    Item::XmlLoad(node);
 }
