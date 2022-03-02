@@ -18,12 +18,12 @@ public:
 
     /**
      * check to see if the current tile is a building
-     * @return true if current tile is a building, false otherwose
+     * @return true if current item is a platform, false otherwose
      */
     bool IsPlatform() { return mIsPlatform; }
 
 private:
-    bool mIsPlatform = false;  ///<boolean to determine the tile type, if it's a building, it's true
+    bool mIsPlatform = false;  ///<boolean to determine the item type, if it's a platform, it's true
 };
 
 #endif //PROJECT1_ISPLATFORMVISITOR_H

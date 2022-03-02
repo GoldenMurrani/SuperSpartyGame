@@ -58,7 +58,7 @@ public:
      */
     void Accept(ItemVisitor* visitor) override { visitor->VisitWall(this); }
 
-    void XmlLoad(wxXmlNode *node);
+    void XmlLoad(wxXmlNode *node) override;
 
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 };

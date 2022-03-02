@@ -123,9 +123,7 @@ void Game::Update(double elapsed)
     {
         item->Update(elapsed);
     }
-//    mLevel0->CollisionTest(mSparty);
-    mLevel1->CollisionTest(mSparty);
-//    mLevel2->CollisionTest(mSparty);
+    mLevels[mCurrentLevel]->CollisionTest(mSparty);
 }
 
 /**
