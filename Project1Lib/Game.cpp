@@ -106,7 +106,7 @@ std::shared_ptr<Item> Game::HitTest(int x, int y)
     {
         if ((*i)->HitTest(x, y))
         {
-      //      return *i;
+            return *i;
         }
     }
 
@@ -169,9 +169,11 @@ void Game::SetItems()
     {
         mItems.push_back(item);
     }
+    mSparty ->SetLocation(mStartx, mStartY);
+    mSparty ->SetXVel(0);
+    mSparty ->SetYVel(0);
 
     Add(mSparty);
-    mSparty ->SetLocation(mStartx, mStartY);
 }
 
 
