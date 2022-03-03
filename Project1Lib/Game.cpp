@@ -106,7 +106,7 @@ std::shared_ptr<Item> Game::HitTest(int x, int y)
     {
         if ((*i)->HitTest(x, y))
         {
-            return *i;
+      //      return *i;
         }
     }
 
