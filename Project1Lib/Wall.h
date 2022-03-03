@@ -38,19 +38,6 @@ public:
     void operator=(const Wall&) = delete;
 
     Wall(Level* level, const std::wstring &filename);
-//    /**
-//     * Get the width of the Wall
-//     * @return Wall width in pixels
-//     */
-//    int GetWidth() const { return mItemBitmap->GetWidth(); }
-//
-//    /**
-//     * Get the height of the Wall
-//     * @return Wall height in pixels
-//     */
-//    int GetHeight() const { return mItemBitmap->GetHeight(); }
-
-    //void SpartyGnome();
 
     /**
      * Accept a visitor
@@ -61,6 +48,18 @@ public:
     void XmlLoad(wxXmlNode *node) override;
 
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
+    /**
+     * Get the width of the item
+     * @return Item width in pixels
+     */
+    int GetWidth() override {return mWidth; }
+
+    /**
+     * Get the height of the item
+     * @return Item height in pixels
+     */
+    int GetHeight() override {return mHeight; }
 };
 
 #endif //PROJECT1_WALL_H

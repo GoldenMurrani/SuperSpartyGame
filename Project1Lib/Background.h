@@ -9,10 +9,10 @@
 #define PROJECT1_BACKGROUND_H
 
 #include "Item.h"
+
 /**
 * Base class for moving background
 */
-
 class Background : public Item
 {
 private:
@@ -31,6 +31,8 @@ public:
     Background(Level *level, const std::wstring &filename);
 
     void XmlLoad(wxXmlNode* node) override;
+
+    bool CollisionTest(Item* item) override;
 };
 
 #endif //PROJECT1_BACKGROUND_H

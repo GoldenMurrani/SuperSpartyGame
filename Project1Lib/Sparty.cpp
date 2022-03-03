@@ -10,8 +10,6 @@
 
 using namespace std;
 
-/// Sparty filename
-const wstring GnomeImageName = L"images/gnome.png";
 
 /**
  * Constructor
@@ -28,18 +26,41 @@ Sparty::Sparty(Game *game, const std::wstring &filename) : Item(game, filename)
 */
 void Sparty::Update(double elapsed)
 {
+    double currentX = GetX();
     //Sideways Movement
-    double newX = GetX() + mXVel * elapsed;
+    double newX = currentX + mXVel * elapsed;
 
-    double newY = GetY();
+    double currentY = GetY();
+    //new Y spped
+    mYVel = mYVel + Gravity * elapsed;
+    double newY = currentY + mYVel * elapsed;
 
+    //check for y direction
+    SetLocation(currentX, newY);
+
+    auto collideItem = GetGame()->GetLevel()->CollisionTest(this);
     //Jumping
-    if (!mIsGround)
+    if (collideItem)
     {
-        double newYVel = mYVel + Gravity * elapsed;
-        newY = GetY() + newYVel * elapsed;
-        mYVel = newYVel;
+//        if (mYVel > 0)
+//            newY = currentY + Epsilon;
+//        else
+//            newY = currentY - Epsilon;
+        newY = currentY;
+        mYVel = 0;
     }
 
+    SetLocation(newX, newY);
+    collideItem = GetGame()->GetLevel()->CollisionTest(this);
+    //horizontal moving
+    if (collideItem)
+    {
+//        if (mXVel > 0)
+//            newX = currentX - Epsilon;
+//        else
+//            newX = currentX + Epsilon;
+        newX = currentX;
+        mXVel = 0;
+    }
     SetLocation(newX, newY);
 }

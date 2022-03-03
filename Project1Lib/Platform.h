@@ -34,21 +34,21 @@ private:
 
 
     /// The underlying item image
-    std::unique_ptr<wxImage> mItemImage1;
+    std::unique_ptr<wxImage> mLeftImage;
 
     /// The bitmap we can display for this item
-    std::unique_ptr<wxBitmap> mItemBitmap1;
+    std::unique_ptr<wxBitmap> mLeftBitmap;
 
     /// The underlying item image
-    std::unique_ptr<wxImage> mItemImage2;
+    std::unique_ptr<wxImage> mMiddleImage;
 
     /// The bitmap we can display for this item
-    std::unique_ptr<wxBitmap> mItemBitmap2;
+    std::unique_ptr<wxBitmap> mMiddleBitmap;
     /// The underlying item image
-    std::unique_ptr<wxImage> mItemImage3;
+    std::unique_ptr<wxImage> mRightImage;
 
     /// The bitmap we can display for this item
-    std::unique_ptr<wxBitmap> mItemBitmap3;
+    std::unique_ptr<wxBitmap> mRightBitmap;
 
     double mWidth = 0;
 
@@ -64,30 +64,6 @@ public:
 
     Platform(Level* level, std::wstring filename, std::wstring filename2, std::wstring filename3);
 
-//    /**
-//    * The X location of the item
-//    * @return X location in pixels
-//    */
-//    double GetX() const { return mX; }
-//
-//    /**
-//     * The Y location of the item
-//     * @return Y location in pixels
-//     */
-//    double GetY() const { return mY; }
-//    /**
-//     * Get the width of the Wall
-//     * @return Wall width in pixels
-//     */
-//    int GetWidth() const { return mItemBitmap->GetWidth(); }
-//
-//    /**
-//     * Get the height of the Wall
-//     * @return Wall height in pixels
-//     */
-//    int GetHeight() const { return mItemBitmap->GetHeight(); }
-
-    //void OnDraw(wxDC *dc);
     /**
      * Accept a visitor
      * @param visitor The visitor we accept
@@ -97,6 +73,14 @@ public:
     void XmlLoad(wxXmlNode* node) override;
 
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
+    int GetWidth() override {return mWidth; }
+
+    /**
+     * Get the height of the item
+     * @return Item height in pixels
+     */
+    int GetHeight() override {return mHeight; }
 };
 
 #endif //PROJECT1_PLATFORM_H

@@ -9,9 +9,6 @@
 
 using namespace std;
 
-/// Background filename
-const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
-
 /**
  * Constructor
  * @param game game this item is in
@@ -33,6 +30,14 @@ Background::Background(Level* level, const std::wstring &filename) : Item(level,
 void Background::XmlLoad(wxXmlNode *node)
 {
     Item::XmlLoad(node);
+}
 
-
+/**
+ * override collision test to disable the effect from background
+ * @param item item need to be collision test
+ * @return false because we don't want to consider background collision
+ */
+bool Background::CollisionTest(Item* item)
+{
+    return false;
 }

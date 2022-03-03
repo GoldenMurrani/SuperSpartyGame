@@ -12,16 +12,15 @@
 
 using namespace std;
 
-Platform::Platform(Level* level, std::wstring filename, std::wstring filename2, std::wstring filename3) :Item(level, filename)
+Platform::Platform(Level* level, std::wstring leftFilename, std::wstring midFilename, std::wstring rightFilename) :Item(level, leftFilename)
 {
 
-    mItemImage1 = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap1 = make_unique<wxBitmap>(*mItemImage1);
-    mItemImage2 = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap2 = make_unique<wxBitmap>(*mItemImage2);
-    mItemImage3 = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap3 = make_unique<wxBitmap>(*mItemImage3);
-
+    mLeftImage = make_unique<wxImage>(leftFilename, wxBITMAP_TYPE_ANY);
+    mLeftBitmap = make_unique<wxBitmap>(*mLeftImage);
+    mMiddleImage = make_unique<wxImage>(midFilename, wxBITMAP_TYPE_ANY);
+    mMiddleBitmap = make_unique<wxBitmap>(*mMiddleImage);
+    mRightImage = make_unique<wxImage>(rightFilename, wxBITMAP_TYPE_ANY);
+    mRightBitmap = make_unique<wxBitmap>(*mRightImage);
 }
 
 
@@ -39,7 +38,6 @@ void Platform::XmlLoad(wxXmlNode *node)
     Item::XmlLoad(node);
     node->GetAttribute(L"width", L"0").ToCDouble(&mWidth);
     node->GetAttribute(L"height", L"0").ToDouble(&mHeight);
-
 }
 
 /**
@@ -50,14 +48,13 @@ void Platform::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     double wid = mWidth/3;
     double hit = mHeight;
-    graphics->DrawBitmap(*mItemBitmap1,
-            ((int)GetX()-wid) - wid / 2, (int)GetY() - hit / 2,
-            wid + 1, hit);
-    graphics->DrawBitmap(*mItemBitmap2,
-            ((int)GetX()) - wid / 2, (int)GetY() - hit / 2,
-            wid + 1, hit);
-    graphics->DrawBitmap(*mItemBitmap3,
-            ((int)GetX()+wid) - wid / 2, (int)GetY() - hit / 2,
-            wid + 1, hit);
-
+    graphics->DrawBitmap(*mLeftBitmap,
+            ((double)GetX()-wid) - wid / 2, (double)GetY() - hit / 2,
+            1.04 * wid, hit);
+    graphics->DrawBitmap(*mMiddleBitmap,
+            ((double)GetX()) - wid / 2, (double)GetY() - hit / 2,
+            1.05 * wid, hit);
+    graphics->DrawBitmap(*mRightBitmap,
+            ((double)GetX()+wid) - wid / 2, (double)GetY() - hit / 2,
+            1.04 * wid, hit);
 }

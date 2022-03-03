@@ -135,7 +135,7 @@ void Item::XmlLoad(wxXmlNode *node)
     node->GetAttribute(L"y", L"0").ToDouble(&mY);
 }
 
-bool Item::CollisionTest(shared_ptr<Item> item)
+bool Item::CollisionTest(Item* item)
 {
     // Border for the item
     auto itemLeft = item->GetX() - item->GetWidth() / 2;

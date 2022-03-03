@@ -105,13 +105,13 @@ public:
      * Get the width of the item
      * @return Item width in pixels
      */
-    int GetWidth() {return mItemBitmap1->GetWidth(); }
+    virtual int GetWidth() {return mItemBitmap1->GetWidth(); }
 
     /**
      * Get the height of the item
      * @return Item height in pixels
      */
-    int GetHeight() {return mItemBitmap1->GetHeight(); }
+    virtual int GetHeight() {return mItemBitmap1->GetHeight(); }
 
     /**
     * Accept a visitor
@@ -121,7 +121,7 @@ public:
 
     virtual void XmlLoad(wxXmlNode* node);
 
-    bool CollisionTest(std::shared_ptr<Item> item);
+    virtual bool CollisionTest(Item* item);
 };
 
 

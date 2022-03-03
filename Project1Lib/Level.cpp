@@ -11,7 +11,6 @@
 #include "Door.h"
 #include "PowerUp.h"
 #include "Wall.h"
-#include "IsPlatformVisitor.h"
 #include "Game.h"
 
 using namespace::std;
@@ -99,20 +98,15 @@ void Level::XmlLevel(wxXmlNode* node)
     if (name == "platform")
     {
         auto idType = node->GetAttribute(L"id");
-        if (idType=="i004") {
-            nodeChildren = XmlType(name, idType);
-            item = make_shared<Platform>(this, nodeChildren[0], nodeChildren[1], nodeChildren[2]);
-        }
-        else {
-            nodeChildren = XmlType(name, idType);
-            item = make_shared<Platform>(this, nodeChildren[0], nodeChildren[1], nodeChildren[2]);
-        }
+        nodeChildren = XmlType(name, idType);
+        item = make_shared<Platform>(this, nodeChildren[0], nodeChildren[1], nodeChildren[2]);
+
     }
     else if (name == "background")
     {
-            auto idType = node->GetAttribute(L"id");
-            nodeChildren = XmlType(name, idType);
-            item = make_shared<Background>(this, nodeChildren[0]);
+        auto idType = node->GetAttribute(L"id");
+        nodeChildren = XmlType(name, idType);
+        item = make_shared<Background>(this, nodeChildren[0]);
 
     }
     else if (name == "villain")
@@ -165,9 +159,7 @@ vector<std::wstring> Level::XmlType(wxString nodeName,  wxString typeId)
             nodeChildren = GetNodeChildren(nodes);
             return nodeChildren;
         }
-
     }
-
 }
 
 /**
@@ -189,13 +181,14 @@ vector<std::wstring> Level::GetNodeChildren(wxXmlNode *node)
         auto leftImage = node->GetAttribute(L"left-image");
         auto midImage = node->GetAttribute(L"mid-image");
         auto rightImage = node->GetAttribute(L"right-image");
-        attributes.insert(attributes.end(), { leftImage, midImage, rightImage});
+        attributes.insert(attributes.end(), {leftImage, midImage, rightImage});
     }
     else
     {
         auto image = node->GetAttribute(L"image");
         attributes.insert(attributes.end(), {image});
     }
+
     for (auto nodeItems : attributes)
     {
         nodeItems = imagePath + nodeItems;
@@ -203,10 +196,9 @@ vector<std::wstring> Level::GetNodeChildren(wxXmlNode *node)
         //Convert to wstring for bitmap
         std::wstring newString = nodeItems.wxString::ToStdWstring();
         finalAttributes.push_back(newString);
-
     }
-    return finalAttributes;
 
+    return finalAttributes;
 }
 
 void Level::Add(std::shared_ptr<Item> item)
@@ -228,22 +220,16 @@ void Level::LevelInfoSetter(wxXmlNode* node)
 }
 
 
-void Level::CollisionTest(shared_ptr<Item> item)
+shared_ptr<Item> Level::CollisionTest(Item* item)
 {
-    bool isGround = false;
     for (auto levelItem : mItems)
     {
         if (levelItem->CollisionTest(item))
         {
-            IsPlatformVisitor platformCheck;
-            levelItem->Accept(&platformCheck);
-
-            //add to landscape vector
-            if(platformCheck.IsPlatform())
-                isGround = true;
+            return levelItem;
         }
     }
-    mSparty->SetIsGround(isGround);
+    return nullptr;
 }
 
 

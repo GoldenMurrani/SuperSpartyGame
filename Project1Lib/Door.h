@@ -44,6 +44,8 @@ public:
     * @param node The Xml node we are loading the item from
      */
     void XmlLoad(wxXmlNode *node);
+
+    bool CollisionTest(Item* item) override;
 };
 
 #endif //PROJECT1_DOOR_H

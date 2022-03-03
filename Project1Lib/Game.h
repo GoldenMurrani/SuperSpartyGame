@@ -26,16 +26,13 @@ private:
     double mScale;
 
     /// Current Level
-    int mCurrentLevel;
+    int mCurrentLevel = 0;
 
     /// Sparty item
     std::shared_ptr<Sparty> mSparty;
 
     /// All of the items to populate our game
     std::vector<std::shared_ptr<Item>> mItems;
-
-    /// Background item
-    std::shared_ptr<Background> mBackground;
 
      /// Level zero
     std::shared_ptr<Level> mLevel0;
@@ -80,31 +77,12 @@ public:
 
     void SetLevel(int numLevel);
 
-    void SetItems(int numLevel);
-
     /**
      * Get the sparty character in game
      * @return the shared pointer of the sparty item in game
      */
     std::shared_ptr<Sparty> GetSparty() {return mSparty; }
 
-//    void XmlItem(wxXmlNode* node);
-//
-//    void Save(const wxString& filename);
-//
-//    void Load(const wxString& filename);
-
-//    /**
-//     * Get the width of the game
-//     * @return Aquarium width in pixels
-//     */
-//    int GetWidth() const { return mBackground->GetWidth(); }
-//
-//    /**
-//     * Get the height of the aquarium
-//     * @return Aquarium height in pixels
-//     */
-//    int GetHeight() const { return mBackground->GetHeight(); }
 
     /** Iterator that iterates over the items */
     class Iter
@@ -159,6 +137,8 @@ public:
     Iter end() { return Iter(this, mItems.size()); }
 
     void SetItems();
+
+    std::shared_ptr<Level> GetLevel(){return mLevels[mCurrentLevel]; }
 };
 
 #endif //PROJECT1_GAME_H

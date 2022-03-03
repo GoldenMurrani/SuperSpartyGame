@@ -8,9 +8,6 @@
 
 using namespace std;
 
-/// PowerUp filename and image
-const wstring powerUpImage = L"images/stanley.png";
-
 /**
 * PowerUp Constructor
  * @param level level this item is a member of

@@ -30,8 +30,8 @@ private:
     /// the amount of money this sparty have
     int mMoney = 0;
 
-    int mXVel = 0;
-    int mYVel = 0;
+    double mXVel = 0;
+    double mYVel = 0;
 
     bool mIsGround = true;
 public:

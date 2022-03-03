@@ -9,8 +9,8 @@
 
 using namespace std;
 
-/// Door filename
-const wstring DoorImageName = L"images/door.png";
+/// Collision distance for the door in pixels
+const double CollisionDistance = 20;
 
 /**
  * Constructor
@@ -33,4 +33,22 @@ Door::Door(Level *Level, const std::wstring &filename) : Item(Level, filename)
 void Door::XmlLoad(wxXmlNode *node)
 {
     Item::XmlLoad(node);
+}
+
+/**
+ * override collision test to let item go into door
+ * @param item item need to be collision tested
+ * @return true if collided, false otherwise
+ */
+bool Door::CollisionTest(Item* item)
+{
+    // Collision for door is different
+    double dx = item->GetX() - GetX();
+    double dy = item->GetY() - GetY();
+    double distance = sqrt(dx * dx + dy * dy);
+    if (distance < CollisionDistance)
+    {
+        return true;
+    }
+    return false;
 }

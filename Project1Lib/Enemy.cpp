@@ -6,12 +6,8 @@
 #include "pch.h"
 #include "Enemy.h"
 #include "Game.h"
-#include <String>
 
 using namespace std;
-
-/// Enemy filename
-const wstring EnemyImageName = L"images/UofM.png";
 
 /**
  * Constructor
@@ -34,15 +30,12 @@ Enemy::Enemy(Level *level, const std::wstring &filename) : Item(level, filename)
 void Enemy::Update(double elapsed)
 {
     SetLocation(GetX(),GetY() + mSpeedY * elapsed);
-    if (mSpeedY > 0 && GetY() >= 1024)
+
+    //auto collideItem = GetGame()->GetLevel()->CollisionTest(this);
+    if ((mSpeedY > 0 && GetY() >= 1024) || (mSpeedY < 0 && GetY() <= 0))
     {
         mSpeedY = -mSpeedY;
     }
-    if (mSpeedY < 0 && GetY() <= 0)
-    {
-        mSpeedY = -mSpeedY;
-    }
-    // add code to switch directions when colliding with something
 }
 
 /**

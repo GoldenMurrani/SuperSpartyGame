@@ -123,7 +123,6 @@ void Game::Update(double elapsed)
     {
         item->Update(elapsed);
     }
-    mLevels[mCurrentLevel]->CollisionTest(mSparty);
 }
 
 /**
@@ -176,100 +175,5 @@ void Game::SetItems()
     Add(mSparty);
 }
 
-
-///**
-// * Save the aquarium as a .aqua XML file.
-// *
-// * Open an XML file and stream the aquarium data to it.
-// *
-// * @param filename The filename of the file to save the aquarium to
-// */
-//void Game::Save(const wxString& filename)
-//{
-//    wxXmlDocument xmlDoc;
-//
-//    auto root = new wxXmlNode(wxXML_ELEMENT_NODE, L"aqua");
-//    xmlDoc.SetRoot(root);
-//
-//    // Iterate over all items and save them
-//    for (auto item: mItems) {
-//        item->XmlSave(root);
-//    }
-//
-//    if (!xmlDoc.Save(filename, wxXML_NO_INDENTATION)) {
-//        wxMessageBox(L"Write to XML failed");
-//        return;
-//    }
-//}
-//
-///**
-// * Load the aquarium from a .aqua XML file.
-// *
-// * Opens the XML file and reads the nodes, creating items as appropriate.
-// *
-// * @param filename The filename of the file to load the aquarium from.
-// */
-//void Game::Load(const wxString &filename)
-//{
-//    wxXmlDocument xmlDoc;
-//    if(!xmlDoc.Load(filename))
-//    {
-//        wxMessageBox(L"Unable to load Aquarium file");
-//        return;
-//    }
-//
-//    Clear();
-//    // Get the XML document root node
-//    auto root = xmlDoc.GetRoot();
-//
-//    //
-//    // Traverse the children of the root
-//    // node of the XML document in memory!!!!
-//    //
-//    auto child = root->GetChildren();
-//    for( ; child; child=child->GetNext())
-//    {
-//        auto name = child->GetName();
-//        if(name == L"item")
-//        {
-//            XmlItem(child);
-//        }
-//    }
-//}
-
-///**
-// * Handle a node of type item.
-// * @param node XML node
-// */
-//void Game::XmlItem(wxXmlNode *node)
-//{
-//    // A pointer for the item we are loading
-//    shared_ptr<Item> item;
-//
-//    // We have an item. What type?
-//    auto type = node->GetAttribute(L"type");
-//    if (type == L"beta")
-//    {
-//        item = make_shared<FishBeta>(this);
-//    }
-//    if (type == L"goldeen")
-//    {
-//        item = make_shared<FishGoldeen>(this);
-//    }
-//    if (type == L"magikarp")
-//    {
-//        item = make_shared<FishMagikarp>(this);
-//    }
-//    if (type == L"castle")
-//    {
-//        item = make_shared<DecorCastle>(this);
-//    }
-//
-//    if (item != nullptr)
-//    {
-//        Add(item);
-//        item->XmlLoad(node);
-//    }
-//}
 
 

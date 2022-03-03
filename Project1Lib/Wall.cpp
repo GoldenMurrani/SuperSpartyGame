@@ -10,11 +10,6 @@
 
 using namespace std;
 
-/// Wall image file 1
-const wstring wallOneImageName = L"images/wall1.png";
-/// Wall image file 2
-const wstring wallTwoImageName = L"images/wall2.png";
-
 /**
  * Constructor
  * @param game Game the Enemy is a member of
@@ -51,6 +46,6 @@ void Wall::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     double wid = mWidth;
     double hit = mHeight;
     graphics->DrawBitmap(*mItemBitmap,
-            ((int)GetX()) - wid / 2, (int)GetY() - hit / 2,
-            wid + 1, hit);
+            ((double)GetX()) - wid / 2, (double)GetY() - hit / 2,
+            wid, hit);
 }
