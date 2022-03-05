@@ -157,9 +157,10 @@ vector<std::wstring> Level::XmlType(wxString nodeName,  wxString typeId)
         if ((nodeName == name) && (typeId == id))
         {
             nodeChildren = GetNodeChildren(nodes);
-            return nodeChildren;
+
         }
     }
+    return nodeChildren;
 }
 
 /**
