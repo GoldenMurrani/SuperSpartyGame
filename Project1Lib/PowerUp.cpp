@@ -21,6 +21,7 @@ PowerUp::PowerUp(Level *level, const std::wstring &filename) : Item(level, filen
  * Loads attributes for item node
  *
  * Base class, override for specific items
+ * @param node Node that is being loaded in
  */
  void PowerUp::XmlLoad(wxXmlNode *node)
 {

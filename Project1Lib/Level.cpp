@@ -141,7 +141,6 @@ void Level::XmlLevel(wxXmlNode* node)
     }
 }
 
-
 /**
  *  Sends declarations out to constructors and saves item pointers
  * @param node
@@ -149,18 +148,23 @@ void Level::XmlLevel(wxXmlNode* node)
  */
 vector<std::wstring> Level::XmlType(wxString nodeName,  wxString typeId)
 {
+    wxString id;
     vector<std::wstring> nodeChildren;
     for (wxXmlNode * nodes : mVecDec)
     {
         auto name = nodes->GetName();
-        auto id = nodes->GetAttribute(L"id");
+        if (nodes !=nullptr) {
+            id = nodes->GetAttribute(L"id");
+        }
         if ((nodeName == name) && (typeId == id))
         {
             nodeChildren = GetNodeChildren(nodes);
             return nodeChildren;
         }
     }
+    return nodeChildren;
 }
+
 
 /**
  *  Gets children for all declarations and makes them viable.
