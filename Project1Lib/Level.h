@@ -130,6 +130,7 @@ public:
      */
     Iter end() { return Iter(this, mItems.size()); }
 
+    Level();
 };
 
 #endif //PROJECT1_LEVEL_H

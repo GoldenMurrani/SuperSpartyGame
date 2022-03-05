@@ -43,9 +43,9 @@ TEST(GameTest, Iterator)
     Game game;
 
     // Add some items
-    auto item1 = make_shared<Door>(&game, DoorImageName);
-    auto item2 = make_shared<Door>(&game, DoorImageName);
-    auto item3 = make_shared<Door>(&game, DoorImageName);
+    auto item1 = make_shared<Door>(&level, DoorImageName);
+    auto item2 = make_shared<Door>(&level, DoorImageName);
+    auto item3 = make_shared<Door>(&level, DoorImageName);
 
     game.Add(item1);
     game.Add(item2);
@@ -72,6 +72,7 @@ TEST(GameTest, Visitor)
 {
     // Construct a game object
     Game game;
+    Level level;
 
     // Add some item of each type
     auto item1 = make_shared<Door>(&game, DoorImageName);
