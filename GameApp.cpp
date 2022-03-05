@@ -32,4 +32,5 @@ bool GameApp::OnInit()
     auto frame = new MainFrame();
     frame->Initialize();
     frame->Show(true);
+    return true;
 }

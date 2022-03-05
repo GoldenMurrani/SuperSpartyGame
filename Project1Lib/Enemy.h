@@ -48,7 +48,7 @@ public:
      * of time that has elapsed.
     * @param elapsed Time elapsed since the class call
      */
-    void Update(double elapsed);
+    void Update(double elapsed) override;
 
     /**
     * Load the attributes for an item node.
@@ -59,7 +59,7 @@ public:
     *
     * @param node The Xml node we are loading the item from
      */
-    void XmlLoad(wxXmlNode *node);
+    void XmlLoad(wxXmlNode *node) override;
 };
 
 #endif //PROJECT1_ENEMY_H

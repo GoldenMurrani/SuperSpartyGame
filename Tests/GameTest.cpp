@@ -40,22 +40,23 @@ TEST(GameTest, Construct)
 TEST(GameTest, Iterator)
 {
     // Construct a game object
-    Game game;
+    Game* game;
+    Level level(game);
 
     // Add some items
-    auto item1 = make_shared<Door>(&game, DoorImageName);
-    auto item2 = make_shared<Door>(&game, DoorImageName);
-    auto item3 = make_shared<Door>(&game, DoorImageName);
+    auto item1 = make_shared<Door>(&level, DoorImageName);
+    auto item2 = make_shared<Door>(&level, DoorImageName);
+    auto item3 = make_shared<Door>(&level, DoorImageName);
 
-    game.Add(item1);
-    game.Add(item2);
-    game.Add(item3);
+    game->Add(item1);
+    game->Add(item2);
+    game->Add(item3);
 
     // Begin points to the first item
-    auto iter1 = game.begin();
+    auto iter1 = game->begin();
 
     // End points after the last item
-    auto iter2 = game.end();
+    auto iter2 = game->end();
     ASSERT_EQ(item1, *iter1) << L"First item correct";
 
     ++iter1;
@@ -71,22 +72,23 @@ TEST(GameTest, Iterator)
 TEST(GameTest, Visitor)
 {
     // Construct a game object
-    Game game;
+    Game* game;
+    Level level(game);
 
     // Add some item of each type
-    auto item1 = make_shared<Door>(&game, DoorImageName);
-    auto item2 = make_shared<Enemy>(&game, DoorImageName);
-    auto item3 = make_shared<Wall>(&game, DoorImageName);
-    auto item4 = make_shared<Money>(&game, DoorImageName);
+    auto item1 = make_shared<Door>(&level, DoorImageName);
+    auto item2 = make_shared<Enemy>(&level, DoorImageName);
+    auto item3 = make_shared<Wall>(&level, DoorImageName);
+    auto item4 = make_shared<Money>(game, DoorImageName);
 
-    game.Add(item1);
-    game.Add(item2);
-    game.Add(item3);
-    game.Add(item4);
+    game->Add(item1);
+    game->Add(item2);
+    game->Add(item3);
+    game->Add(item4);
 
 
     TestVisitor visitor;
-    game.Accept(&visitor);
+    game->Accept(&visitor);
     ASSERT_EQ(1, visitor.mNumDoors) <<
                                         L"Visitor number of doors";
     ASSERT_EQ(1, visitor.mNumEnemy) <<

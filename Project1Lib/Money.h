@@ -38,6 +38,7 @@ public:
      * @param visitor The visitor we accept
      */
     void Accept(ItemVisitor* visitor) override { visitor->VisitMoney(this); }
+    void XmlLoad(wxXmlNode* node) override;
 };
 
 #endif //PROJECT1_MONEY_H
