@@ -21,3 +21,8 @@ const wstring MoneyTwoImageName = L"images/money1000.png";
 Money::Money(Game *game, const std::wstring &filename) : Item(game, filename)
 {
 }
+void Money::XmlLoad(wxXmlNode *node)
+{
+    Item::XmlLoad(node);
+
+}

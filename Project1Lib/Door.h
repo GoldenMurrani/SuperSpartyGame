@@ -43,7 +43,7 @@ public:
     *
     * @param node The Xml node we are loading the item from
      */
-    void XmlLoad(wxXmlNode *node);
+    void XmlLoad(wxXmlNode *node) override ;
 
     bool CollisionTest(Item* item) override;
 };

@@ -7,6 +7,7 @@
 #include "Level.h"
 #include "Platform.h"
 #include "Background.h"
+#include "Money.h"
 #include "Enemy.h"
 #include "Door.h"
 #include "PowerUp.h"
@@ -57,6 +58,7 @@ void Level::Load(const wxString &filename)
                 XmlItem(child);
             }
     }
+
 }
 
 /**
@@ -109,6 +111,16 @@ void Level::XmlLevel(wxXmlNode* node)
         item = make_shared<Background>(this, nodeChildren[0]);
 
     }
+
+    else if (name=="money"){
+        auto idType = node->GetAttribute(L"id");
+        auto moneyImage = node->GetAttribute(L"image");
+        //auto moneyValue = node->GetAttribute(L"value", 0);
+        nodeChildren = XmlType(name, idType);
+        //item = make_shared<Money>(this, )
+
+    }
+
     else if (name == "villain")
     {
         auto idType = node->GetAttribute(L"id");
