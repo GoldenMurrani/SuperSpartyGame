@@ -37,7 +37,7 @@ public:
      *
      * Base class, override for specific items
      */
-     void XmlLoad(wxXmlNode *node);
+     void XmlLoad(wxXmlNode *node) override;
 
     /**
      * Accept a visitor

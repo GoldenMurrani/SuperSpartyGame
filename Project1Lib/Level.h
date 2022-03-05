@@ -57,7 +57,7 @@ public:
 
    void XmlDeclare(wxXmlNode* node);
 
-   std::vector<std::wstring> Level::GetNodeChildren(wxXmlNode *node);
+   std::vector<std::wstring> GetNodeChildren(wxXmlNode *node);
 
    Level(Game * game);
 
