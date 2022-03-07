@@ -26,7 +26,15 @@ private:
     /// The last stopwatch time
     long mTime = 0;
 
+    void OnLoadLevel0(wxCommandEvent& event);
+
+    void OnLoadLevel1(wxCommandEvent& event);
+
+    void OnLoadLevel2(wxCommandEvent& event);
+
     void OnPaint(wxPaintEvent& event);
+
+
 
 public:
     void Initialize(wxFrame *parent);
@@ -38,11 +46,10 @@ public:
 
     void OnKeyUp(wxKeyEvent& event);
 
-    void OnLoadLevel0(wxCommandEvent& event);
-
-    void OnLoadLevel1(wxCommandEvent& event);
-
-    void OnLoadLevel2(wxCommandEvent& event);
+    /**
+    * Stop the timer so the window can close
+    */
+    void Stop() {mTimer.Stop();}
 };
 
 #endif //PROJECT1_GAMEVIEW_H
