@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "Sparty.h"
 #include "Game.h"
+#include "Item.h"
 #include <string>
 
 using namespace std;
@@ -64,4 +65,11 @@ void Sparty::Update(double elapsed)
         mXVel = 0;
     }
     SetLocation(newX, newY);
+
+    // Reset level if Sparty falls below a certain height
+    if (currentY > 1500)
+    {
+        Game *currentGame = GetGame();
+        currentGame->SetLevel(currentGame->GetCurrentLevel());
+    }
 }

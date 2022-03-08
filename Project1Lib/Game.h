@@ -78,6 +78,12 @@ public:
     void SetLevel(int numLevel);
 
     /**
+     * Get the current level
+     * @return the int of the current level
+     */
+     int GetCurrentLevel() { return mCurrentLevel; }
+
+    /**
      * Get the sparty character in game
      * @return the shared pointer of the sparty item in game
      */
