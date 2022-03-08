@@ -115,7 +115,7 @@ void Level::XmlLevel(wxXmlNode* node)
     else if (name=="money"){
         auto idType = node->GetAttribute(L"id");
         auto moneyImage = node->GetAttribute(L"image");
-        //auto moneyValue = node->GetAttribute(L"value", 0);
+        auto moneyValue = node->GetAttribute(L"value");
         nodeChildren = XmlType(name, idType);
         //item = make_shared<Money>(this, )
 
