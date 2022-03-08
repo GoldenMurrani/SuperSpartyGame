@@ -138,8 +138,11 @@ void GameView::OnKeyDown(wxKeyEvent& event)
 
     case WXK_SPACE:
         // space bar pressed
-        mGame.GetSparty()->SetIsGround(false);
-        mGame.GetSparty()->SetYVel(JumpSpeed);
+        if (mGame.GetSparty()->IsGround())
+        {
+            mGame.GetSparty()->SetIsGround(false);
+            mGame.GetSparty()->SetYVel(JumpSpeed);
+        }
         break;
     }
 }

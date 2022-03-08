@@ -48,6 +48,7 @@ void Sparty::Update(double elapsed)
 //            newY = currentY - Epsilon;
         newY = currentY;
         mYVel = 0;
+        SetIsGround(true);
     }
 
     SetLocation(newX, newY);
