@@ -30,6 +30,7 @@ void GameView::Initialize(wxFrame* parent)
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel0, this, IDM_LEVELZERO);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel1, this, IDM_LEVELONE);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel2, this, IDM_LEVELTWO);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLoadLevel3, this, IDM_LEVELTHREE);
 
 
     mTimer.SetOwner(this);
@@ -121,6 +122,15 @@ void GameView::OnLoadLevel2(wxCommandEvent& event)
 {
     mGame.SetLevel(2);
 }
+
+/**
+ * Sets Level 3 after option is pressed
+ * @param event
+ */
+ void GameView::OnLoadLevel3(wxCommandEvent& event)
+ {
+     mGame.SetLevel(3);
+ }
 
 void GameView::OnKeyDown(wxKeyEvent& event)
 {

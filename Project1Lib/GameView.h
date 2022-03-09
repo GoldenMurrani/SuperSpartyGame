@@ -32,6 +32,8 @@ private:
 
     void OnLoadLevel2(wxCommandEvent& event);
 
+    void OnLoadLevel3(wxCommandEvent& event);
+
     void OnPaint(wxPaintEvent& event);
 
 

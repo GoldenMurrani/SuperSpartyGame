@@ -29,6 +29,7 @@ const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
 const wstring Level0 = L"levels/level0.xml";
 const wstring Level1 = L"levels/level1.xml";
 const wstring Level2 = L"levels/level2.xml";
+const wstring Level3 = L"levels/level3.xml";
 
 /**
  * Game Constructor
@@ -47,6 +48,9 @@ Game::Game()
     mLevel2 = make_shared<Level>(this);
     mLevel2 ->Load(Level2);
     mLevels.push_back(mLevel2);
+    mLevel3 = make_shared<Level>(this);
+    mLevel3 ->Load(Level3);
+    mLevels.push_back(mLevel3);
 
 }
 
