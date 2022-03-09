@@ -13,6 +13,7 @@
 #include "PowerUp.h"
 #include "Wall.h"
 #include "Game.h"
+#include "ReversePower.h"
 
 using namespace::std;
 
@@ -144,6 +145,12 @@ void Level::XmlLevel(wxXmlNode* node)
         auto idType = node->GetAttribute(L"id");
         nodeChildren = XmlType(name, idType);
         item = make_shared<Wall>(this, nodeChildren[0]);
+    }
+    else if (name == "reverse-up")
+    {
+        auto idType = node->GetAttribute(L"id");
+        nodeChildren = XmlType(name, idType);
+        item = make_shared<ReversePower>(this, nodeChildren[0]);
     }
 
     if (item != nullptr)

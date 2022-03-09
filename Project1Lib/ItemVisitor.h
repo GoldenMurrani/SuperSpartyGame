@@ -15,6 +15,7 @@ class Money;
 class Platform;
 class PowerUp;
 class Wall;
+class ReversePower;
 
 /**
  * Item visitor base class
@@ -58,6 +59,12 @@ public:
      * @param wall Wall we are visiting
      */
     virtual void VisitWall(Wall* wall) {}
+
+    /**
+     * Visit a reverse power up object
+     * @param reverse powerup we are visiting
+     */
+     virtual void VisitReversePower(ReversePower* reversePower) {}
 };
 
 #endif //PROJECT1_ITEMVISITOR_H
