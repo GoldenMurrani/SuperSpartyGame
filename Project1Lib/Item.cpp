@@ -18,10 +18,9 @@ using namespace std;
  */
 Item::Item(Game *game, const std::wstring &filename) : mGame(game)
 {
-    mItemImage1 = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap1 = make_unique<wxBitmap>(*mItemImage1);
+    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+    mItemBitmap = make_unique<wxBitmap>(*mItemImage);
 }
-
 
 /**
  * Constructor
@@ -30,11 +29,10 @@ Item::Item(Game *game, const std::wstring &filename) : mGame(game)
  */
 Item::Item(Level* level, const std::wstring& filename)
 {
-    mItemImage1 = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap1 = make_unique<wxBitmap>(*mItemImage1);
+
+    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+    mItemBitmap = make_unique<wxBitmap>(*mItemImage);
 }
-
-
 
 /**
  * Constructor
@@ -45,31 +43,14 @@ Item::Item(Level* level, const std::wstring& filename)
  */
 Item::Item(Level* level, const std::wstring & filename, const std::wstring& filename2, const std::wstring& filename3)
 {
-    mItemImage1 = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap1 = make_unique<wxBitmap>(*mItemImage1);
-    mItemImage2 = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap2 = make_unique<wxBitmap>(*mItemImage2);
-    mItemImage3 = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-    mItemBitmap3 = make_unique<wxBitmap>(*mItemImage3);
 }
+
 /**
  * Destructor
  */
 Item::~Item()
 {
 
-}
-
-/**
- * Compute the distance from this item to another item
- * @param item Item we are computing the distance to
- * @return Distance in pixels
- */
-double Item::DistanceTo(std::shared_ptr<Item> item)
-{
-    auto dx = item->GetX() - GetX();
-    auto dy = item->GetY() - GetY();
-    return sqrt(dx * dx + dy * dy);
 }
 
 /**
@@ -80,8 +61,8 @@ double Item::DistanceTo(std::shared_ptr<Item> item)
  */
 bool Item::HitTest(int x, int y)
 {
-    double wid = mItemBitmap1->GetWidth();
-    double hit = mItemBitmap1->GetHeight();
+    double wid = mItemBitmap->GetWidth();
+    double hit = mItemBitmap->GetHeight();
 
     // Make x and y relative to the top-left corner of the bitmap image
     // Subtracting the center makes x, y relative to the image center
@@ -99,7 +80,7 @@ bool Item::HitTest(int x, int y)
     // Test to see if x, y are in the drawn part of the image
     // If the location is transparent, we are not in the drawn
     // part of the image
-    return !mItemImage1->IsTransparent((int)testX, (int)testY);
+    return !mItemImage->IsTransparent((int)testX, (int)testY);
 }
 
 /**
@@ -108,11 +89,17 @@ bool Item::HitTest(int x, int y)
  */
 void Item::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-    int wid = mItemBitmap1->GetWidth();
-    int hit = mItemBitmap1->GetHeight();
-    graphics->DrawBitmap(*mItemBitmap1,
+    int wid = mItemBitmap->GetWidth();
+    int hit = mItemBitmap->GetHeight();
+    graphics->DrawBitmap(*mItemBitmap,
             (int)GetX() - wid / 2, (int)GetY() - hit / 2,
             wid + 1, hit);
+}
+
+void Item::SetImage(const std::wstring& filename)
+{
+    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+    mItemBitmap = make_unique<wxBitmap>(*mItemImage);
 }
 
 Item::Item(Level* p_level)

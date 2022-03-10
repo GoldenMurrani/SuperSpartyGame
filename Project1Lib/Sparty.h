@@ -15,7 +15,7 @@
 const double Gravity = 1000.0;
 
 /// Horizontal character speed in pixels per second
-const double HorizontalSpeed = 500.00;
+const double HorizontalSpeed = 300.00;
 
 const double JumpSpeed = -800;
 
@@ -34,6 +34,8 @@ private:
     double mYVel = 0;
 
     bool mIsGround = true;
+
+    double mMovedDistance = 0;
 public:
     /// Default constructor (disabled)
     Sparty() = delete;

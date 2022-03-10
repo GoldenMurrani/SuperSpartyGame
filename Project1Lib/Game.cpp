@@ -3,7 +3,6 @@
  * @author Zongyuan Li
  */
 
-
 #include "pch.h"
 #include <wx/graphics.h>
 #include "Game.h"
@@ -51,7 +50,6 @@ Game::Game()
     mLevel3 = make_shared<Level>(this);
     mLevel3 ->Load(Level3);
     mLevels.push_back(mLevel3);
-
 }
 
 
@@ -164,8 +162,6 @@ void Game::SetLevel(int numLevel)
 void Game::SetItems()
 {
     Clear();
-    mWidth = mLevels[mCurrentLevel]->GetWidth();
-    mHeight = mLevels[mCurrentLevel]->GetHeight();
     mStartx = mLevels[mCurrentLevel]->GetStartX();
     mStartY = mLevels[mCurrentLevel]->GetStartY();
     for (auto item : mLevels[mCurrentLevel]->GetItems())

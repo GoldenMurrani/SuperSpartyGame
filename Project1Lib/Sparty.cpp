@@ -11,6 +11,7 @@
 
 using namespace std;
 
+const double animeSwapDistance = 200;
 
 /**
  * Constructor
@@ -27,12 +28,14 @@ Sparty::Sparty(Game *game, const std::wstring &filename) : Item(game, filename)
 */
 void Sparty::Update(double elapsed)
 {
+    //Collision check function
+
     double currentX = GetX();
     //Sideways Movement
     double newX = currentX + mXVel * elapsed;
 
     double currentY = GetY();
-    //new Y spped
+    //new Y speed
     mYVel = mYVel + Gravity * elapsed;
     double newY = currentY + mYVel * elapsed;
 
@@ -43,13 +46,10 @@ void Sparty::Update(double elapsed)
     //Jumping
     if (collideItem)
     {
-//        if (mYVel > 0)
-//            newY = currentY + Epsilon;
-//        else
-//            newY = currentY - Epsilon;
         newY = currentY;
+        if (mYVel > 0)
+            SetIsGround(true);
         mYVel = 0;
-        SetIsGround(true);
     }
 
     SetLocation(newX, newY);
@@ -57,14 +57,38 @@ void Sparty::Update(double elapsed)
     //horizontal moving
     if (collideItem)
     {
-//        if (mXVel > 0)
-//            newX = currentX - Epsilon;
-//        else
-//            newX = currentX + Epsilon;
         newX = currentX;
         mXVel = 0;
     }
     SetLocation(newX, newY);
+
+    //Anime Part
+    double distanceX = newX - currentX;
+
+    if (mIsGround)
+        mMovedDistance += abs(distanceX);
+
+    if (mXVel > 0)
+    {
+        if (mMovedDistance < animeSwapDistance / 2)
+            SetImage(L"images/gnome-walk-right-1.png");
+        else if (mMovedDistance < animeSwapDistance)
+            SetImage(L"images/gnome-walk-right-2.png");
+        else
+            mMovedDistance = 0;
+    }
+    else if (mXVel < 0)
+    {
+        if (mMovedDistance < animeSwapDistance / 2)
+            SetImage(L"images/gnome-walk-left-1.png");
+        else if (mMovedDistance < animeSwapDistance)
+            SetImage(L"images/gnome-walk-left-2.png");
+        else
+            mMovedDistance = 0;
+    }
+    else
+        SetImage(L"images/gnome.png");
+
 
     // Reset level if Sparty falls below a certain height
     if (currentY > 1500)
@@ -72,4 +96,5 @@ void Sparty::Update(double elapsed)
         Game *currentGame = GetGame();
         currentGame->SetLevel(currentGame->GetCurrentLevel());
     }
+
 }

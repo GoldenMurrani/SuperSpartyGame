@@ -18,31 +18,18 @@ class Game;
 */
 class Item {
 private:
-
-
-/// The game window this item in going to be in
+    /// The game window this item in going to be in
     Game *mGame;
 
-    // Item location on screen
+    /// Item location on screen
     double  mX = 0;     ///< X location for the center of the item
     double  mY = 0;     ///< Y location for the center of the item
 
     /// The underlying item image
-    std::unique_ptr<wxImage> mItemImage1;
+    std::unique_ptr<wxImage> mItemImage;
 
     /// The bitmap we can display for this item
-    std::unique_ptr<wxBitmap> mItemBitmap1;
-
-    /// The underlying item image
-    std::unique_ptr<wxImage> mItemImage2;
-
-    /// The bitmap we can display for this item
-    std::unique_ptr<wxBitmap> mItemBitmap2;
-    /// The underlying item image
-    std::unique_ptr<wxImage> mItemImage3;
-
-    /// The bitmap we can display for this item
-    std::unique_ptr<wxBitmap> mItemBitmap3;
+    std::unique_ptr<wxBitmap> mItemBitmap;
 
 protected:
     Item(Game *game, const std::wstring &filename);
@@ -87,8 +74,6 @@ public:
 
     bool HitTest(int x, int y);
 
-    double DistanceTo(std::shared_ptr<Item> item);
-
     /**
     * Get the pointer to the Game object
     * @return Pointer to Game object
@@ -105,13 +90,13 @@ public:
      * Get the width of the item
      * @return Item width in pixels
      */
-    virtual int GetWidth() {return mItemBitmap1->GetWidth(); }
+    virtual int GetWidth() {return mItemBitmap->GetWidth(); }
 
     /**
      * Get the height of the item
      * @return Item height in pixels
      */
-    virtual int GetHeight() {return mItemBitmap1->GetHeight(); }
+    virtual int GetHeight() {return mItemBitmap->GetHeight(); }
 
     /**
     * Accept a visitor
@@ -122,6 +107,8 @@ public:
     virtual void XmlLoad(wxXmlNode* node);
 
     virtual bool CollisionTest(Item* item);
+
+    void SetImage(const std::wstring& file);
 };
 
 

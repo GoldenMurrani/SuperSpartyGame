@@ -119,7 +119,6 @@ void Level::XmlLevel(wxXmlNode* node)
         auto moneyValue = node->GetAttribute(L"value");
         nodeChildren = XmlType(name, idType);
         //item = make_shared<Money>(this, )
-
     }
 
     else if (name == "villain")
@@ -178,7 +177,6 @@ vector<std::wstring> Level::XmlType(wxString nodeName,  wxString typeId)
         if ((nodeName == name) && (typeId == id))
         {
             nodeChildren = GetNodeChildren(nodes);
-
         }
     }
     return nodeChildren;
