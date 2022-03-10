@@ -25,6 +25,7 @@ const wstring EnemyImageName = L"images/UofM.png";
 const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
 
 /// Level 0 file loacation
+
 const wstring Level0 = L"levels/level0.xml";
 const wstring Level1 = L"levels/level1.xml";
 const wstring Level2 = L"levels/level2.xml";
