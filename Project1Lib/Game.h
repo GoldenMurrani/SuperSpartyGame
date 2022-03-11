@@ -80,6 +80,7 @@ public:
 
     void SetLevel(int numLevel);
 
+    Game* GetGameTest() {return this;};
     /**
      * Gets the size of mItems
      * @return Size of mItems

@@ -15,6 +15,7 @@
 */
 class Enemy : public Item{
 private:
+
 //    /// The underlying Enemy image
 //    std::unique_ptr<wxImage> mItemImage;
 //
@@ -32,7 +33,7 @@ public:
     void operator=(const Enemy &) = delete;
 
     /// Enemy constructor
-    Enemy(Level* level, const std::wstring &filename);
+    Enemy(Level* level, const std::wstring& filename, Game* game);
 
     /**
      * Accept a visitor

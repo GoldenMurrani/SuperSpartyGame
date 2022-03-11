@@ -18,6 +18,9 @@ using namespace std;
 ///door image temporary
 const wstring DoorImageName = L"images/door.png";
 
+
+
+
 class TestVisitor : public ItemVisitor
 {
 public:
@@ -32,31 +35,33 @@ public:
     int mNumWall = 0;
 };
 
-TEST(GameTest, Construct)
+TEST(TestGame, Construct)
 {
     Game game;
 }
 
-TEST(GameTest, Iterator)
+TEST(TestGame, Iterator)
 {
     // Construct a game object
-    Game* game;
-    Level level(game);
+    Game game;
+    Game* gameTest = game.GetGameTest();
+    Level level(gameTest);
+    Level* levelTest = level.GetLevelTest();
 
     // Add some items
-    auto item1 = make_shared<Door>(&level, DoorImageName);
-    auto item2 = make_shared<Door>(&level, DoorImageName);
-    auto item3 = make_shared<Door>(&level, DoorImageName);
+    auto item1 = make_shared<Door>(levelTest, DoorImageName, gameTest);
+    auto item2 = make_shared<Door>(levelTest, DoorImageName, gameTest);
+    auto item3 = make_shared<Door>(levelTest, DoorImageName, gameTest);
 
-    game->Add(item1);
-    game->Add(item2);
-    game->Add(item3);
+    gameTest->Add(item1);
+    gameTest->Add(item2);
+    gameTest->Add(item3);
 
     // Begin points to the first item
-    auto iter1 = game->begin();
+    auto iter1 = gameTest->begin();
 
     // End points after the last item
-    auto iter2 = game->end();
+    auto iter2 = gameTest->end();
     ASSERT_EQ(item1, *iter1) << L"First item correct";
 
     ++iter1;
@@ -72,28 +77,30 @@ TEST(GameTest, Iterator)
 TEST(GameTest, Visitor)
 {
     // Construct a game object
-    Game* game;
-    Level level(game);
+    Game game;
+    Game* gameTest = game.GetGameTest();
+    Level level(gameTest);
+    Level* levelTest = level.GetLevelTest();
 
     // Add some item of each type
-    auto item1 = make_shared<Door>(&level, DoorImageName);
-    auto item2 = make_shared<Enemy>(&level, DoorImageName);
-    auto item3 = make_shared<Wall>(&level, DoorImageName);
-    auto item4 = make_shared<Money>(game, DoorImageName);
+    auto item1 = make_shared<Door>(levelTest, DoorImageName,gameTest);
+    auto item2 = make_shared<Enemy>(levelTest, DoorImageName, gameTest);
+    auto item3 = make_shared<Wall>(levelTest, DoorImageName);
+    auto item4 = make_shared<Door>(levelTest, DoorImageName, gameTest);
 
-    game->Add(item1);
-    game->Add(item2);
-    game->Add(item3);
-    game->Add(item4);
+    gameTest->Add(item1);
+    gameTest->Add(item2);
+    gameTest->Add(item3);
+    gameTest->Add(item4);
 
 
     TestVisitor visitor;
-    game->Accept(&visitor);
-    ASSERT_EQ(1, visitor.mNumDoors) <<
+    gameTest->Accept(&visitor);
+    ASSERT_EQ(2, visitor.mNumDoors) <<
                                         L"Visitor number of doors";
     ASSERT_EQ(1, visitor.mNumEnemy) <<
                                         L"Visitor number of enemy";
-    ASSERT_EQ(1, visitor.mNumMoney) <<
+    ASSERT_EQ(0, visitor.mNumMoney) <<
                                      L"Visitor number of money";
     ASSERT_EQ(1, visitor.mNumWall) <<
                                     L"Visitor number of walls";

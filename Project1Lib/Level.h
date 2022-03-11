@@ -55,6 +55,11 @@ public:
 
    void XmlDeclare(wxXmlNode* node);
 
+   /**
+    * For testing
+    */
+   Level*  GetLevelTest(){ return this;}
+
    std::vector<std::wstring> GetNodeChildren(wxXmlNode *node);
 
    Level(Game * game);

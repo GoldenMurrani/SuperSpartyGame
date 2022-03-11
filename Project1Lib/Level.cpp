@@ -125,7 +125,7 @@ void Level::XmlLevel(wxXmlNode* node)
     {
         auto idType = node->GetAttribute(L"id");
         nodeChildren = XmlType(name, idType);
-        item = make_shared<Enemy>(this, nodeChildren[0]);
+        item = make_shared<Enemy>(this, nodeChildren[0], mGame);
     }
     else if (name == "door")
     {
