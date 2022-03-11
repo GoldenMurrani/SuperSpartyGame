@@ -27,8 +27,6 @@ private:
     /// Vector that holds the levels Items
     std::vector<std::shared_ptr<Item>> mItems;
 
-private:
-
     /// Vector that hold the levels declarations
     std::vector<wxXmlNode*> mVecDec;
 

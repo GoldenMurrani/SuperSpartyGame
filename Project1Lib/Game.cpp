@@ -160,21 +160,40 @@ void Game::SetLevel(int numLevel)
     SetItems();
 }
 
+void Game::SetLevelDoor(int numLevel)
+{
+    mCurrentLevel = numLevel;
+
+}
+
+/**
+ * Sets Items up in the game
+ */
 void Game::SetItems()
 {
     Clear();
     mStartx = mLevels[mCurrentLevel]->GetStartX();
     mStartY = mLevels[mCurrentLevel]->GetStartY();
+
     for (auto item : mLevels[mCurrentLevel]->GetItems())
     {
         mItems.push_back(item);
     }
+
     mSparty ->SetLocation(mStartx, mStartY);
     mSparty ->SetXVel(0);
     mSparty ->SetYVel(0);
 
     Add(mSparty);
+
 }
 
+void Game::SetSparty()
+{
+    mSparty ->SetLocation(mStartx, mStartY);
+    mSparty ->SetXVel(0);
+    mSparty ->SetYVel(0);
+    Add(mSparty);
 
+}
 

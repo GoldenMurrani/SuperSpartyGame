@@ -10,12 +10,15 @@
 
 #include "Item.h"
 
+class Game;
+
 /**
 * Base class for Door item.
 */
 class Door : public Item {
 private:
-
+    /// Game the level door object is being loaded into
+    Game *mGame;
 public:
     /// Default constructor (disabled)
     Door() = delete;
@@ -23,10 +26,11 @@ public:
     /// Copy constructor (disabled)
     Door(const Door&) = delete;
 
-    /// Assignment operator
+    Door(Level* Level, const std::wstring&, Game* game);
+
+/// Assignment operator
     void operator=(const Door&) = delete;
 
-    Door(Level* Level, const std::wstring &filename);
 
     /**
      * Accept a visitor
@@ -46,6 +50,8 @@ public:
     void XmlLoad(wxXmlNode *node) override ;
 
     bool CollisionTest(Item* item) override;
+
+    void NextLevel();
 };
 
 #endif //PROJECT1_DOOR_H

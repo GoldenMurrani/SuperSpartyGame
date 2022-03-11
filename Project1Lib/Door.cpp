@@ -14,12 +14,15 @@ const double CollisionDistance = 20;
 
 /**
  * Constructor
- * @param game Game this door is a member of
+ * @param level Level this door is a member of
  * @param filename the name of image file
+ * @param game The game this level item is a part of
  */
-Door::Door(Level *Level, const std::wstring &filename) : Item(Level, filename)
+Door::Door(Level *Level, const std::wstring &filename, Game *game) : Item(Level, filename)
 {
+    mGame = game;
 }
+
 
 /**
  * Load the attributes for an item node.
@@ -48,7 +51,27 @@ bool Door::CollisionTest(Item* item)
     double distance = sqrt(dx * dx + dy * dy);
     if (distance < CollisionDistance)
     {
+        NextLevel();
         return true;
+
+
     }
     return false;
+}
+/**
+ * Changes to the next level on collision
+ */
+void Door::NextLevel()
+{
+    double currentLevel = mGame->GetCurrentLevel();
+    if (currentLevel == mGame->GetItemVecSize())
+    {
+        mGame-> GetSparty()->SetStopUpdate();
+        mGame->SetLevel(0);
+    }
+    else
+    {
+        mGame-> GetSparty()->SetStopUpdate();
+        mGame->SetLevel(currentLevel += 1);
+    }
 }

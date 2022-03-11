@@ -131,7 +131,7 @@ void Level::XmlLevel(wxXmlNode* node)
     {
         auto idType = node->GetAttribute(L"id");
         nodeChildren = XmlType(name, idType);
-        item = make_shared<Door>(this, nodeChildren[0]);
+        item = make_shared<Door>(this, nodeChildren[0], mGame);
     }
     else if (name == "tuition-up")
     {
@@ -254,9 +254,3 @@ shared_ptr<Item> Level::CollisionTest(Item* item)
 }
 
 
-
-//auto leftImage = node->GetAttribute(L"left-image");
-//auto midImage = node->GetAttribute(L"mid-image");
-//auto rightImage = node->GetAttribute(L"right-image");
-//mPlatformLeftImage1 = leftImage;
-//mPlatformMidImage1  = midImage;

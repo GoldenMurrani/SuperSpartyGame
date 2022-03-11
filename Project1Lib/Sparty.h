@@ -35,6 +35,9 @@ private:
 
     bool mIsGround = true;
 
+    /// Stops the rest of the update if a certain collision condition is met
+    bool mStopUpdate = false;
+
     double mMovedDistance = 0;
 public:
     /// Default constructor (disabled)
@@ -47,6 +50,12 @@ public:
     void operator=(const Sparty &) = delete;
 
     Sparty(Game* game, const std::wstring &filename);
+
+
+    /**
+     * Sets mStopUpdate to true
+     */
+     void SetStopUpdate(){mStopUpdate = true;};
 
     /**
      * get the amount of money this sparty have
