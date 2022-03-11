@@ -160,12 +160,6 @@ void Game::SetLevel(int numLevel)
     SetItems();
 }
 
-void Game::SetLevelDoor(int numLevel)
-{
-    mCurrentLevel = numLevel;
-
-}
-
 /**
  * Sets Items up in the game
  */
@@ -188,12 +182,5 @@ void Game::SetItems()
 
 }
 
-void Game::SetSparty()
-{
-    mSparty ->SetLocation(mStartx, mStartY);
-    mSparty ->SetXVel(0);
-    mSparty ->SetYVel(0);
-    Add(mSparty);
 
-}
 

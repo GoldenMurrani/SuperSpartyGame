@@ -155,9 +155,6 @@ public:
 
     std::shared_ptr<Level> GetLevel(){return mLevels[mCurrentLevel]; }
 
-    void SetSparty();
-
-    void SetLevelDoor(int numLevel);
 };
 
 #endif //PROJECT1_GAME_H
