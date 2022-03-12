@@ -15,11 +15,12 @@ const wstring DoorImageName = L"images/door.png";
 
 TEST(TestDoor, Door)
 {
-    // Construct a game object
+    // Construct a game object and level object 0 to 1
     Game game;
     Game* gameTest = game.GetGameTest();
     std::shared_ptr<Level> level = gameTest -> GetLevel();
     Level* levelTest = level ->GetLevelTest();
+    gameTest ->SetLevel(0);
     gameTest -> Clear();
 
 
