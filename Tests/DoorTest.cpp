@@ -23,7 +23,6 @@ TEST(TestDoor, Door)
     gameTest ->SetLevel(0);
     gameTest -> Clear();
 
-
     // Add some items
     auto item1 = make_shared<Door>(levelTest, DoorImageName, gameTest);
 
