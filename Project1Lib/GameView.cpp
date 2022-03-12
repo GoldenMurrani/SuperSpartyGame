@@ -138,12 +138,12 @@ void GameView::OnKeyDown(wxKeyEvent& event)
     {
     case WXK_RIGHT:
         // right arrow pressed
-        mGame.GetSparty()->SetXVel(HorizontalSpeed);
+        mGame.GetSparty()->SetXVel(mGame.GetSparty()->GetSpeed());
         break;
 
     case WXK_LEFT:
         // left arrow pressed
-        mGame.GetSparty()->SetXVel(-HorizontalSpeed);
+        mGame.GetSparty()->SetXVel(-mGame.GetSparty()->GetSpeed());
         break;
 
     case WXK_SPACE:

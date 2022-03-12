@@ -18,7 +18,8 @@ using namespace std;
 class ReversePower : public Item
 {
 private:
-
+    /// Game this item is in
+    Game* mGame;
 public:
     /// Default constructor (disabled)
     ReversePower() = delete;
@@ -32,7 +33,7 @@ public:
     /**
     * Constructor
     */
-    ReversePower(Level* level, const std::wstring &filename);
+    ReversePower(Level* level, const std::wstring &filename, Game* game);
 
     /**
      * Load attributes for an item node
@@ -46,6 +47,16 @@ public:
      * @param visitor The visitor we accept
      */
     void Accept(ItemVisitor* visitor) override { visitor->VisitReversePower(this); }
+
+    /**
+     * Collision test for reverse item
+     */
+    bool CollisionTest(Item* item) override;
+
+    /**
+     * Reverse directions for Sparty
+     */
+     void ReverseDirections();
 
 };
 

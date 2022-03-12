@@ -28,7 +28,7 @@ public:
 
     Door(Level* Level, const std::wstring&, Game* game);
 
-/// Assignment operator
+    /// Assignment operator
     void operator=(const Door&) = delete;
 
 

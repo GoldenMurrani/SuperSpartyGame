@@ -14,8 +14,7 @@
 /// Gravity in virtual pixels per second per second
 const double Gravity = 1000.0;
 
-/// Horizontal character speed in pixels per second
-const double HorizontalSpeed = 300.00;
+
 
 const double JumpSpeed = -800;
 
@@ -39,6 +38,10 @@ private:
     bool mStopUpdate = false;
 
     double mMovedDistance = 0;
+
+    /// Horizontal character speed in pixels per second
+    double mHorizontalSpeed = 300.00;
+
 public:
     /// Default constructor (disabled)
     Sparty() = delete;
@@ -51,6 +54,15 @@ public:
 
     Sparty(Game* game, const std::wstring &filename);
 
+    /**
+     * Gets the horizonatl speed of sparty
+     */
+     double GetSpeed() { return mHorizontalSpeed; }
+
+     /**
+      * Reverses the speed of Sparty
+      */
+      void ReverseSpeed() { mHorizontalSpeed = mHorizontalSpeed * -1; }
 
     /**
      * Sets mStopUpdate to true
