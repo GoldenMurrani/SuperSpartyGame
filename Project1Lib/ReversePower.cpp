@@ -1,6 +1,6 @@
 /**
  * @file ReversePower.cpp
- * @author ymurr
+ * @author Yousif Murrani
  */
 
 #include "pch.h"
