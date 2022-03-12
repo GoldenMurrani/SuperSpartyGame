@@ -47,6 +47,7 @@ TEST(TestGame, Iterator)
     Game* gameTest = game.GetGameTest();
     Level level(gameTest);
     Level* levelTest = level.GetLevelTest();
+    gameTest -> Clear();
 
     // Add some items
     auto item1 = make_shared<Door>(levelTest, DoorImageName, gameTest);
@@ -81,6 +82,7 @@ TEST(GameTest, Visitor)
     Game* gameTest = game.GetGameTest();
     Level level(gameTest);
     Level* levelTest = level.GetLevelTest();
+    gameTest -> Clear();
 
     // Add some item of each type
     auto item1 = make_shared<Door>(levelTest, DoorImageName,gameTest);

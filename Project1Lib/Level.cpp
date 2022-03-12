@@ -253,4 +253,8 @@ shared_ptr<Item> Level::CollisionTest(Item* item)
     return nullptr;
 }
 
+void Level::Clear()
+{
+    mItems.clear();
+}
 

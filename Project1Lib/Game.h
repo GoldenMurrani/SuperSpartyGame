@@ -85,7 +85,7 @@ public:
      * Gets the size of mItems
      * @return Size of mItems
      */
-    int GetItemVecSize(){return mItems.size();}
+    int GetItemVecSize(){return mLevels.size();}
 
     /**
      * Get the current level

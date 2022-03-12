@@ -64,7 +64,8 @@ bool Door::CollisionTest(Item* item)
 void Door::NextLevel()
 {
     double currentLevel = mGame->GetCurrentLevel();
-    if (currentLevel == mGame->GetItemVecSize())
+    double vecSize = mGame->GetItemVecSize() - 1;
+    if (currentLevel == vecSize)
     {
         mGame-> GetSparty()->SetStopUpdate();
         mGame->SetLevel(0);

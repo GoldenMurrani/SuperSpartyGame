@@ -134,6 +134,8 @@ public:
     Iter end() { return Iter(this, mItems.size()); }
 
     Level();
+
+    void Clear();
 };
 
 #endif //PROJECT1_LEVEL_H

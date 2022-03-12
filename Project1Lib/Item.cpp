@@ -102,10 +102,6 @@ void Item::SetImage(const std::wstring& filename)
     mItemBitmap = make_unique<wxBitmap>(*mItemImage);
 }
 
-Item::Item(Level* p_level)
-{
-
-}
 
 /**
  * Load the attributes for an item node.
