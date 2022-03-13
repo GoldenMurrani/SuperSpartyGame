@@ -9,15 +9,14 @@
 
 using namespace std;
 
-/// Collision distance for reverse power up
-const double CollisionDistance = 20;
 
 /**
 * ReversePower Constructor
  * @param level level this item is a member of
  * @param filename the name of image file
 */
-ReversePower::ReversePower(Level *level, const wstring &filename, Game* game) : Item(level, filename)
+ReversePower::ReversePower(Level* level, const wstring& filename, Game* game)
+        :Item(level, filename)
 {
     mGame = game;
 }
@@ -39,14 +38,13 @@ void ReversePower::XmlLoad(wxXmlNode *node)
  */
 bool ReversePower::CollisionTest(Item* item)
 {
-    double dx = item->GetX() - GetX();
-    double dy = item->GetY() - GetY();
-    double distance = sqrt(dx * dx + dy * dy);
-    if (distance < CollisionDistance) {
+    boolean check = Item::CollisionTest(item);
+    if (check==true) {
         ReverseDirections();
-        return true;
+        mGame->RemoveItem(this);
+        mGame->GetSparty()->SetStopUpdate();
+        return false;
     }
-
     return false;
 }
 
@@ -57,3 +55,5 @@ void ReversePower::ReverseDirections()
 {
     mGame->GetSparty()->ReverseSpeed();
 }
+
+

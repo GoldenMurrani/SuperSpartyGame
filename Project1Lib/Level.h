@@ -80,8 +80,6 @@ public:
 
     const std::vector<std::shared_ptr<Item>>& GetItems() {return mItems;};
 
-    std::shared_ptr<Item> CollisionTest(Item* item);
-
     /** Iterator that iterates over the city tiles */
     class Iter
     {

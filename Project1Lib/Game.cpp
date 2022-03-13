@@ -51,7 +51,7 @@ Game::Game()
     mLevel3 = make_shared<Level>(this);
     mLevel3 ->Load(Level3);
     mLevels.push_back(mLevel3);
-    SetLevel(0);
+    SetLevel(3);
 }
 
 
@@ -84,6 +84,7 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     {
         item->Draw(graphics);
     }
+    mSparty -> Draw(graphics);
 
     graphics->PopState();
 }
@@ -127,6 +128,8 @@ void Game::Update(double elapsed)
     {
         item->Update(elapsed);
     }
+    mSparty->Update(elapsed);
+
 }
 
 /**
@@ -167,6 +170,12 @@ void Game::SetLevel(int numLevel)
 void Game::SetItems()
 {
     Clear();
+    auto checkSpeed = mSparty -> GetSpeed();
+    // Undo previous power ups or debuffs from different levels
+    if (checkSpeed < 0)
+    {
+        mSparty ->ReverseSpeed();
+    }
     mStartx = mLevels[mCurrentLevel]->GetStartX();
     mStartY = mLevels[mCurrentLevel]->GetStartY();
 
@@ -178,10 +187,36 @@ void Game::SetItems()
     mSparty ->SetLocation(mStartx, mStartY);
     mSparty ->SetXVel(0);
     mSparty ->SetYVel(0);
-
-    Add(mSparty);
-
 }
 
+shared_ptr<Item> Game::CollisionTest(Item* item)
+{
+    for (auto levelItem : mItems)
+    {
+        if (levelItem->CollisionTest(item))
+        {
+            return levelItem;
+        }
+        if (mSparty -> GetStopUpdate() == true)
+        {
+            return nullptr;
+        }
 
+    }
+    return nullptr;
+}
+
+void Game::RemoveItem(Item* item)
+{
+  //remove(mItems.begin(), mItems.end(), item);
+  for (std::shared_ptr<Item> items : mItems)
+  {
+      if (items -> GetX() == item ->GetX() && items -> GetY() == item ->GetY()) {
+          auto loc = find(std::begin(mItems), std::end(mItems), items);
+          mItems.erase(loc);
+          break;
+      }
+  }
+
+}
 

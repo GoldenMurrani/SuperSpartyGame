@@ -69,6 +69,11 @@ public:
      */
      void SetStopUpdate(){mStopUpdate = true;};
 
+     /**
+     * Sets mStopUpdate to true
+     */
+    boolean GetStopUpdate(){return mStopUpdate;};
+
     /**
      * get the amount of money this sparty have
      * @return int indicates the amount of money this sparty have

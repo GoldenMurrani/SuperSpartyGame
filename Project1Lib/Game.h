@@ -156,6 +156,11 @@ public:
 
     std::shared_ptr<Level> GetLevel(){return mLevels[mCurrentLevel]; }
 
+    void RemoveItem(Item* item);
+
+    void RemoveItem(std::shared_ptr<Item> item);
+
+    std::shared_ptr<Item> CollisionTest(Item* item);
 };
 
 #endif //PROJECT1_GAME_H

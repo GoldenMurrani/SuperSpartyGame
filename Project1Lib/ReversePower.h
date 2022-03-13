@@ -18,7 +18,8 @@ using namespace std;
 class ReversePower : public Item
 {
 private:
-    /// Game this item is in
+
+/// Game this item is in
     Game* mGame;
 public:
     /// Default constructor (disabled)
@@ -33,7 +34,7 @@ public:
     /**
     * Constructor
     */
-    ReversePower(Level* level, const std::wstring &filename, Game* game);
+    ReversePower(Level* level, const wstring& filename, Game* game);
 
     /**
      * Load attributes for an item node

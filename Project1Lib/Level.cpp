@@ -118,7 +118,7 @@ void Level::XmlLevel(wxXmlNode* node)
         auto moneyImage = node->GetAttribute(L"image");
         auto moneyValue = node->GetAttribute(L"value");
         nodeChildren = XmlType(name, idType);
-        item = make_shared<Money>(this, nodeChildren[0]);
+        item = make_shared<Money>(this, nodeChildren[0], mGame);
     }
 
     else if (name == "villain")
@@ -241,17 +241,7 @@ void Level::LevelInfoSetter(wxXmlNode* node)
 }
 
 
-shared_ptr<Item> Level::CollisionTest(Item* item)
-{
-    for (auto levelItem : mItems)
-    {
-        if (levelItem->CollisionTest(item))
-        {
-            return levelItem;
-        }
-    }
-    return nullptr;
-}
+
 
 void Level::Clear()
 {

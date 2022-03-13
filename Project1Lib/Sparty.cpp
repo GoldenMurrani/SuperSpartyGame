@@ -42,7 +42,7 @@ void Sparty::Update(double elapsed)
     //check for y direction
     SetLocation(currentX, newY);
 
-    auto collideItem = GetGame()->GetLevel()->CollisionTest(this);
+    auto collideItem = GetGame()->CollisionTest(this);
     //Jumping
     if (collideItem)
     {
@@ -53,7 +53,7 @@ void Sparty::Update(double elapsed)
     }
 
     SetLocation(newX, newY);
-    collideItem = GetGame()->GetLevel()->CollisionTest(this);
+    collideItem = GetGame()->CollisionTest(this);
     if (mStopUpdate == false) {
 
 

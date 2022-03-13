@@ -14,9 +14,11 @@ using namespace std;
  * @param Level Level the money is a member of
  * @param filename File that sets mItem to bitmap
  */
-Money::Money(Level *level, const std::wstring &filename) : Item(level, filename)
+Money::Money(Level *level, const std::wstring &filename , Game* game) : Item(level, filename)
 {
+    mGame = game;
 }
+
 void Money::XmlLoad(wxXmlNode *node)
 {
     Item::XmlLoad(node);
@@ -29,5 +31,20 @@ void Money::XmlLoad(wxXmlNode *node)
     {
         mMoneyValue = 1000;
     }
+
+}
+
+bool Money::CollisionTest(Item* item)
+{
+
+    boolean check = Item::CollisionTest(item);
+    if (check == true)
+    {
+        mGame ->RemoveItem(this);
+        mGame -> GetSparty() ->SetStopUpdate();
+        return false;
+    }
+
+    return false;
 
 }

@@ -9,13 +9,18 @@
 #define PROJECT1_MONEY_H
 #include "Item.h"
 
+
+class Game;
 /**
 * Base class for the item money.
 */
 class Money : public Item{
 private:
 
+
     double mMoneyValue = 0;
+
+    Game *mGame;
 
 public:
     /// Default constructor (disabled)
@@ -27,7 +32,7 @@ public:
     /// Assignment operator
     void operator=(const Money &) = delete;
 
-    Money(Level* level, const std::wstring& filename);
+    Money(Level* level, const std::wstring& filename, Game* game);
 
     //void OnClear();
 
@@ -39,7 +44,7 @@ public:
 
     void XmlLoad(wxXmlNode* node) override;
 
-
+    bool CollisionTest(Item* item) override;
 };
 
 #endif //PROJECT1_MONEY_H
