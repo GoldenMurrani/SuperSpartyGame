@@ -14,11 +14,9 @@
 */
 class Money : public Item{
 private:
-    /// The underlying money image
-    std::unique_ptr<wxImage> mItemImage;
 
-    /// The bitmap we can display for this money
-    std::unique_ptr<wxBitmap> mItemBitmap;
+    double mMoneyValue = 0;
+
 public:
     /// Default constructor (disabled)
     Money() = delete;
@@ -29,7 +27,7 @@ public:
     /// Assignment operator
     void operator=(const Money &) = delete;
 
-    Money(Game* game, const std::wstring &filename);
+    Money(Level* level, const std::wstring& filename);
 
     //void OnClear();
 
@@ -38,7 +36,10 @@ public:
      * @param visitor The visitor we accept
      */
     void Accept(ItemVisitor* visitor) override { visitor->VisitMoney(this); }
+
     void XmlLoad(wxXmlNode* node) override;
+
+
 };
 
 #endif //PROJECT1_MONEY_H
