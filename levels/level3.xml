@@ -2,10 +2,10 @@
 <level width="8192" height="1024" start-y="796" start-x="788">
     <declarations>
         <background id="i301" image="backgroundUnderwater.png"/>
-        <platform id="i005" left-image="platformIndustrial_059.png" mid-image="platformIndustrial_060.png" right-image="platformIndustrial_061.png"/>
+        <platform id="i005" left-image="icePlatformLeft.png" mid-image="icePlatformMiddle.png" right-image="icePlatformRight.png"/>
         <wall id="i006" image="wall1.png"/>
         <wall id="i007" image="wall2.png"/>
-        <door id="i011" image="door.png"/>
+        <door id="i011" image="underwaterDoor.png"/>
         <reverse-up id="i014" image="arrows.png"/>
         <villain id="i012" image="plankton.png"/>
         <money id="i008" image="money100.png" value="100"/>
