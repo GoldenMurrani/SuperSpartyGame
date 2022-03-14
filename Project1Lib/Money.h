@@ -14,7 +14,8 @@ class Game;
 /**
 * Base class for the item money.
 */
-class Money : public Item{
+class Money : public Item
+{
 private:
 
 
@@ -45,6 +46,11 @@ public:
     void XmlLoad(wxXmlNode* node) override;
 
     bool CollisionTest(Item* item) override;
+
+    /**
+     * Sets the Money Value
+     */
+     void SetMoney() { mMoneyValue = mMoneyValue + (mMoneyValue * .10); }
 };
 
 #endif //PROJECT1_MONEY_H

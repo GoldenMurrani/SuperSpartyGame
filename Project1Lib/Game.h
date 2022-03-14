@@ -31,6 +31,9 @@ private:
     /// Sparty item
     std::shared_ptr<Sparty> mSparty;
 
+    /// Money item
+    std::shared_ptr<Money> mMoney;
+
     /// All of the items to populate our game
     std::vector<std::shared_ptr<Item>> mItems;
 
@@ -98,6 +101,11 @@ public:
      * @return the shared pointer of the sparty item in game
      */
     std::shared_ptr<Sparty> GetSparty() {return mSparty; }
+
+    /**
+     * Get the money item
+     */
+     std::shared_ptr<Money> GetMoney() { return mMoney; }
 
 
     /** Iterator that iterates over the items */
