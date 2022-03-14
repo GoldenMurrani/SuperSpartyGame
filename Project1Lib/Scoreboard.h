@@ -17,6 +17,15 @@ private:
     /// variable for how much money has been collected
     int mCash;
 
+    std::unique_ptr<wxImage> mItemImage;
+    std::unique_ptr<wxBitmap> mItemBitmap;
+    /// Item location on screen
+    double  mX = 0;     ///< X location for the center of the item
+    double  mY = 0;     ///< Y location for the center of the item
+    double mWidth = 0;
+
+    double mHeight = 0;
+
 public:
     /// Initialize a timer
     void SetTime();
@@ -41,7 +50,28 @@ public:
      void ResetCash() { mCash = 0; }
 
      /// Draws the scoreboard on the screen
-     void Draw();
+     void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+
+    /// Draws the players score on the screen
+    void DrawScore(std::shared_ptr<wxGraphicsContext> graphics);
+    /**
+   * The X location of the item
+   * @return X location in pixels
+   */
+    double GetX() const { return mX; }
+
+    /**
+     * The Y location of the item
+     * @return Y location in pixels
+     */
+    double GetY() const { return mY; }
+
+    /**
+     * Set the item location
+     * @param x X location in pixels
+     * @param y Y location in pixels
+     */
+    virtual void SetLocation(double x, double y) { mX = x; mY = y; }
 };
 
 #endif //PROJECT1_SCOREBOARD_H

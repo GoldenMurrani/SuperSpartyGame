@@ -37,7 +37,7 @@ void Money::XmlLoad(wxXmlNode *node)
 bool Money::CollisionTest(Item* item)
 {
 
-    boolean check = Item::CollisionTest(item);
+    bool check = Item::CollisionTest(item);
     if (check == true)
     {
         mGame ->RemoveItem(this);

@@ -19,7 +19,14 @@ void Timer::Update(double elapsed)
 /**
  * Function to draw the timer on the screen
  */
-void Timer::Draw(std::shared_ptr<wxGraphicsContext> graphics) {}
+void Timer::Draw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    double wid = mWidth;
+    double hit = mHeight;
+    graphics->DrawBitmap(*mItemBitmap,
+            ((double)GetX()) - wid / 2, (double)GetY() - hit / 2,
+            wid, hit);
+}
 /**
  * Function to reset the timer
  */

@@ -38,7 +38,7 @@ void ReversePower::XmlLoad(wxXmlNode *node)
  */
 bool ReversePower::CollisionTest(Item* item)
 {
-    boolean check = Item::CollisionTest(item);
+    bool check = Item::CollisionTest(item);
     if (check==true) {
         ReverseDirections();
         mGame->RemoveItem(this);

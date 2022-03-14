@@ -39,7 +39,7 @@ PowerUp::PowerUp(Level *level, const std::wstring &filename, Game* game)
  */
 bool PowerUp::CollisionTest(Item* item)
 {
-    boolean check = Item::CollisionTest(item);
+    bool check = Item::CollisionTest(item);
     if (check==true) {
         TuitionUp();
         mGame->RemoveItem(this);

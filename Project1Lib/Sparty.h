@@ -76,7 +76,7 @@ public:
      /**
      * Sets mStopUpdate to true
      */
-    boolean GetStopUpdate(){return mStopUpdate;};
+    bool GetStopUpdate(){return mStopUpdate;};
 
     /**
      * get the amount of money this sparty have
