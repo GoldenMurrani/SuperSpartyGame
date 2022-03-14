@@ -69,7 +69,7 @@ bool Enemy::CollisionTest(Item* item)
     {
         mGame->GetSparty()->SpartyReset();
         mGame -> GetSparty() ->SetStopUpdate();
-        return false;
+        return true;
     }
 
     return false;

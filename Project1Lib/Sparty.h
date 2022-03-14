@@ -21,6 +21,8 @@ const double JumpSpeed = -800;
 /// Small value to ensure we do not stay in collision
 const double Epsilon = 0.01;
 
+class Game;
+
 /**
 * Base class for the item Spartu.
 */
@@ -41,6 +43,8 @@ private:
 
     /// Horizontal character speed in pixels per second
     double mHorizontalSpeed = 300.00;
+
+    Game* mGame;
 
 public:
     /// Default constructor (disabled)
