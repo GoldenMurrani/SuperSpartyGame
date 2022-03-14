@@ -54,5 +54,5 @@ bool PowerUp::CollisionTest(Item* item)
 */
 void PowerUp::TuitionUp()
 {
-    /// mGame->GetMoney()->SetMoney();
+    mGame->AddMoneyValue();
 }

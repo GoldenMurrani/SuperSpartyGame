@@ -39,6 +39,7 @@ Game::Game()
     //mBackground = make_shared<Background>(this, BackgroundImageName);
     //mBackground->SetLocation(512,512);
     mSparty = make_shared<Sparty>(this, GnomeImageName);
+    mMoneyMult = 0;
     mLevel0 = make_shared<Level>(this);
     mLevel0 ->Load(Level0);
     mLevels.push_back(mLevel0);

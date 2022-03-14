@@ -18,7 +18,6 @@ class Money : public Item
 {
 private:
 
-
     double mMoneyValue = 0;
 
     Game *mGame;
@@ -51,6 +50,7 @@ public:
      * Sets the Money Value
      */
      void SetMoney() { mMoneyValue = mMoneyValue + (mMoneyValue * .10); }
+
 };
 
 #endif //PROJECT1_MONEY_H

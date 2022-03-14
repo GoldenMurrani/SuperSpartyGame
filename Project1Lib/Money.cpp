@@ -25,11 +25,11 @@ void Money::XmlLoad(wxXmlNode *node)
     auto idType = node->GetAttribute(L"id");
     if (idType == L"i008")
     {
-        mMoneyValue = 100;
+        mMoneyValue = 100 + (100 * mGame->GetMult());
     }
     else
     {
-        mMoneyValue = 1000;
+        mMoneyValue = 1000 + (1000 * mGame->GetMult());
     }
 
 }

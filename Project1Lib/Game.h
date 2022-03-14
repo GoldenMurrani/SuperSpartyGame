@@ -14,6 +14,7 @@
 #include "Sparty.h"
 #include "Background.h"
 #include "Level.h"
+#include "Money.h"
 
 /**
  * Main class that will represent our game
@@ -31,8 +32,8 @@ private:
     /// Sparty item
     std::shared_ptr<Sparty> mSparty;
 
-    /// Money item
-    std::shared_ptr<Money> mMoney;
+    /// Money multiplier
+    double mMoneyMult = 0;
 
     /// All of the items to populate our game
     std::vector<std::shared_ptr<Item>> mItems;
@@ -103,10 +104,14 @@ public:
     std::shared_ptr<Sparty> GetSparty() {return mSparty; }
 
     /**
-     * Get the money item
+     * Updates the money value
      */
-     std::shared_ptr<Money> GetMoney() { return mMoney; }
+     void AddMoneyValue() { mMoneyMult += .10; }
 
+     /**
+      * Gets the money multiplier
+      */
+      double GetMult() { return mMoneyMult; }
 
     /** Iterator that iterates over the items */
     class Iter
