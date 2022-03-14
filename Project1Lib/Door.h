@@ -49,8 +49,16 @@ public:
      */
     void XmlLoad(wxXmlNode *node) override ;
 
+    /**
+     * Collision test for all door items
+     * @param item to test collsion with
+     * @return bool for if there was a collision or not
+     */
     bool CollisionTest(Item* item) override;
 
+    /**
+     * Starts the next level of the game
+     */
     void NextLevel();
 };
 

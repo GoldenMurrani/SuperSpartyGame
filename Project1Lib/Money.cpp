@@ -19,6 +19,10 @@ Money::Money(Level *level, const std::wstring &filename , Game* game) : Item(lev
     mGame = game;
 }
 
+/**
+ * Function that loads in the XML node for the money item and gets the value and id
+ * @param node to load in
+ */
 void Money::XmlLoad(wxXmlNode *node)
 {
     Item::XmlLoad(node);
@@ -34,6 +38,11 @@ void Money::XmlLoad(wxXmlNode *node)
 
 }
 
+/**
+ * Collision test between item and money object
+ * @param item to test collision against
+ * @return true if there was a collision, false if there was not
+ */
 bool Money::CollisionTest(Item* item)
 {
 

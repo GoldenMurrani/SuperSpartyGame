@@ -42,8 +42,17 @@ public:
      */
     void Accept(ItemVisitor* visitor) override { visitor->VisitMoney(this); }
 
+    /**
+     * Loads in the XML node for the money item
+     * @param node to load in
+     */
     void XmlLoad(wxXmlNode* node) override;
 
+    /**
+     * Checks collision between item and money
+     * @param item to test collision with
+     * @return bool if there was a collision or not
+     */
     bool CollisionTest(Item* item) override;
 
     /**

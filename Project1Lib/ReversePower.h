@@ -51,6 +51,7 @@ public:
 
     /**
      * Collision test for reverse item
+     * @param item to test collision against
      */
     bool CollisionTest(Item* item) override;
 
