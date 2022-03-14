@@ -20,6 +20,7 @@ const wstring EnemyImageName = L"images/UofM.png";
  */
 Enemy::Enemy(Level *level, const std::wstring &filename,Game* game) : Item(level, filename)
 {
+    mGame = game;
     mSpeedY = 50;
 }
 
@@ -57,4 +58,20 @@ void Enemy::Update(double elapsed)
 void Enemy::XmlLoad(wxXmlNode *node)
 {
     Item::XmlLoad(node);
+}
+
+
+bool Enemy::CollisionTest(Item* item)
+{
+
+    bool check = Item::CollisionTest(item);
+    if (check == true)
+    {
+        mGame->GetSparty()->SpartyReset();
+        mGame -> GetSparty() ->SetStopUpdate();
+        return false;
+    }
+
+    return false;
+
 }

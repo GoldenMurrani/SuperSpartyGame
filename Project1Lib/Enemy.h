@@ -22,6 +22,8 @@ private:
 //    /// The bitmap we can display for this Enemy
 //    std::unique_ptr<wxBitmap> mItemBitmap;
     int mSpeedY = 50;
+
+    Game *mGame;
 public:
     /// Default constructor (disabled)
     Enemy() = delete;
@@ -61,6 +63,8 @@ public:
     * @param node The Xml node we are loading the item from
      */
     void XmlLoad(wxXmlNode *node) override;
+
+    bool CollisionTest(Item* item) override;
 };
 
 #endif //PROJECT1_ENEMY_H

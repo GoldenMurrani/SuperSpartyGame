@@ -107,6 +107,8 @@ public:
     void SetIsGround(bool isGround) {mIsGround = isGround; }
 
     bool IsGround() {return mIsGround; }
+
+    void SpartyReset();
 };
 
 #endif //PROJECT1_SPARTY_H

@@ -97,3 +97,12 @@ void Sparty::Update(double elapsed)
         }
     }
 }
+
+/**
+ * Resets sparty to the start of the level
+ */
+void Sparty::SpartyReset()
+{
+    Game* currentGame = GetGame();
+    currentGame->SetLevel(currentGame->GetCurrentLevel());
+}
