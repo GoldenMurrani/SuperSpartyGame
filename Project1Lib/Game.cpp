@@ -55,7 +55,7 @@ Game::Game()
     mLevel3 = make_shared<Level>(this);
     mLevel3 ->Load(Level3);
     mLevels.push_back(mLevel3);
-    SetLevel(3);
+    SetLevel(0);
 }
 
 
@@ -152,8 +152,13 @@ void Game::Update(double elapsed)
     if (mPlaying || (mDuration > waitTime)) {
         for (auto item: mItems) {
             item->Update(elapsed);
+            if ( mSparty -> GetDead()){
+                break;
+            }
         }
-        mSparty->Update(elapsed);
+        if (!mSparty -> GetDead()) {
+            mSparty->Update(elapsed);
+        }
     }
 
 }
@@ -186,6 +191,7 @@ void Game::Accept(ItemVisitor* visitor)
  */
 void Game::SetLevel(int numLevel)
 {
+    mPlaying = false;
     mCurrentLevel = numLevel;
     SetItems();
 }
@@ -234,7 +240,6 @@ shared_ptr<Item> Game::CollisionTest(Item* item)
 
 void Game::RemoveItem(Item* item)
 {
-  //remove(mItems.begin(), mItems.end(), item);
   for (std::shared_ptr<Item> items : mItems)
   {
       if (items -> GetX() == item ->GetX() && items -> GetY() == item ->GetY()) {

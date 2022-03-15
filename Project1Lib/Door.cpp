@@ -67,12 +67,14 @@ void Door::NextLevel()
     double vecSize = mGame->GetItemVecSize() - 1;
     if (currentLevel == vecSize)
     {
+        mGame ->GetSparty() ->SetDead(true);
         mGame-> GetSparty()->SetStopUpdate();
-        mGame->SetLevel(0);
+        mGame->SetCurrentLevel(0);
     }
     else
     {
+        mGame ->GetSparty() ->SetDead(true);
         mGame-> GetSparty()->SetStopUpdate();
-        mGame->SetLevel(currentLevel += 1);
+        mGame->SetCurrentLevel(currentLevel += 1);
     }
 }
