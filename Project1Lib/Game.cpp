@@ -8,6 +8,7 @@
 #include "Game.h"
 #include "Sparty.h"
 #include "Background.h"
+#include "Scoreboard.h"
 #include "Enemy.h"
 
 using namespace std;
@@ -23,9 +24,6 @@ const wstring EnemyImageName = L"images/UofM.png";
 
 /// Temp image background
 const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
-
-/// Time that screen is paused on event in game
-const double waitTime = 2;
 
 /// Level 0 file loacation
 
@@ -55,7 +53,7 @@ Game::Game()
     mLevel3 = make_shared<Level>(this);
     mLevel3 ->Load(Level3);
     mLevels.push_back(mLevel3);
-    SetLevel(0);
+    SetLevel(3);
 }
 
 
@@ -89,7 +87,7 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
         item->Draw(graphics);
     }
     mSparty -> Draw(graphics);
-
+    mScoreBoard.Draw(graphics);
     graphics->PopState();
 }
 
@@ -128,38 +126,11 @@ std::shared_ptr<Item> Game::HitTest(int x, int y)
  */
 void Game::Update(double elapsed)
 {
-    // Sparty is dead and resets the level and dead status
-    if (mSparty -> GetDead() && mDuration > waitTime)
+    for (auto item : mItems)
     {
-        mDuration = 0;
-        GetSparty() -> SpartyReset();
-        GetSparty() ->SetDead(false);
+        item->Update(elapsed);
     }
-
-    // Level begin pause is done
-    else if (!mPlaying && mDuration > waitTime)
-    {
-        mDuration = 0;
-        mPlaying = true;
-    }
-
-    // If playing isn't happening
-    if (mPlaying == false){
-     mDuration += elapsed;
-    }
-
-    //Conditions to update
-    if (mPlaying || (mDuration > waitTime)) {
-        for (auto item: mItems) {
-            item->Update(elapsed);
-            if ( mSparty -> GetDead()){
-                break;
-            }
-        }
-        if (!mSparty -> GetDead()) {
-            mSparty->Update(elapsed);
-        }
-    }
+    mSparty->Update(elapsed);
 
 }
 
@@ -191,7 +162,6 @@ void Game::Accept(ItemVisitor* visitor)
  */
 void Game::SetLevel(int numLevel)
 {
-    mPlaying = false;
     mCurrentLevel = numLevel;
     SetItems();
 }
@@ -240,6 +210,7 @@ shared_ptr<Item> Game::CollisionTest(Item* item)
 
 void Game::RemoveItem(Item* item)
 {
+  //remove(mItems.begin(), mItems.end(), item);
   for (std::shared_ptr<Item> items : mItems)
   {
       if (items -> GetX() == item ->GetX() && items -> GetY() == item ->GetY()) {
@@ -250,6 +221,11 @@ void Game::RemoveItem(Item* item)
   }
 
 }
-
-
+/**
+ * Handles the score
+ * @param value value added to the score
+ */
+void Game::AddScore(int value){
+    // mScoreBoard->AddScore(value);
+}
 

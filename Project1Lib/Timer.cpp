@@ -4,6 +4,10 @@
  */
 #include "pch.h"
 #include "Timer.h"
+Timer::Timer()
+{
+
+}
 /**
  * Function to update the timer
  */
@@ -21,11 +25,7 @@ void Timer::Update(double elapsed)
  */
 void Timer::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-    double wid = mWidth;
-    double hit = mHeight;
-    graphics->DrawBitmap(*mItemBitmap,
-            ((double)GetX()) - wid / 2, (double)GetY() - hit / 2,
-            wid, hit);
+
 }
 /**
  * Function to reset the timer
