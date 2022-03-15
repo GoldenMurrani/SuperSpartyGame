@@ -58,7 +58,7 @@ void GameView::OnPaint(wxPaintEvent& event)
     mGame.Update(elapsed);
 
     wxAutoBufferedPaintDC dc(this);
-    wxBrush background(*wxWHITE);
+    wxBrush background(*wxBLACK);
     dc.SetBackground(background);
     dc.Clear();
 

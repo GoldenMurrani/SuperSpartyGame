@@ -50,6 +50,8 @@ public:
 
     /**
      * Collision test for tuition item
+     * @param item to test collision against
+     * @return bool to see if there was a collision or not
      */
     bool CollisionTest(Item* item) override;
 

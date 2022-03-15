@@ -59,7 +59,7 @@ bool Door::CollisionTest(Item* item)
     return false;
 }
 /**
- * Changes to the next level on collision
+ * Changes to the next level on collision, loops back to level 0 if last level
  */
 void Door::NextLevel()
 {
