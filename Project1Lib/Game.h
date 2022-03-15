@@ -65,6 +65,10 @@ private:
     /// Sparty start y loaction
     double mStartY = 0;
 
+    /// The game is playing right now
+   bool mPlaying = true;
+
+   double mDuration = 0;
 
 
 public:
@@ -174,6 +178,11 @@ public:
     void RemoveItem(std::shared_ptr<Item> item);
 
     std::shared_ptr<Item> CollisionTest(Item* item);
+
+    /**
+     * Set to false when game needs to be paused
+     */
+    void SetPlaying() { mPlaying = false;};
 };
 
 #endif //PROJECT1_GAME_H

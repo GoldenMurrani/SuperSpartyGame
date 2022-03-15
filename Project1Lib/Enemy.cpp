@@ -67,8 +67,8 @@ bool Enemy::CollisionTest(Item* item)
     bool check = Item::CollisionTest(item);
     if (check == true)
     {
-        mGame->GetSparty()->SpartyReset();
         mGame -> GetSparty() ->SetStopUpdate();
+        mGame -> GetSparty() -> SetDead(true);
         return true;
     }
 

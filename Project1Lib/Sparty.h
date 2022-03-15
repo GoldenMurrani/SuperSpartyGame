@@ -44,6 +44,9 @@ private:
     /// Horizontal character speed in pixels per second
     double mHorizontalSpeed = 300.00;
 
+    /// If sparty dies this becomes true
+    bool mDead = false;
+
     Game* mGame;
 
 public:
@@ -67,6 +70,16 @@ public:
       * Reverses the speed of Sparty
       */
       void ReverseSpeed() { mHorizontalSpeed = mHorizontalSpeed * -1; }
+    /**
+     * Sets mDead to true when he dies or loses
+     */
+     void SetDead(bool dead){mDead = dead;};
+
+    /**
+     * Gets mDead
+     * @return mDead bool
+     */
+    bool GetDead(){return mDead;};
 
     /**
      * Sets mStopUpdate to true

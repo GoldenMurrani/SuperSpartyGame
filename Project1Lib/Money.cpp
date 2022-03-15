@@ -40,7 +40,7 @@ bool Money::CollisionTest(Item* item)
     bool check = Item::CollisionTest(item);
     if (check == true)
     {
-        mGame ->RemoveItem(this);
+        //mGame ->RemoveItem(this);
         mGame -> GetSparty() ->SetStopUpdate();
         return false;
     }

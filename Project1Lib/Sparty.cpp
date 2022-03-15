@@ -31,6 +31,7 @@ void Sparty::Update(double elapsed)
 {
     //Collision check function
     mStopUpdate = false;
+
     double currentX = GetX();
     //Sideways Movement
     double newX = currentX + mXVel * elapsed;
@@ -44,6 +45,10 @@ void Sparty::Update(double elapsed)
     SetLocation(currentX, newY);
 
     auto collideItem = GetGame()->CollisionTest(this);
+    if (mDead == true)
+    {
+        mGame->SetPlaying();
+    }
     if (mStopUpdate == false) {
         //Jumping
         if (collideItem) {
@@ -55,6 +60,10 @@ void Sparty::Update(double elapsed)
 
         SetLocation(newX, newY);
         collideItem = GetGame()->CollisionTest(this);
+        if (mDead == true)
+        {
+           mGame->SetPlaying();
+        }
         if (mStopUpdate==false) {
 
 
@@ -93,8 +102,7 @@ void Sparty::Update(double elapsed)
 
             // Reset level if Sparty falls below a certain height
             if (currentY>1500) {
-                Game* currentGame = GetGame();
-                currentGame->SetLevel(currentGame->GetCurrentLevel());
+                mDead = true;
             }
         }
     }
@@ -105,6 +113,6 @@ void Sparty::Update(double elapsed)
  */
 void Sparty::SpartyReset()
 {
-
+    SetImage(L"images/gnome.png");
     mGame->SetLevel(mGame->GetCurrentLevel());
 }

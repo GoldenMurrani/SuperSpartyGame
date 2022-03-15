@@ -24,6 +24,9 @@ const wstring EnemyImageName = L"images/UofM.png";
 /// Temp image background
 const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
 
+/// Time that screen is paused on event in game
+const double waitTime = 2;
+
 /// Level 0 file loacation
 
 const wstring Level0 = L"levels/level0.xml";
@@ -125,11 +128,33 @@ std::shared_ptr<Item> Game::HitTest(int x, int y)
  */
 void Game::Update(double elapsed)
 {
-    for (auto item : mItems)
+    // Sparty is dead and resets the level and dead status
+    if (mSparty -> GetDead() && mDuration > waitTime)
     {
-        item->Update(elapsed);
+        mDuration = 0;
+        GetSparty() -> SpartyReset();
+        GetSparty() ->SetDead(false);
     }
-    mSparty->Update(elapsed);
+
+    // Level begin pause is done
+    else if (!mPlaying && mDuration > waitTime)
+    {
+        mDuration = 0;
+        mPlaying = true;
+    }
+
+    // If playing isn't happening
+    if (mPlaying == false){
+     mDuration += elapsed;
+    }
+
+    //Conditions to update
+    if (mPlaying || (mDuration > waitTime)) {
+        for (auto item: mItems) {
+            item->Update(elapsed);
+        }
+        mSparty->Update(elapsed);
+    }
 
 }
 
@@ -220,4 +245,6 @@ void Game::RemoveItem(Item* item)
   }
 
 }
+
+
 
