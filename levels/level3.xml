@@ -3,13 +3,13 @@
     <declarations>
         <background id="i301" image="backgroundUnderwater.png"/>
         <platform id="i005" left-image="icePlatformLeft.png" mid-image="icePlatformMiddle.png" right-image="icePlatformRight.png"/>
-        <wall id="i006" image="wall1.png"/>
-        <wall id="i007" image="wall2.png"/>
+        <wall id="i006" image="icePillar.png"/>
+        <wall id="i007" image="marblePillar.png"/>
         <door id="i011" image="underwaterDoor.png"/>
         <reverse-up id="i014" image="arrows.png"/>
         <villain id="i012" image="plankton.png"/>
-        <money id="i008" image="money100.png" value="100"/>
-        <money id="i009" image="money1000.png" value="1000"/>
+        <money id="i008" image="silverCoin.png" value="100"/>
+        <money id="i009" image="goldCoin.png" value="1000"/>
     </declarations>
     <items>
         <background id="i301" x="512" y="512"/>
