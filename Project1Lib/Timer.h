@@ -16,6 +16,7 @@ private:
     double mCountSec = 0.0;
     int mMinute = 0;
     int mSecond = 0;
+
     std::unique_ptr<wxImage> mItemImage;
     std::unique_ptr<wxBitmap> mItemBitmap;
     /// Item location on screen

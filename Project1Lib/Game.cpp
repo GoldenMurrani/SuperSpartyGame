@@ -186,9 +186,11 @@ void Game::Accept(ItemVisitor* visitor)
  */
 void Game::SetLevel(int numLevel)
 {
+
     mCurrentLevel = numLevel;
     SetItems();
     mPlaying = false;
+    mTimer -> Reset();
 }
 
 
@@ -212,6 +214,7 @@ void Game::SetItems()
         mItems.push_back(item);
     }
 
+    mSparty -> SpartyReset();
     mSparty ->SetLocation(mStartx, mStartY);
     mSparty ->SetXVel(0);
     mSparty ->SetYVel(0);

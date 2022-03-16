@@ -22,6 +22,7 @@
         <background id="i301" x="7680" y="512"/>
         <background id="i301" x="7680" y="512"/>
         <door id="i011" x="700" y="600"/>
+        <reverse-up id="i014" x="800" y="400"/>
         <platform id="i005" x="912" y="944" width="352" height="32"/>
         <platform id="i005" x="1400" y="700" width="200" height="32"/>
 
