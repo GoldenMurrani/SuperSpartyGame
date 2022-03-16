@@ -49,11 +49,21 @@ bool Money::CollisionTest(Item* item)
     bool check = Item::CollisionTest(item);
     if (check == true)
     {
-        mGame ->RemoveItem(this);
         mGame -> GetSparty() ->SetStopUpdate();
+        collected = true;
         return false;
     }
-
     return false;
+}
 
+/**
+* Handle updates for Money
+* @param elapsed the time before last update
+*/
+void Money::Update(double elapsed)
+{
+    if (collected)
+    {
+        SetLocation(GetX(), GetY() - 20);
+    }
 }

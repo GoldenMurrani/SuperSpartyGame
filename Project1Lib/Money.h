@@ -20,6 +20,8 @@ private:
 
     double mMoneyValue = 0;
 
+    bool collected = false;
+
     Game *mGame;
 
 public:
@@ -59,6 +61,12 @@ public:
      * Sets the Money Value
      */
      void SetMoney() { mMoneyValue = mMoneyValue + (mMoneyValue * .10); }
+
+    /**
+    * Handle updates for Money
+    * @param elapsed the time before last update
+    */
+    void Update(double elapsed);
 
 };
 
