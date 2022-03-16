@@ -79,6 +79,10 @@ private:
 
    double mDuration = 0;
 
+   bool mNewLevel = false;
+
+   std::shared_ptr<wxGraphicsContext> mGraphics;
+
 
 public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
@@ -201,6 +205,13 @@ public:
 
     void AddScore(int value);
 
+    void DrawScreen(std::shared_ptr<wxGraphicsContext> graphics, wxString info, int width, int height);
+
+    bool GetCurrentState(){return mPlaying; }
+
+    bool GetCurrentLevelState() {return mNewLevel; }
+
+    void SetNewLevel(bool newLevel) {mNewLevel = newLevel; }
 };
 
 #endif //PROJECT1_GAME_H

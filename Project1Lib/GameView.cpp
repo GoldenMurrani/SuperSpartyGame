@@ -65,6 +65,23 @@ void GameView::OnPaint(wxPaintEvent& event)
     auto size = GetClientSize();
     auto graphics = std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create(dc));
     mGame.OnDraw(graphics, size.GetWidth(), size.GetHeight());
+
+    if (!mGame.GetCurrentState())
+    {
+        if (mGame.GetSparty()->GetDead())
+            mGame.DrawScreen(graphics, L"Dead!", size.GetWidth(), size.GetHeight());
+        else if (mGame.GetCurrentLevelState())
+            mGame.DrawScreen(graphics, L"Level Complete", size.GetWidth(), size.GetHeight());
+        else
+        {
+            int currLevel = mGame.GetCurrentLevel();
+            wxString level;
+            level << currLevel;
+            mGame.DrawScreen(graphics, L"LeveL " + level, size.GetWidth(), size.GetHeight());
+        }
+
+    }
+
 }
 
 

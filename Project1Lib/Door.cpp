@@ -63,18 +63,11 @@ bool Door::CollisionTest(Item* item)
  */
 void Door::NextLevel()
 {
-    double currentLevel = mGame->GetCurrentLevel();
-    double vecSize = mGame->GetItemVecSize() - 1;
-    if (currentLevel == vecSize)
-    {
-        mGame ->GetSparty() ->SetDead(true);
-        mGame-> GetSparty()->SetStopUpdate();
-        mGame->SetCurrentLevel(0);
-    }
-    else
-    {
-        mGame ->GetSparty() ->SetDead(true);
-        mGame-> GetSparty()->SetStopUpdate();
-        mGame->SetCurrentLevel(currentLevel += 1);
-    }
+    int currentLevel = mGame->GetCurrentLevel();
+    int vecSize = mGame->GetItemVecSize();
+    mGame->SetNewLevel(true);
+    mGame->SetPlaying();
+    mGame->GetSparty()->SetStopUpdate();
+    int newLevel = (currentLevel + 1) % vecSize;
+    mGame->SetCurrentLevel(newLevel);
 }
