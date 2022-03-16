@@ -41,9 +41,6 @@ protected:
 public:
     virtual ~Item();
 
-    /// Default constructor (disabled)
-    Item() = delete;
-
     /// Copy constructor (disabled)
     Item(const Item &) = delete;
 

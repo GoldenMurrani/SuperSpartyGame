@@ -8,7 +8,7 @@
 #ifndef PROJECT1_SCOREBOARD_H
 #define PROJECT1_SCOREBOARD_H
 
-class Game;
+#include "Game.h"
 
 /**
  * Class for the scoreboard

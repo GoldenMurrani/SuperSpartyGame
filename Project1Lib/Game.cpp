@@ -8,7 +8,6 @@
 
 #include "Game.h"
 #include "Sparty.h"
-#include "Background.h"
 #include "Scoreboard.h"
 #include "Enemy.h"
 
