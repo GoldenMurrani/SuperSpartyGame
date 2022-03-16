@@ -16,13 +16,13 @@
 #include "Background.h"
 #include "Level.h"
 #include "Money.h"
-#include "Timer.h"
 
 /**
  * Main class that will represent our game
  */
 
 class Scoreboard;
+class Timer;
 class Game {
 
 private:

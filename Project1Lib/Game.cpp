@@ -89,7 +89,7 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     }
     mSparty -> Draw(graphics);
     mScoreBoard->Draw(graphics);
-    mTimer->Draw(graphics);
+    //mTimer->Draw(graphics);
     graphics->PopState();
 }
 

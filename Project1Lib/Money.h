@@ -66,7 +66,7 @@ public:
     * Handle updates for Money
     * @param elapsed the time before last update
     */
-    void Update(double elapsed);
+    void Update(double elapsed) override;
 
 };
 
