@@ -43,6 +43,7 @@ bool ReversePower::CollisionTest(Item* item)
         ReverseDirections();
         //mGame->RemoveItem(this);
         mGame->GetSparty()->SetStopUpdate();
+        collected = true;
         return false;
     }
     return false;
@@ -56,4 +57,18 @@ void ReversePower::ReverseDirections()
     mGame->GetSparty()->ReverseSpeed();
 }
 
+/**
+* Handle updates for ReversePower
+* @param elapsed the time before last update
+*/
+void ReversePower::Update(double elapsed)
+{
+    if (collected)
+    {
+        if (GetY() < 1050)
+        {
+            SetLocation(GetX(), GetY() + 50);
+        }
+    }
+}
 
