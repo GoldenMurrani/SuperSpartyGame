@@ -9,6 +9,7 @@
 #include "Game.h"
 #include "Sparty.h"
 #include "Scoreboard.h"
+#include "Timer.h"
 #include "Enemy.h"
 
 using namespace std;
@@ -39,6 +40,7 @@ const double ScreenDuration = 3;
 Game::Game()
 {
     mScoreBoard = make_shared<Scoreboard>(this);
+    mTimer = make_shared<Timer>(this);
     mSparty = make_shared<Sparty>(this, GnomeImageName);
     mMoneyMult = 0;
     mLevel0 = make_shared<Level>(this);
@@ -89,7 +91,7 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     }
     mSparty -> Draw(graphics);
     mScoreBoard->Draw(graphics);
-    //mTimer->Draw(graphics);
+    mTimer->Draw(graphics);
     graphics->PopState();
 }
 
@@ -135,6 +137,8 @@ void Game::Update(double elapsed)
             item->Update(elapsed);
         }
         mSparty->Update(elapsed);
+        //mScoreBoard -> Update(elapsed);
+        mTimer ->Update(elapsed);
     }
     else
     {

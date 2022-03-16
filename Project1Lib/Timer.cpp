@@ -5,6 +5,8 @@
 #include "pch.h"
 #include "Timer.h"
 
+using namespace std;
+
 /**
  * Timer constructor
  * @param game
@@ -14,6 +16,13 @@ Timer::Timer(Game* game)
  mGame = game;
 }
 
+
+/**
+* Timer destructor
+*/
+Timer::~Timer()
+{
+}
 /**
  * Function to update the timer
  */
@@ -34,13 +43,11 @@ void Timer::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 
     wxFont font(wxSize(0,50), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
     graphics->SetFont(font,wxColour(0,64,0));
-    wxString secs;
-    if (mSecond < 10)
-    {
-        secs = wxString::Format(wxT("0%i:0%i"), mMinute,mSecond);
-    }
-    secs = wxString::Format(wxT("%i:0%i"), mMinute,mSecond);
-    graphics->DrawText(secs, mGame->GetSparty()->GetX()+300,20);
+
+    wxString secs = wxString::Format(wxT("0%i:0%i"), int(mMinute), int(mSecond));
+
+
+    graphics->DrawText(secs, mGame->GetSparty()->GetX()-300,20);
 
 }
 /**

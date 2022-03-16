@@ -12,6 +12,7 @@
 
 class Timer {
 private:
+
     double mMinute = 0.0;
     double mSecond = 0.0;
     std::unique_ptr<wxImage> mItemImage;
