@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include <wx/graphics.h>
+
 #include "Game.h"
 #include "Sparty.h"
 #include "Background.h"
@@ -32,6 +33,7 @@ const wstring Level1 = L"levels/level1.xml";
 const wstring Level2 = L"levels/level2.xml";
 const wstring Level3 = L"levels/level3.xml";
 
+const double ScreenDuration = 3;
 /**
  * Game Constructor
  */
@@ -71,6 +73,7 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     mScale = double(height) / double(Height);
     graphics->Scale(mScale, mScale);
 
+    mGraphics = graphics;
     auto virtualWidth = (double)width/mScale;
     // Compute the amount to scroll in the X dimension
     auto xOffset = (double)-mSparty->GetX() + virtualWidth / 2.0f;
@@ -126,12 +129,30 @@ std::shared_ptr<Item> Game::HitTest(int x, int y)
  */
 void Game::Update(double elapsed)
 {
-    for (auto item : mItems)
+    if (mPlaying)
     {
-        item->Update(elapsed);
+        for (auto item : mItems)
+        {
+            item->Update(elapsed);
+        }
+        mSparty->Update(elapsed);
     }
-    mSparty->Update(elapsed);
-
+    else
+    {
+        mDuration += elapsed;
+        if (mDuration >= ScreenDuration)
+        {
+            mDuration = 0;
+            SetLevel(mCurrentLevel);
+            if (mNewLevel)
+                mNewLevel = false;
+            else if (!mSparty->GetDead()) {
+                mPlaying = true;
+            }
+            else
+                mSparty->SetDead(false);
+        }
+    }
 }
 
 /**
@@ -164,7 +185,19 @@ void Game::SetLevel(int numLevel)
 {
     mCurrentLevel = numLevel;
     SetItems();
+    mPlaying = false;
 }
+
+/**
+* Get the current level
+* @param currentLevel int of the current level
+*/
+void Game::SetCurrentLevel(int currentLevel)
+{
+    mCurrentLevel = currentLevel;
+
+}
+
 
 /**
  * Sets Items up in the game
@@ -227,5 +260,15 @@ void Game::RemoveItem(Item* item)
  */
 void Game::AddScore(int value){
     // mScoreBoard->AddScore(value);
+}
+
+void Game::DrawScreen(std::shared_ptr<wxGraphicsContext> graphics, wxString info, int width, int height)
+{
+    wxFont font(wxSize(100, 100),
+            wxFONTFAMILY_SWISS,
+            wxFONTSTYLE_NORMAL,
+            wxFONTWEIGHT_NORMAL);
+    graphics->SetFont(font,wxColour(0,0,90));
+    graphics->DrawText(info,width / mScale / 2 - 100,height / mScale / 2 - 100);
 }
 

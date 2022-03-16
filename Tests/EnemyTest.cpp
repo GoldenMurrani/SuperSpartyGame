@@ -48,6 +48,4 @@ TEST(TestEnemy, Enemy)
 
     ASSERT_TRUE (gameTest ->GetSparty() -> GetY() == startY);
     ASSERT_TRUE (gameTest -> GetSparty() -> GetX() == startX);
-
-
 }

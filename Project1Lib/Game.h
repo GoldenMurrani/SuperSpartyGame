@@ -18,7 +18,6 @@
 #include "Timer.h"
 #include "Level.h"
 #include "Money.h"
-using namespace std;
 
 /**
  * Main class that will represent our game
@@ -80,6 +79,10 @@ private:
 
    double mDuration = 0;
 
+   bool mNewLevel = false;
+
+   std::shared_ptr<wxGraphicsContext> mGraphics;
+
 
 public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
@@ -111,11 +114,7 @@ public:
      */
      int GetCurrentLevel() { return mCurrentLevel; }
 
-    /**
-    * Get the current level
-    * @param currentLevel int of the current level
-    */
-    void SetCurrentLevel(int currentLevel) { mCurrentLevel = currentLevel; }
+    void SetCurrentLevel(int currentLevel);
 
     /**
      * Get the sparty character in game
@@ -201,6 +200,14 @@ public:
     void SetPlaying() { mPlaying = false;};
 
     void AddScore(int value);
+
+    void DrawScreen(std::shared_ptr<wxGraphicsContext> graphics, wxString info, int width, int height);
+
+    bool GetCurrentState(){return mPlaying; }
+
+    bool GetCurrentLevelState() {return mNewLevel; }
+
+    void SetNewLevel(bool newLevel) {mNewLevel = newLevel; }
 };
 
 #endif //PROJECT1_GAME_H

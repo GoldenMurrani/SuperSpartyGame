@@ -60,10 +60,10 @@ void Sparty::Update(double elapsed)
 
         SetLocation(newX, newY);
         collideItem = GetGame()->CollisionTest(this);
-        if (mDead == true)
-        {
-           mGame->SetPlaying();
-        }
+//        if (mDead == true)
+//        {
+//           mGame->SetPlaying();
+//        }
         if (mStopUpdate==false) {
 
 
