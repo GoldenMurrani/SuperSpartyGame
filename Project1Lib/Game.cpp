@@ -187,16 +187,6 @@ void Game::SetLevel(int numLevel)
     mPlaying = false;
 }
 
-/**
-* Get the current level
-* @param currentLevel int of the current level
-*/
-void Game::SetCurrentLevel(int currentLevel)
-{
-    mCurrentLevel = currentLevel;
-
-}
-
 
 /**
  * Sets Items up in the game
@@ -263,11 +253,11 @@ void Game::AddScore(int value){
 
 void Game::DrawScreen(std::shared_ptr<wxGraphicsContext> graphics, wxString info, int width, int height)
 {
-    wxFont font(wxSize(100, 100),
+    wxFont font(wxSize(70 / mScale, 70 / mScale),
             wxFONTFAMILY_SWISS,
             wxFONTSTYLE_NORMAL,
             wxFONTWEIGHT_NORMAL);
     graphics->SetFont(font,wxColour(0,0,90));
-    graphics->DrawText(info,width / mScale / 2 - 100,height / mScale / 2 - 100);
+    graphics->DrawText(info,width / mScale / 2 - 20 * info.size() / mScale,height / mScale / 2 - 100 / mScale);
 }
 
