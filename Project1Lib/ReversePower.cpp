@@ -67,7 +67,7 @@ void ReversePower::Update(double elapsed)
     {
         if (GetY() < 1050)
         {
-            SetLocation(GetX(), GetY() + 50);
+            SetLocation(GetX(), GetY() + 25);
         }
     }
 }

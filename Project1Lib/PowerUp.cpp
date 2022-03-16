@@ -65,9 +65,9 @@ void PowerUp::Update(double elapsed)
 {
     if (collected)
     {
-        if (GetY() < 1050)
+        if (GetY() < 1100)
         {
-            SetLocation(GetX(), GetY() + 50);
+            SetLocation(GetX(), GetY() + 25);
         }
     }
 }

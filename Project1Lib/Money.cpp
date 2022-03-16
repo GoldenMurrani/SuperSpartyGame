@@ -66,7 +66,7 @@ void Money::Update(double elapsed)
     {
         if (GetY() > -100)
         {
-            SetLocation(GetX(), GetY() - 50);
+            SetLocation(GetX(), GetY() - 25);
         }
 
     }
