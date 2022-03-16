@@ -4,6 +4,16 @@
  */
 #include "pch.h"
 #include "Timer.h"
+
+/**
+ * Timer constructor
+ * @param game
+ */
+Timer::Timer(Game* game)
+{
+ game = mGame;
+}
+
 /**
  * Function to update the timer
  */

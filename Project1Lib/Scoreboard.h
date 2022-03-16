@@ -8,6 +8,8 @@
 #ifndef PROJECT1_SCOREBOARD_H
 #define PROJECT1_SCOREBOARD_H
 
+class Game;
+
 /**
  * Class for the scoreboard
  */
@@ -24,14 +26,22 @@ private:
     double  mY = 0;     ///< Y location for the center of the item
     double mWidth = 0;
 
+    double mIncrease = 1.0;
+
     double mHeight = 0;
 
+    Game* mGame;
 public:
     /// Initialize a timer
     void SetTime();
 
     /// Reset a Timer
     void ResetTimer();
+
+    Scoreboard(Game* game);
+
+    virtual ~Scoreboard();
+
 
     /**
      * Gets the amount of cash collected
@@ -52,8 +62,8 @@ public:
      /// Draws the scoreboard on the screen
      void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 
-    /// Draws the players score on the screen
-    void DrawScore(std::shared_ptr<wxGraphicsContext> graphics);
+    void AddScore(int value);
+
     /**
    * The X location of the item
    * @return X location in pixels

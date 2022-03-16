@@ -39,8 +39,7 @@ const wstring Level3 = L"levels/level3.xml";
  */
 Game::Game()
 {
-    //mBackground = make_shared<Background>(this, BackgroundImageName);
-    //mBackground->SetLocation(512,512);
+    mScoreBoard = make_shared<Scoreboard>(this);
     mSparty = make_shared<Sparty>(this, GnomeImageName);
     mMoneyMult = 0;
     mLevel0 = make_shared<Level>(this);
@@ -89,7 +88,7 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
         item->Draw(graphics);
     }
     mSparty -> Draw(graphics);
-
+    mScoreBoard->Draw(graphics);
     graphics->PopState();
 }
 
@@ -192,6 +191,7 @@ void Game::Accept(ItemVisitor* visitor)
 void Game::SetLevel(int numLevel)
 {
     mPlaying = false;
+    mDuration = 0;
     mCurrentLevel = numLevel;
     SetItems();
 }
@@ -251,5 +251,12 @@ void Game::RemoveItem(Item* item)
 
 }
 
+/**
+ * Handles the score
+ * @param value value added to the score
+ */
+void Game::AddScore(int value){
+     mScoreBoard->AddScore(value);
+}
 
 

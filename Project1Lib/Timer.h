@@ -8,6 +8,8 @@
 #ifndef PROJECT1_TIMER_H
 #define PROJECT1_TIMER_H
 
+class Game;
+
 class Timer {
 private:
     double mMinute = 0.0;
@@ -21,7 +23,18 @@ private:
 
     double mHeight = 0;
 
+    /// Game timer is a part of
+    Game* mGame;
+
+
+
 public:
+
+    ~Timer();
+
+    Timer(Game* game);
+
+
     /// Default constructor (disabled)
     Timer() = delete;
 

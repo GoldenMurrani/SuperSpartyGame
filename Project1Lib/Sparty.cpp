@@ -103,6 +103,7 @@ void Sparty::Update(double elapsed)
             // Reset level if Sparty falls below a certain height
             if (currentY>1500) {
                 mDead = true;
+                mGame ->SetPlaying();
             }
         }
     }
