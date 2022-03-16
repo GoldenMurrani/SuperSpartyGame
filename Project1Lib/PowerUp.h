@@ -20,7 +20,7 @@ private:
     Game *mGame;
 
     /// Bool if the powerup was collected
-    bool collected = false;
+    bool mCollected = false;
 public:
     /// Default constructor (disabled)
     PowerUp() = delete;

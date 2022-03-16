@@ -13,6 +13,9 @@ using namespace std;
 /// Enemy filename
 const wstring EnemyImageName = L"images/UofM.png";
 
+///// Small value to ensure we do not stay in collision
+//const double Epsilon = 0.01;
+
 /**
  * Constructor
  * @param game Game the Enemy is a member of
@@ -44,6 +47,15 @@ void Enemy::Update(double elapsed)
         mSpeedY = -mSpeedY;
     }
     // add code to switch directions when colliding with something
+
+    if (mGame->CollisionTest(this) != nullptr)
+    {
+        if (mSpeedY > 0)
+            SetLocation(GetX(), GetY() - Epsilon);
+        else if (mSpeedY < 0)
+            SetLocation(GetX(), GetY() + Epsilon);
+        mSpeedY = -mSpeedY;
+    }
 }
 
 /**

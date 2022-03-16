@@ -61,15 +61,18 @@ void Sparty::Update(double elapsed)
         SetLocation(newX, newY);
         collideItem = GetGame()->CollisionTest(this);
 
+//        if (mStopUpdate==false) {
+
+
+        //horizontal moving
+        if (collideItem) {
+            newX = currentX;
+            mXVel = 0;
+        }
+        SetLocation(newX, newY);
+
         if (mStopUpdate==false) {
 
-
-            //horizontal moving
-            if (collideItem) {
-                newX = currentX;
-                mXVel = 0;
-            }
-            SetLocation(newX, newY);
 
             //Anime Part
             double distanceX = newX-currentX;
@@ -111,6 +114,7 @@ void Sparty::Update(double elapsed)
  */
 void Sparty::SpartyReset()
 {
-    SetImage(L"images/gnome.png");
-    mGame->SetLevel(mGame->GetCurrentLevel());
 }
+
+
+
