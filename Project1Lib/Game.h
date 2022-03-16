@@ -9,16 +9,12 @@
 #define PROJECT1_GAME_H
 
 #include <memory>
-#include <string>
 #include <random>
 #include "Item.h"
 #include "Sparty.h"
 #include "Background.h"
-#include "Scoreboard.h"
-#include "Timer.h"
 #include "Level.h"
 #include "Money.h"
-using namespace std;
 
 /**
  * Main class that will represent our game
@@ -35,12 +31,6 @@ private:
 
     /// Sparty item
     std::shared_ptr<Sparty> mSparty;
-
-    /// Scoreboard item
-    Scoreboard mScoreBoard;
-
-    /// timer item
-   /// std::shared_ptr<Timer> mTimer = make_shared<Timer>();
 
     /// Money multiplier
     double mMoneyMult = 0;
@@ -199,8 +189,6 @@ public:
      * Set to false when game needs to be paused
      */
     void SetPlaying() { mPlaying = false;};
-
-    void AddScore(int value);
 };
 
 #endif //PROJECT1_GAME_H

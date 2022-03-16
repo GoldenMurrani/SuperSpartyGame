@@ -22,10 +22,8 @@ private:
     double mHeight = 0;
 
 public:
-    ~Timer();
-
-    Timer();
-
+    /// Default constructor (disabled)
+    Timer() = delete;
 
     /// Copy constructor (disabled)
     Timer(const Timer&) = delete;

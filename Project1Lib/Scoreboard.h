@@ -19,7 +19,6 @@ private:
 
     std::unique_ptr<wxImage> mItemImage;
     std::unique_ptr<wxBitmap> mItemBitmap;
-    double mIncrease = 1.0;
     /// Item location on screen
     double  mX = 0;     ///< X location for the center of the item
     double  mY = 0;     ///< Y location for the center of the item
@@ -28,11 +27,6 @@ private:
     double mHeight = 0;
 
 public:
-    Scoreboard();
-
-    virtual ~Scoreboard();
-
-
     /// Initialize a timer
     void SetTime();
 
@@ -58,7 +52,8 @@ public:
      /// Draws the scoreboard on the screen
      void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 
-    void AddScore(int value);
+    /// Draws the players score on the screen
+    void DrawScore(std::shared_ptr<wxGraphicsContext> graphics);
     /**
    * The X location of the item
    * @return X location in pixels
