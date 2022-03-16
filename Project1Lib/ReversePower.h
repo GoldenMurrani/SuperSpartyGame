@@ -20,7 +20,7 @@ class ReversePower : public Item
 private:
 
     /// Bool if the powerup was collected or not.
-    bool collected = false;
+    bool mCollected = false;
 
     /// Game this item is in
     Game* mGame;

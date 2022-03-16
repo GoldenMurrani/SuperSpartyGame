@@ -22,7 +22,7 @@ private:
     double mMoneyValue = 0;
 
     /// Bool if the money was collected
-    bool collected = false;
+    bool mCollected = false;
 
     /// Game item is in
     Game *mGame;

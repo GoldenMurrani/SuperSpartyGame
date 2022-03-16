@@ -221,6 +221,8 @@ shared_ptr<Item> Game::CollisionTest(Item* item)
 {
     for (auto levelItem : mItems)
     {
+        if (levelItem->GetX() == item->GetX() && levelItem->GetY() == item->GetY())
+            continue;
         if (levelItem->CollisionTest(item))
         {
             return levelItem;

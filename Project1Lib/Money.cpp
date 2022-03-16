@@ -50,7 +50,7 @@ bool Money::CollisionTest(Item* item)
     if (check == true)
     {
         mGame -> GetSparty() ->SetStopUpdate();
-        collected = true;
+        mCollected = true;
         return false;
     }
     return false;
@@ -62,12 +62,11 @@ bool Money::CollisionTest(Item* item)
 */
 void Money::Update(double elapsed)
 {
-    if (collected)
+    if (mCollected)
     {
-        if (GetY() > -100)
+        if (GetY() > -300)
         {
             SetLocation(GetX(), GetY() - 25);
         }
-
     }
 }

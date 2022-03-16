@@ -42,7 +42,7 @@ bool PowerUp::CollisionTest(Item* item)
     bool check = Item::CollisionTest(item);
     if (check==true) {
         TuitionUp();
-        collected = true;
+        mCollected = true;
         mGame->GetSparty()->SetStopUpdate();
         return false;
     }
@@ -63,11 +63,11 @@ void PowerUp::TuitionUp()
 */
 void PowerUp::Update(double elapsed)
 {
-    if (collected)
+    if (mCollected)
     {
-        if (GetY() < 1100)
+        if (GetY() < 1500)
         {
-            SetLocation(GetX(), GetY() + 25);
+            SetLocation(GetX(), GetY() + 50);
         }
     }
 }
