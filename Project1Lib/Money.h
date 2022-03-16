@@ -18,10 +18,13 @@ class Money : public Item
 {
 private:
 
+    /// Value of the money
     double mMoneyValue = 0;
 
+    /// Bool if the money was collected
     bool collected = false;
 
+    /// Game item is in
     Game *mGame;
 
 public:

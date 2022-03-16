@@ -19,7 +19,10 @@ class ReversePower : public Item
 {
 private:
 
-/// Game this item is in
+    /// Bool if the powerup was collected or not.
+    bool collected = false;
+
+    /// Game this item is in
     Game* mGame;
 public:
     /// Default constructor (disabled)
@@ -59,6 +62,12 @@ public:
      * Reverse directions for Sparty
      */
      void ReverseDirections();
+
+    /**
+    * Handle updates for ReversePower
+    * @param elapsed the time before last update
+    */
+    void Update(double elapsed);
 
 };
 
