@@ -8,7 +8,7 @@
 #ifndef PROJECT1_TIMER_H
 #define PROJECT1_TIMER_H
 
-class Game;
+#include "Game.h"
 
 class Timer {
 private:
