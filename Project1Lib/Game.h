@@ -41,6 +41,9 @@ private:
     /// Scoreboard item
     std::shared_ptr<Scoreboard> mScoreBoard;
 
+    /// Timer item
+    std::shared_ptr<Timer> mTimer;
+
     /// timer item
     /// std::shared_ptr<Timer> mTimer = make_shared<Timer>();
 

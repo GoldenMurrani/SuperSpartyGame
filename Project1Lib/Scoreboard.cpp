@@ -46,7 +46,8 @@ void Scoreboard::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     double hit = mHeight;
     wxFont font(wxSize(0,50), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
     graphics->SetFont(font,wxColour(0,0,90));
-    graphics->DrawText(L"$", mGame->GetSparty()->GetX()+200 ,20);
+    wxString score = wxString::Format(wxT("$%i"), mCash);
+    graphics->DrawText(score, mGame->GetSparty()->GetX()+200 ,20);
 }
 
 /**
