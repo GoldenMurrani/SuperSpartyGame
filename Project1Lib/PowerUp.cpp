@@ -42,7 +42,7 @@ bool PowerUp::CollisionTest(Item* item)
     bool check = Item::CollisionTest(item);
     if (check==true) {
         TuitionUp();
-        mGame->RemoveItem(this);
+        collected = true;
         mGame->GetSparty()->SetStopUpdate();
         return false;
     }
@@ -55,4 +55,19 @@ bool PowerUp::CollisionTest(Item* item)
 void PowerUp::TuitionUp()
 {
     mGame->AddMoneyValue();
+}
+
+/**
+* Handle updates for ReversePower
+* @param elapsed the time before last update
+*/
+void PowerUp::Update(double elapsed)
+{
+    if (collected)
+    {
+        if (GetY() < 1050)
+        {
+            SetLocation(GetX(), GetY() + 50);
+        }
+    }
 }

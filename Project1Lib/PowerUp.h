@@ -19,6 +19,8 @@ private:
     /// The game window this item in going to be in
     Game *mGame;
 
+    /// Bool if the powerup was collected
+    bool collected = false;
 public:
     /// Default constructor (disabled)
     PowerUp() = delete;
@@ -59,6 +61,12 @@ public:
      * Increases the amount per money item
      */
     void TuitionUp();
+
+    /**
+    * Handle updates for PowerUp
+    * @param elapsed the time before last update
+    */
+    void Update(double elapsed);
 };
 
 #endif //PROJECT1_POWERUP_H
