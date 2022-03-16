@@ -257,6 +257,7 @@ void Game::DrawScreen(std::shared_ptr<wxGraphicsContext> graphics, wxString info
             wxFONTFAMILY_SWISS,
             wxFONTSTYLE_NORMAL,
             wxFONTWEIGHT_NORMAL);
+
     graphics->SetFont(font,wxColour(0,0,90));
     graphics->DrawText(info,width / mScale / 2 - 20 * info.size() / mScale,height / mScale / 2 - 100 / mScale);
 }
