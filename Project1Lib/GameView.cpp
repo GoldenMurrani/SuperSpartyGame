@@ -13,7 +13,7 @@
 using namespace std;
 
 /// Frame duration in milliseconds
-const int FrameDuration = 10;
+const int FrameDuration = 30;
 
 /// Maximum amount of time to allow for elapsed
 const double MaxElapsed = 0.050;
@@ -55,6 +55,8 @@ void GameView::OnPaint(wxPaintEvent& event)
     auto newTime = mStopWatch.Time();
     auto elapsed = (double)(newTime - mTime) * 0.001;
     mTime = newTime;
+//    mGame.Update(elapsed);
+//
     //
     // Prevent tunnelling
     //
@@ -70,7 +72,6 @@ void GameView::OnPaint(wxPaintEvent& event)
     {
         mGame.Update(elapsed);
     }
-
 
     wxAutoBufferedPaintDC dc(this);
     wxBrush background(*wxBLACK);
@@ -106,11 +107,27 @@ void GameView::OnPaint(wxPaintEvent& event)
  */
 void GameView::OnTimer(wxTimerEvent& event)
 {
-
-    auto newTime = mStopWatch.Time();
-    auto elapsed = (double)(newTime - mTime) * 0.001;
+//    auto newTime = mStopWatch.Time();
+//    auto elapsed = (double)(newTime - mTime) * 0.001;
+//
+//    //
+//    // Prevent tunnelling
+//    //
+//    while (elapsed > MaxElapsed)
+//    {
+//        mGame.Update(MaxElapsed);
+//
+//        elapsed -= MaxElapsed;
+//    }
+//
+//    // Consume any remaining time
+//    if (elapsed > 0)
+//    {
+//        mGame.Update(elapsed);
+//    }
 
     Refresh();
+
 }
 
 /**

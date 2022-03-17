@@ -14,12 +14,10 @@
 /// Gravity in virtual pixels per second per second
 const double Gravity = 1000.0;
 
-
-
 const double JumpSpeed = -800;
 
 /// Small value to ensure we do not stay in collision
-const double Epsilon = 0.01;
+const double Epsilon = 5;
 
 class Game;
 
@@ -42,7 +40,7 @@ private:
     double mMovedDistance = 0;
 
     /// Horizontal character speed in pixels per second
-    double mHorizontalSpeed = 300.00;
+    double mHorizontalSpeed = 500.00;
 
     /// If sparty dies this becomes true
     bool mDead = false;

@@ -231,11 +231,10 @@ shared_ptr<Item> Game::CollisionTest(Item* item)
         {
             return levelItem;
         }
-        if (mSparty -> GetStopUpdate() == true)
+        if (mSparty -> GetStopUpdate())
         {
             return nullptr;
         }
-
     }
     return nullptr;
 }

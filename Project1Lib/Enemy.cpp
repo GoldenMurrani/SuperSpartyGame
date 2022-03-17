@@ -38,22 +38,23 @@ Enemy::Enemy(Level *level, const std::wstring &filename,Game* game) : Item(level
 void Enemy::Update(double elapsed)
 {
     SetLocation(GetX(),GetY() + mSpeedY * elapsed);
-    if (mSpeedY > 0 && GetY() >= 1024)
-    {
-        mSpeedY = -mSpeedY;
-    }
-    if (mSpeedY < 0 && GetY() <= 0)
-    {
-        mSpeedY = -mSpeedY;
-    }
-    // add code to switch directions when colliding with something
 
+    // add code to switch directions when colliding with something
     if (mGame->CollisionTest(this) != nullptr)
     {
         if (mSpeedY > 0)
             SetLocation(GetX(), GetY() - Epsilon);
         else if (mSpeedY < 0)
             SetLocation(GetX(), GetY() + Epsilon);
+        mSpeedY = -mSpeedY;
+    }
+
+    if (mSpeedY > 0 && GetY() >= 1024)
+    {
+        mSpeedY = -mSpeedY;
+    }
+    if (mSpeedY < 0 && GetY() <= 0)
+    {
         mSpeedY = -mSpeedY;
     }
 }

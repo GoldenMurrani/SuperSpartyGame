@@ -60,51 +60,43 @@ void Sparty::Update(double elapsed)
         SetLocation(newX, newY);
         collideItem = GetGame()->CollisionTest(this);
 
-        if (mStopUpdate==false) {
-
-
-            //horizontal moving
-            if (collideItem) {
-                newX = currentX;
-                mXVel = 0;
-            }
-            SetLocation(newX, newY);
-
-            if (mStopUpdate==false) {
-
+        //horizontal moving
+        if (collideItem) {
+            newX = currentX;
+            mXVel = 0;
+        }
+        SetLocation(newX, newY);
 
                 //Anime Part
-                double distanceX = newX-currentX;
+        double distanceX = newX-currentX;
 
-                if (mIsGround)
-                    mMovedDistance += abs(distanceX);
+        if (mIsGround)
+            mMovedDistance += abs(distanceX);
 
-                if (mXVel>0) {
-                    if (mMovedDistance<animeSwapDistance/2)
-                        SetImage(L"images/gnome-walk-right-1.png");
-                    else if (mMovedDistance<animeSwapDistance)
-                        SetImage(L"images/gnome-walk-right-2.png");
-                    else
-                        mMovedDistance = 0;
-                }
-                else if (mXVel<0) {
-                    if (mMovedDistance<animeSwapDistance/2)
-                        SetImage(L"images/gnome-walk-left-1.png");
-                    else if (mMovedDistance<animeSwapDistance)
-                        SetImage(L"images/gnome-walk-left-2.png");
-                    else
-                        mMovedDistance = 0;
-                }
-                else
-                    SetImage(L"images/gnome.png");
+        if (mXVel>0) {
+            if (mMovedDistance<animeSwapDistance/2)
+                SetImage(L"images/gnome-walk-right-1.png");
+            else if (mMovedDistance<animeSwapDistance)
+                SetImage(L"images/gnome-walk-right-2.png");
+            else
+                mMovedDistance = 0;
+        }
+        else if (mXVel<0) {
+            if (mMovedDistance<animeSwapDistance/2)
+                SetImage(L"images/gnome-walk-left-1.png");
+            else if (mMovedDistance<animeSwapDistance)
+                SetImage(L"images/gnome-walk-left-2.png");
+            else
+                mMovedDistance = 0;
+        }
+        else
+            SetImage(L"images/gnome.png");
 
 
-                // Reset level if Sparty falls below a certain height
-                if (currentY>1500) {
-                    mDead = true;
-                    mGame->SetPlaying();
-                }
-            }
+        // Reset level if Sparty falls below a certain height
+        if (currentY>1500) {
+            mDead = true;
+            mGame->SetPlaying();
         }
     }
 }

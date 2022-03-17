@@ -13,7 +13,7 @@ using namespace std;
  */
 Timer::Timer(Game* game)
 {
- mGame = game;
+    mGame = game;
 }
 
 
@@ -29,9 +29,9 @@ Timer::~Timer()
 void Timer::Update(double elapsed)
 {
     mCountSec += elapsed;
-    if (mCountSec >= 1)
+    if (mCountSec > 1)
     {
-        mCountSec = 0;
+        mCountSec -= 1;
         mSecond += 1;
     }
     if (mSecond >= 60)
@@ -49,7 +49,7 @@ void Timer::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     wxFont font(wxSize(0,50), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
     graphics->SetFont(font,wxColour(0,64,0));
 
-    wxString secs = wxString::Format(wxT("0%i:0%i"), int(mMinute), mSecond);
+    wxString secs = wxString::Format(wxT("%02i:%02i"), mMinute, mSecond);
 
 
     graphics->DrawText(secs, mGame->GetSparty()->GetX()-300,20);
@@ -60,5 +60,5 @@ void Timer::Draw(std::shared_ptr<wxGraphicsContext> graphics)
  */
 void Timer::Reset()
 {
-    mMinute = 0.0, mSecond = 0.0;
+    mMinute = 0, mSecond = 0;
 }

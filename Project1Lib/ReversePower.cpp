@@ -40,12 +40,14 @@ bool ReversePower::CollisionTest(Item* item)
 {
     bool check = Item::CollisionTest(item);
     if (check==true) {
-        ReverseDirections();
-        //mGame->RemoveItem(this);
-        mGame->GetSparty()->SetStopUpdate();
-        mCollected = true;
-        item -> SetCollected();
-        return false;
+        if (!mCollected)
+        {
+            ReverseDirections();
+            //mGame->RemoveItem(this);
+//        mGame->GetSparty()->SetStopUpdate();
+            mCollected = true;
+            item -> SetCollected();
+        }
     }
     return false;
 }

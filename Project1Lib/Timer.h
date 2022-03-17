@@ -13,7 +13,7 @@
 class Timer {
 private:
 
-    double mCountSec = 0.0;
+    double mCountSec = 0;
     int mMinute = 0;
     int mSecond = 0;
 

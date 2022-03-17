@@ -45,11 +45,10 @@ void Money::XmlLoad(wxXmlNode *node)
  */
 bool Money::CollisionTest(Item* item)
 {
-
     bool check = Item::CollisionTest(item);
     if (check == true)
     {
-        mGame -> GetSparty() ->SetStopUpdate();
+//        mGame -> GetSparty() ->SetStopUpdate();
         mCollected = true;
         return false;
     }
