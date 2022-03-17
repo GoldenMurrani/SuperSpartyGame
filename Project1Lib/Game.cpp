@@ -26,13 +26,19 @@ const wstring EnemyImageName = L"images/UofM.png";
 /// Temp image background
 const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
 
-/// Level 0 file loacation
-
+/// Level 0 file location
 const wstring Level0 = L"levels/level0.xml";
+
+/// Level 1 file location
 const wstring Level1 = L"levels/level1.xml";
+
+/// Level 2 file location
 const wstring Level2 = L"levels/level2.xml";
+
+/// Level 3 file location
 const wstring Level3 = L"levels/level3.xml";
 
+/// Time for pause time to last on death or complete level
 const double ScreenDuration = 3;
 /**
  * Game Constructor
@@ -182,7 +188,7 @@ void Game::Accept(ItemVisitor* visitor)
 
 /**
  * Sets the current Level
- * @param numLevel
+ * @param numLevel Level that is to be set in the game
  */
 void Game::SetLevel(int numLevel)
 {
@@ -221,6 +227,11 @@ void Game::SetItems()
     mSparty ->SetYVel(0);
 }
 
+/**
+ * Checks if sparty collides with and item in mItems
+ * @param item The item that is assumed to have collided with Spartu
+ * @return The item pointer if it did collide, nullptr if it didn't
+ */
 shared_ptr<Item> Game::CollisionTest(Item* item)
 {
     for (auto levelItem : mItems)
@@ -239,6 +250,10 @@ shared_ptr<Item> Game::CollisionTest(Item* item)
     return nullptr;
 }
 
+/**
+ * Removes item from mItems
+ * @param item The items that is to be removed
+ */
 void Game::RemoveItem(Item* item)
 {
   for (std::shared_ptr<Item> items : mItems)
@@ -260,6 +275,13 @@ void Game::AddScore(int value){
      mScoreBoard->AddScore(value);
 }
 
+/**
+ * Draws the screens after death or level completion or loading
+ * @param graphics The device context to draw on
+ * @param info The message that is to be drawn on screen
+ * @param width The width of the message
+ * @param height The height of the message
+ */
 void Game::DrawScreen(std::shared_ptr<wxGraphicsContext> graphics, wxString info, int width, int height)
 {
     wxFont font(wxSize(70 / mScale, 70 / mScale),

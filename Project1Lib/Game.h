@@ -80,8 +80,10 @@ private:
     /// The game is playing right now
    bool mPlaying = true;
 
+   /// The duration count for update if the screen should be paused
    double mDuration = 0;
 
+   /// Boolean that indicates if a new level should be loaded or not
    bool mNewLevel = false;
 
    std::shared_ptr<wxGraphicsContext> mGraphics;
@@ -197,8 +199,6 @@ public:
 
     void RemoveItem(Item* item);
 
-    void RemoveItem(std::shared_ptr<Item> item);
-
     std::shared_ptr<Item> CollisionTest(Item* item);
 
     /**
@@ -210,10 +210,22 @@ public:
 
     void DrawScreen(std::shared_ptr<wxGraphicsContext> graphics, wxString info, int width, int height);
 
+    /**
+     *  Returns the status of playing
+     * @return The boolean that determines if game is in play or not
+     */
     bool GetCurrentState(){return mPlaying; }
 
+    /**
+     * Returns the status if a new level should be loaded
+     * @return The boolean that determines if a new level should be loaded or not
+     */
     bool GetCurrentLevelState() {return mNewLevel; }
 
+    /**
+     * Sets the status of NewLevel
+     * @param newLevel boolean that indicates if a new level should be loaded or not
+     */
     void SetNewLevel(bool newLevel) {mNewLevel = newLevel; }
 };
 
