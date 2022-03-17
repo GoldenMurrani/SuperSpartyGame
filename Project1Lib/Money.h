@@ -19,7 +19,7 @@ class Money : public Item
 private:
 
     /// Value of the money
-    double mMoneyValue = 0;
+    int mMoneyValue = 0;
 
     /// Bool if the money was collected
     bool mCollected = false;

@@ -62,6 +62,7 @@ public:
      /// Draws the scoreboard on the screen
      void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 
+
     void AddScore(int value);
 
     /**

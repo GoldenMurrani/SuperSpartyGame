@@ -38,6 +38,7 @@ private:
     /// Money multiplier
     double mMoneyMult = 0;
 
+    int mScore = 0;
     /// Scoreboard item
     std::shared_ptr<Scoreboard> mScoreBoard;
 
@@ -130,6 +131,8 @@ public:
      * @return the shared pointer of the sparty item in game
      */
     std::shared_ptr<Sparty> GetSparty() {return mSparty; }
+
+    int GetScore() {return mScore;}
 
     /**
      * Updates the money value

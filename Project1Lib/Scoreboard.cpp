@@ -29,6 +29,7 @@ void Scoreboard::ResetTimer()
 Scoreboard::Scoreboard(Game* game)
 {
     mGame = game;
+    mCash = 0;
 }
 /**
 * Scoreboard destructor
@@ -49,7 +50,6 @@ void Scoreboard::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     wxString score = wxString::Format(wxT("$%i"), mCash);
     graphics->DrawText(score, mGame->GetSparty()->GetX()+200 ,20);
 }
-
 /**
  * Function to add the value of Cash by the score multiplier
  */

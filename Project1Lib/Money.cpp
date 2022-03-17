@@ -52,6 +52,7 @@ bool Money::CollisionTest(Item* item)
         mCollected = true;
         return false;
     }
+    mGame->AddScore(mMoneyValue);
     return false;
 }
 
