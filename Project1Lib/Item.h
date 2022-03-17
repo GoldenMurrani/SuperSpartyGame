@@ -25,6 +25,10 @@ private:
     double  mX = 0;     ///< X location for the center of the item
     double  mY = 0;     ///< Y location for the center of the item
 
+    double mStartX = 0;
+    double mStartY = 0;
+    bool mCollected = false;
+
     /// The underlying item image
     std::unique_ptr<wxImage> mItemImage;
 
@@ -39,6 +43,8 @@ protected:
     Item(Level* p_level);
 
 public:
+
+
     virtual ~Item();
 
     /// Copy constructor (disabled)
@@ -47,6 +53,10 @@ public:
     /// Assignment operator
     void operator=(const Item &) = delete;
 
+    void SetCollected()
+    {
+        mCollected = true;
+    }
 
     /**
     * The X location of the item
@@ -106,6 +116,8 @@ public:
     virtual bool CollisionTest(Item* item);
 
     void SetImage(const std::wstring& file);
+
+    void SetPosition();
 };
 
 

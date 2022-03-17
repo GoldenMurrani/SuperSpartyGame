@@ -212,6 +212,7 @@ void Game::SetItems()
     for (auto item : mLevels[mCurrentLevel]->GetItems())
     {
         mItems.push_back(item);
+        item-> SetPosition();
     }
 
     mSparty -> SpartyReset();

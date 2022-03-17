@@ -102,7 +102,6 @@ void Item::SetImage(const std::wstring& filename)
     mItemBitmap = make_unique<wxBitmap>(*mItemImage);
 }
 
-
 /**
  * Load the attributes for an item node.
  *
@@ -116,30 +115,46 @@ void Item::XmlLoad(wxXmlNode *node)
 {
     node->GetAttribute(L"x", L"0").ToDouble(&mX);
     node->GetAttribute(L"y", L"0").ToDouble(&mY);
+    mStartX = mX;
+    mStartY = mY;
 }
 
 bool Item::CollisionTest(Item* item)
 {
-    // Border for the item
-    auto itemLeft = item->GetX() - item->GetWidth() / 2;
-    auto itemRight = item->GetX() + item->GetWidth() / 2;
-    auto itemTop = item->GetY() - item->GetHeight() / 2;
-    auto itemBottom = item->GetY() + item->GetHeight() / 2;
 
-    // For us
-    auto ourLeft = GetX() - GetWidth() / 2;
-    auto ourRight = GetX() + GetWidth() / 2;
-    auto ourTop = GetY() - GetHeight() / 2;
-    auto ourBottom = GetY() + GetHeight() / 2;
+    if (!mCollected) {
+        // Border for the item
+        auto itemLeft = item->GetX()-item->GetWidth()/2;
+        auto itemRight = item->GetX()+item->GetWidth()/2;
+        auto itemTop = item->GetY()-item->GetHeight()/2;
+        auto itemBottom = item->GetY()+item->GetHeight()/2;
 
-    // Test for all of the non-collision cases,
-    // cases where there is a gap between the two items
-    if (ourRight < itemLeft ||  // Completely to the left
-            ourLeft > itemRight ||  // Completely to the right
-            ourTop > itemBottom ||  // Completely below
-            ourBottom < itemTop)    // Completely above
-    {
+        // For us
+        auto ourLeft = GetX()-GetWidth()/2;
+        auto ourRight = GetX()+GetWidth()/2;
+        auto ourTop = GetY()-GetHeight()/2;
+        auto ourBottom = GetY()+GetHeight()/2;
+
+        // Test for all of the non-collision cases,
+        // cases where there is a gap between the two items
+        if (ourRight<itemLeft ||  // Completely to the left
+                ourLeft>itemRight ||  // Completely to the right
+                ourTop>itemBottom ||  // Completely below
+                ourBottom<itemTop)    // Completely above
+        {
+            return false;
+        }
+        return true;
+    }
+    else{
         return false;
     }
-    return true;
+}
+
+
+void Item::SetPosition()
+{
+    mX = mStartX;
+    mY = mStartY;
+
 }

@@ -69,5 +69,8 @@ void PowerUp::Update(double elapsed)
         {
             SetLocation(GetX(), GetY() + 50);
         }
+        else{
+            mCollected = false;
+        }
     }
 }
