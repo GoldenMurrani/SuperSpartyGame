@@ -12,6 +12,13 @@
 
 using namespace std;
 
+/**
+ * Platform constructor
+ * @param level Level platform was a part of
+ * @param leftFilename Left platform image
+ * @param midFilename Middle platform image
+ * @param rightFilename Right platform image
+ */
 Platform::Platform(Level* level, std::wstring leftFilename, std::wstring midFilename, std::wstring rightFilename) :Item(level, leftFilename)
 {
 

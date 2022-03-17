@@ -16,21 +16,6 @@ class Level;
 
 class Platform : public Item {
 private:
-    //Platform is inherits from Item, every private member variable defined here and function should directly use item base class
-    // no need to define here again
-
-
-//    /// The game window this item in going to be in
-//    Game *mGame;
-//    /// The underlying Platform image
-//    std::unique_ptr<wxImage> mItemImage;
-//
-//    /// The bitmap we can display for this platform
-//    std::unique_ptr<wxBitmap> mItemBitmap;
-//    /// Item location in the Game
-//    double  mX = 0;     ///< X location for the center of the item
-//    double  mY = 0;     ///< Y location for the center of the item
-      //Level *mLevel;
 
 
     /// The underlying item image
@@ -50,12 +35,15 @@ private:
     /// The bitmap we can display for this item
     std::unique_ptr<wxBitmap> mRightBitmap;
 
+    /// Width of platform
     double mWidth = 0;
 
+    /// Height of platform
     double mHeight = 0;
 public:
     /// Default constructor (disabled)
     Platform() = delete;
+
     /// Copy constructor (disabled)
     Platform(const Platform&) = delete;
 
@@ -74,6 +62,10 @@ public:
 
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+    /**
+    * Get the width of the item
+    * @return Item width in pixels
+    */
     int GetWidth() override {return mWidth; }
 
     /**
