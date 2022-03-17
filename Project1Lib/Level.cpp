@@ -23,7 +23,6 @@ using namespace::std;
  */
 Level::Level(Game* game) : mGame(game)
 {
-    mSparty = game->GetSparty();
 }
 
 /**
@@ -55,9 +54,9 @@ void Level::Load(const wxString &filename)
              XmlDeclare(child);
         }
 
-            if (name==L"items") {
-                XmlItem(child);
-            }
+        if (name==L"items") {
+            XmlItem(child);
+        }
     }
 
 }
@@ -77,8 +76,8 @@ void Level::XmlDeclare(wxXmlNode* node)
 }
 
 /**
- *
- * @param node
+ * Iterates through all the item nodes
+ * @param node The item node that holds all the items from the level xml
  */
 void Level::XmlItem(wxXmlNode* node)
 {
@@ -90,7 +89,7 @@ void Level::XmlItem(wxXmlNode* node)
 }
 /**
  *  Sends declarations out to constructors and saves item pointers
- * @param node
+ * @param node Node that is being loaded into a pointer
  */
 void Level::XmlLevel(wxXmlNode* node)
 {
@@ -160,9 +159,8 @@ void Level::XmlLevel(wxXmlNode* node)
 }
 
 /**
- *  Sends declarations out to constructors and saves item pointers
- * @param node
- *
+ * Adds the declarations to node children based on Node Type
+ * @param node Node that is being worked on
  */
 vector<std::wstring> Level::XmlType(wxString nodeName,  wxString typeId)
 {
@@ -222,6 +220,10 @@ vector<std::wstring> Level::GetNodeChildren(wxXmlNode *node)
     return finalAttributes;
 }
 
+/**
+ * Adds item to mItems
+ * @param item Adds item to
+ */
 void Level::Add(std::shared_ptr<Item> item)
 {
     mItems.push_back(item);
@@ -237,14 +239,7 @@ void Level::LevelInfoSetter(wxXmlNode* node)
     node->GetAttribute(L"height", L"0").ToDouble(&mHeight);
     node->GetAttribute(L"start-y", L"0").ToDouble(&mStartY);
     node->GetAttribute(L"start-x", L"0").ToDouble(&mStartx);
-
 }
 
 
-
-
-void Level::Clear()
-{
-    mItems.clear();
-}
 

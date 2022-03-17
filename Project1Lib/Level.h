@@ -21,9 +21,6 @@ private:
     /// Game object item is in
     Game *mGame;
 
-    // Sparty item
-    std::shared_ptr<Sparty> mSparty;
-
     /// Vector that holds the levels Items
     std::vector<std::shared_ptr<Item>> mItems;
 
@@ -46,9 +43,19 @@ private:
 
 public:
 
-    double GetWidth() {return mWidth;};
-    double GetHeight() {return mHeight;};
+    //double GetWidth() {return mWidth;};
+    //double GetHeight() {return mHeight;};
+
+    /**
+     * Gets startX for the level
+     * @return Starting X coordinate for level
+     */
     double GetStartX() {return mStartx;};
+
+    /**
+    * Gets startX for the level
+    * @return Starting X coordinate for level
+    */
     double GetStartY() {return mStartY;};
 
     void Load(const wxString &filename);
@@ -56,7 +63,8 @@ public:
    void XmlDeclare(wxXmlNode* node);
 
    /**
-    * For testing
+    * Used for tests and getting access to level pointer
+    * @return Level pointer
     */
    Level*  GetLevelTest(){ return this;}
 
@@ -65,10 +73,6 @@ public:
    Level(Game * game);
 
     void XmlLevel(wxXmlNode* node);
-
-    void VectorNode(wxXmlNode* node);
-
-    void XmlType(wxXmlNode* node);
 
     std::vector<std::wstring> XmlType(wxString nodeName, wxString typeId);
 
