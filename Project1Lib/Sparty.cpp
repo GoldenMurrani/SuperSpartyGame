@@ -11,6 +11,7 @@
 
 using namespace std;
 
+/// the distance duration between anime change
 const double animeSwapDistance = 200;
 
 /**
@@ -45,10 +46,10 @@ void Sparty::Update(double elapsed)
     SetLocation(currentX, newY);
 
     auto collideItem = GetGame()->CollisionTest(this);
-    if (mDead==true) {
+    if (mDead) {
         mGame->SetPlaying();
     }
-    if (mStopUpdate==false) {
+    if (!mStopUpdate) {
         //Jumping
         if (collideItem) {
             newY = currentY;
@@ -92,7 +93,6 @@ void Sparty::Update(double elapsed)
         else
             SetImage(L"images/gnome.png");
 
-
         // Reset level if Sparty falls below a certain height
         if (currentY>1500) {
             mDead = true;
@@ -107,7 +107,6 @@ void Sparty::Update(double elapsed)
 void Sparty::SpartyReset()
 {
     SetImage(L"images/gnome.png");
-
 }
 
 

@@ -21,7 +21,6 @@ using namespace std;
  */
 Platform::Platform(Level* level, std::wstring leftFilename, std::wstring midFilename, std::wstring rightFilename) :Item(level, leftFilename)
 {
-
     mLeftImage = make_unique<wxImage>(leftFilename, wxBITMAP_TYPE_ANY);
     mLeftBitmap = make_unique<wxBitmap>(*mLeftImage);
     mMiddleImage = make_unique<wxImage>(midFilename, wxBITMAP_TYPE_ANY);

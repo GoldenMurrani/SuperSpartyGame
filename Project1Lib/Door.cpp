@@ -18,7 +18,7 @@ const double CollisionDistance = 20;
  * @param filename the name of image file
  * @param game The game this level item is a part of
  */
-Door::Door(Level *Level, const std::wstring &filename, Game *game) : Item(Level, filename)
+Door::Door(Level *level, const std::wstring &filename, Game *game) : Item(level, filename)
 {
     mGame = game;
 }
@@ -58,6 +58,7 @@ bool Door::CollisionTest(Item* item)
     }
     return false;
 }
+
 /**
  * Changes to the next level on collision, loops back to level 0 if last level
  */

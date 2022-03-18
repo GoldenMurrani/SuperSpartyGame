@@ -14,6 +14,7 @@ using namespace std;
 * PowerUp Constructor
  * @param level level this item is a member of
  * @param filename the name of image file
+ * @param game thge game this power up is in
 */
 PowerUp::PowerUp(Level *level, const std::wstring &filename, Game* game)
     : Item(level, filename)

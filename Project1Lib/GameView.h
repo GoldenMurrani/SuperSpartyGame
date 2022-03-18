@@ -37,12 +37,10 @@ private:
     void OnPaint(wxPaintEvent& event);
 
 
-
 public:
     void Initialize(wxFrame *parent);
 
     void OnTimer(wxTimerEvent& event);
-
 
     void OnKeyDown(wxKeyEvent& event);
 

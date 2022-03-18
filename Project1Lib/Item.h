@@ -25,8 +25,11 @@ private:
     double  mX = 0;     ///< X location for the center of the item
     double  mY = 0;     ///< Y location for the center of the item
 
-    double mStartX = 0;
-    double mStartY = 0;
+    /// Item start location
+    double mStartX = 0;  ///< start X location for the center of the item
+    double mStartY = 0;   ///< start Y location for the center of the item
+
+    /// state indicate whether the item is collected or not
     bool mCollected = false;
 
     /// The underlying item image
@@ -40,10 +43,7 @@ protected:
     Item(Level* level, const std::wstring& filename, const std::wstring& filename2, const std::wstring& filename3);
     Item(Level* level, const std::wstring& filename);
 
-    Item(Level* p_level);
-
 public:
-
 
     virtual ~Item();
 
@@ -53,6 +53,9 @@ public:
     /// Assignment operator
     void operator=(const Item &) = delete;
 
+    /**
+     * the function to indicate item has been collected
+     */
     void SetCollected()
     {
         mCollected = true;
@@ -78,8 +81,6 @@ public:
     virtual void SetLocation(double x, double y) { mX = x; mY = y; }
 
     virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics);
-
-    bool HitTest(int x, int y);
 
     /**
     * Get the pointer to the Game object

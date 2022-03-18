@@ -16,15 +16,16 @@ Timer::Timer(Game* game)
     mGame = game;
 }
 
-
 /**
 * Timer destructor
 */
 Timer::~Timer()
 {
 }
+
 /**
  * Function to update the timer
+ * @param elapsed the time duration since last update
  */
 void Timer::Update(double elapsed)
 {
@@ -40,8 +41,10 @@ void Timer::Update(double elapsed)
         mSecond -= 60;
     }
 }
+
 /**
  * Function to draw the timer on the screen
+ * @param graphics the graphics this timer need to be draw on
  */
 void Timer::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
@@ -55,6 +58,7 @@ void Timer::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     graphics->DrawText(secs, mGame->GetSparty()->GetX()-300,20);
 
 }
+
 /**
  * Function to reset the timer
  */

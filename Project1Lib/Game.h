@@ -17,14 +17,13 @@
 #include "Level.h"
 #include "Money.h"
 
+class Scoreboard;
+class Timer;
+
 /**
  * Main class that will represent our game
  */
-
-class Scoreboard;
-class Timer;
 class Game {
-
 private:
     /// scale for game window
     double mScale;
@@ -38,15 +37,11 @@ private:
     /// Money multiplier
     double mMoneyMult = 0;
 
-    int mScore = 0;
     /// Scoreboard item
     std::shared_ptr<Scoreboard> mScoreBoard;
 
     /// Timer item
     std::shared_ptr<Timer> mTimer;
-
-    /// timer item
-    /// std::shared_ptr<Timer> mTimer = make_shared<Timer>();
 
     /// All of the items to populate our game
     std::vector<std::shared_ptr<Item>> mItems;
@@ -66,12 +61,6 @@ private:
     /// Contains all the levels to be selected from
     std::vector<std::shared_ptr<Level>> mLevels;
 
-    /// Level width
-    double mWidth = 0;
-
-    /// Level height
-    double mHeight = 0;
-
     /// Sparty start x loaction
     double mStartx = 0;
 
@@ -87,8 +76,6 @@ private:
    /// Boolean that indicates if a new level should be loaded or not
    bool mNewLevel = false;
 
-   std::shared_ptr<wxGraphicsContext> mGraphics;
-
 
 public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
@@ -96,8 +83,6 @@ public:
     Game();
 
     void Add(std::shared_ptr<Item> item);
-
-    std::shared_ptr<Item> HitTest(int x, int y);
 
     void Update(double elapsed);
 
@@ -107,7 +92,12 @@ public:
 
     void SetLevel(int numLevel);
 
+    /**
+     * get the current game
+     * @return this item itself
+     */
     Game* GetGameTest() {return this;};
+
     /**
      * Gets the size of mItems
      * @return Size of mItems
@@ -132,8 +122,6 @@ public:
      */
     std::shared_ptr<Sparty> GetSparty() {return mSparty; }
 
-    int GetScore() {return mScore;}
-
     /**
      * Updates the money value
      */
@@ -141,8 +129,9 @@ public:
 
      /**
       * Gets the money multiplier
+      * @return the multiplier of money increase
       */
-      double GetMult() { return mMoneyMult; }
+     double GetMult() { return mMoneyMult; }
 
     /** Iterator that iterates over the items */
     class Iter
@@ -198,9 +187,12 @@ public:
 
     void SetItems();
 
+    /**
+     * get the current level item
+     * @return a shared pointer to the current level
+     */
     std::shared_ptr<Level> GetLevel(){return mLevels[mCurrentLevel]; }
 
-    void RemoveItem(Item* item);
 
     std::shared_ptr<Item> CollisionTest(Item* item);
 

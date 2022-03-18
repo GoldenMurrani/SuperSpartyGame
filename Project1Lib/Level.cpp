@@ -87,6 +87,7 @@ void Level::XmlItem(wxXmlNode* node)
         XmlLevel(child);
     }
 }
+
 /**
  *  Sends declarations out to constructors and saves item pointers
  * @param node Node that is being loaded into a pointer
@@ -160,7 +161,9 @@ void Level::XmlLevel(wxXmlNode* node)
 
 /**
  * Adds the declarations to node children based on Node Type
- * @param node Node that is being worked on
+ * @param nodeName Node that is being worked on
+ * @param typeId the Id of the item to be loaded
+ * @return the node children we found for the given node
  */
 vector<std::wstring> Level::XmlType(wxString nodeName,  wxString typeId)
 {

@@ -14,6 +14,7 @@
 /// Gravity in virtual pixels per second per second
 const double Gravity = 1000.0;
 
+/// Jump Speed of sparty
 const double JumpSpeed = -800;
 
 /// Small value to ensure we do not stay in collision
@@ -29,14 +30,18 @@ private:
     /// the amount of money this sparty have
     int mMoney = 0;
 
+    /// sparty velocity in x direction
     double mXVel = 0;
+    /// sparty velocity in y direction
     double mYVel = 0;
 
+    /// boolean to determine if sparty is on the ground or not
     bool mIsGround = true;
 
     /// Stops the rest of the update if a certain collision condition is met
     bool mStopUpdate = false;
 
+    /// tracker to keep track of the moved distance
     double mMovedDistance = 0;
 
     /// Horizontal character speed in pixels per second
@@ -45,6 +50,7 @@ private:
     /// If sparty dies this becomes true
     bool mDead = false;
 
+    /// the game this sparty is in
     Game* mGame;
 
 public:
@@ -61,17 +67,20 @@ public:
 
     /**
      * Gets the horizonatl speed of sparty
+     * @return the horizontal speed of sparty
      */
-     double GetSpeed() { return mHorizontalSpeed; }
+    double GetSpeed() { return mHorizontalSpeed; }
 
-     /**
-      * Reverses the speed of Sparty
-      */
-      void ReverseSpeed() { mHorizontalSpeed = mHorizontalSpeed * -1; }
+    /**
+     * Reverses the speed of Sparty
+     */
+    void ReverseSpeed() { mHorizontalSpeed = mHorizontalSpeed * -1; }
+
     /**
      * Sets mDead to true when he dies or loses
+     * @param dead the boolean to determine whether sparty is dead or not
      */
-     void SetDead(bool dead){mDead = dead;};
+    void SetDead(bool dead){mDead = dead;};
 
     /**
      * Gets mDead
@@ -82,24 +91,13 @@ public:
     /**
      * Sets mStopUpdate to true
      */
-     void SetStopUpdate(){mStopUpdate = true;};
+    void SetStopUpdate(){mStopUpdate = true;};
 
-     /**
+    /**
      * Sets mStopUpdate to true
+     * @return whether the sparty is stopped update
      */
     bool GetStopUpdate(){return mStopUpdate;};
-
-    /**
-     * get the amount of money this sparty have
-     * @return int indicates the amount of money this sparty have
-     */
-    int GetMoney() { return mMoney; }
-
-    /**
-     * increase money this sparty have
-     * @param amount the amount to be increased
-     */
-    void IncreaseMoney(int amount) {mMoney += amount; }
 
     /**
      * Handle updates for sparty
@@ -119,8 +117,16 @@ public:
      */
     void SetXVel(int vel) { mXVel = vel; }
 
+    /**
+     * set the sparty is on the ground or not
+     * @param isGround true if sparty is on the ground, false otherwise
+     */
     void SetIsGround(bool isGround) {mIsGround = isGround; }
 
+    /**
+     * to see if the sparty is on the ground or not
+     * @return true if sparty is on the ground, false otherwise
+     */
     bool IsGround() {return mIsGround; }
 
     void SpartyReset();

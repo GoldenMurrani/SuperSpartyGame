@@ -10,16 +10,11 @@
 
 using namespace std;
 
-/// Enemy filename
-const wstring EnemyImageName = L"images/UofM.png";
-
-///// Small value to ensure we do not stay in collision
-//const double Epsilon = 0.01;
-
 /**
  * Constructor
- * @param game Game the Enemy is a member of
+ * @param level Level the Enemy is a member of
  * @param filename file that the enemy is assigned to
+ * @param game the game this enemy is in
  */
 Enemy::Enemy(Level *level, const std::wstring &filename,Game* game) : Item(level, filename)
 {
@@ -73,10 +68,13 @@ void Enemy::XmlLoad(wxXmlNode *node)
     Item::XmlLoad(node);
 }
 
-
+/**
+ * override collision test to let item respond
+ * @param item item need to be collision tested
+ * @return true if collided, false otherwise
+ */
 bool Enemy::CollisionTest(Item* item)
 {
-
     bool check = Item::CollisionTest(item);
     if (check == true)
     {
@@ -86,5 +84,4 @@ bool Enemy::CollisionTest(Item* item)
     }
 
     return false;
-
 }

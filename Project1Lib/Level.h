@@ -13,8 +13,9 @@
 
 class Game;
 
-
-
+/**
+ * base level class
+ */
 class Level {
 private:
 
@@ -39,12 +40,7 @@ private:
     /// Sparty start y loaction
     double mStartY = 0;
 
-
-
 public:
-
-    //double GetWidth() {return mWidth;};
-    //double GetHeight() {return mHeight;};
 
     /**
      * Gets startX for the level
@@ -82,6 +78,10 @@ public:
 
     void LevelInfoSetter(wxXmlNode* node);
 
+    /**
+     * get all the items in this level
+     * @return a shared pointer to a vector of all the items in this level
+     */
     const std::vector<std::shared_ptr<Item>>& GetItems() {return mItems;};
 
     /** Iterator that iterates over the city tiles */
@@ -89,7 +89,7 @@ public:
     {
     public:
         /** Constructor
-         * @param city The city we are iterating over
+         * @param level The level we are iterating over
          * @param pos Position in the collection
          */
         Iter(Level* level, int pos) : mLevel(level), mPos(pos) {}
@@ -135,9 +135,6 @@ public:
      */
     Iter end() { return Iter(this, mItems.size()); }
 
-    Level();
-
-    void Clear();
 };
 
 #endif //PROJECT1_LEVEL_H

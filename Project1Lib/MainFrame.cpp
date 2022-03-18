@@ -58,8 +58,6 @@ void MainFrame::Initialize()
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnExit, this, wxID_EXIT);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
-
-
 }
 
 /**
