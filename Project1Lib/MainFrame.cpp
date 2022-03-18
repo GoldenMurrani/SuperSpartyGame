@@ -14,7 +14,7 @@
 void MainFrame::Initialize()
 {
     Create(nullptr, wxID_ANY, L"Game",
-            wxDefaultPosition,  wxSize( 1024,1024 ));
+            wxDefaultPosition,  wxSize( 800,800 ));
 
     // Create a sizer that will lay out child windows vertically
     // one above each other
