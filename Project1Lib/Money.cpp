@@ -84,6 +84,7 @@ void Money::Update(double elapsed)
  */
 void Money::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
+    wstring moneyVal = to_wstring(mMoneyValue);
     Item::Draw(graphics);
     if (mCollected)
     {
@@ -93,7 +94,7 @@ void Money::Draw(std::shared_ptr<wxGraphicsContext> graphics)
                 wxFONTWEIGHT_NORMAL);
 
         graphics->SetFont(font,wxColour(0,0,90));
-        graphics->DrawText("Money",GetX(), GetY());
+        graphics->DrawText(moneyVal,GetX(), GetY());
     }
 }
 

@@ -130,7 +130,7 @@ public:
     /**
      * Updates the money value
      */
-     void AddMoneyValue() { mMoneyMult += .10; }
+     void AddMoneyValue() { mMoneyMult = mMoneyMult + .10; }
 
      /**
       * Gets the money multiplier
