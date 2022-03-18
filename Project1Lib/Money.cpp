@@ -77,3 +77,18 @@ void Money::Update(double elapsed)
     }
 }
 
+void Money::Draw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    Item::Draw(graphics);
+    if (mCollected)
+    {
+        wxFont font(wxSize(GetWidth(), GetHeight()),
+                wxFONTFAMILY_SWISS,
+                wxFONTSTYLE_NORMAL,
+                wxFONTWEIGHT_NORMAL);
+
+        graphics->SetFont(font,wxColour(0,0,90));
+        graphics->DrawText("Money",GetX(), GetY());
+    }
+}
+
