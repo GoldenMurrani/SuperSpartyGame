@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "PowerUp.h"
 #include "Game.h"
+#include "IsEnemyVisitor.h"
 
 using namespace std;
 
@@ -40,14 +41,18 @@ PowerUp::PowerUp(Level *level, const std::wstring &filename, Game* game)
 bool PowerUp::CollisionTest(Item* item)
 {
     bool check = Item::CollisionTest(item);
-    if (check==true) {
-        if (!mCollected) {
+    if (check)
+    {
+        IsEnemyVisitor visitor;
+        item->Accept(&visitor);
+        if(!visitor.IsEnemy() && !mCollected)
+        {
             mTextX = GetX();
             mTextY = GetY();
             TuitionUp();
             mCollected = true;
-            return false;
         }
+        return false;
     }
     return false;
 }

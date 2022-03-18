@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "ReversePower.h"
 #include "Game.h"
+#include "IsEnemyVisitor.h"
 
 using namespace std;
 
@@ -40,8 +41,11 @@ void ReversePower::XmlLoad(wxXmlNode *node)
 bool ReversePower::CollisionTest(Item* item)
 {
     bool check = Item::CollisionTest(item);
-    if (check) {
-        if (!mCollected)
+    if (check)
+    {
+        IsEnemyVisitor visitor;
+        item->Accept(&visitor);
+        if(!visitor.IsEnemy() && !mCollected)
         {
             mTextX = GetX();
             mTextY = GetY();
@@ -49,6 +53,7 @@ bool ReversePower::CollisionTest(Item* item)
             mCollected = true;
             item -> SetCollected();
         }
+        return false;
     }
     return false;
 }

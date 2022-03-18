@@ -4,9 +4,10 @@
  */
 
 #include "pch.h"
+#include <string>
 #include "Enemy.h"
 #include "Game.h"
-#include <string>
+#include "IsEnemyVisitor.h"
 
 using namespace std;
 
@@ -76,11 +77,17 @@ void Enemy::XmlLoad(wxXmlNode *node)
 bool Enemy::CollisionTest(Item* item)
 {
     bool check = Item::CollisionTest(item);
-    if (check == true)
+    if (check)
     {
-        mGame -> GetSparty() ->SetStopUpdate();
-        mGame -> GetSparty() -> SetDead(true);
-        return true;
+        IsEnemyVisitor visitor;
+        item->Accept(&visitor);
+        if(!visitor.IsEnemy())
+        {
+            mGame -> GetSparty() ->SetStopUpdate();
+            mGame -> GetSparty() -> SetDead(true);
+            return true;
+        }
+        return false;
     }
 
     return false;
