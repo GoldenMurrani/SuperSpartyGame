@@ -17,6 +17,7 @@
 #include "Level.h"
 #include "Money.h"
 
+
 class Scoreboard;
 class Timer;
 
@@ -24,6 +25,7 @@ class Timer;
  * Main class that will represent our game
  */
 class Game {
+
 private:
     /// scale for game window
     double mScale;
@@ -76,6 +78,8 @@ private:
    /// Boolean that indicates if a new level should be loaded or not
    bool mNewLevel = false;
 
+   //std::shared_ptr<wxGraphicsContext> mGraphics;
+
 
 public:
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
@@ -93,8 +97,8 @@ public:
     void SetLevel(int numLevel);
 
     /**
-     * get the current game
-     * @return this item itself
+     * Gets a pointer of game
+     * @return A pointer of the game class
      */
     Game* GetGameTest() {return this;};
 
@@ -122,6 +126,7 @@ public:
      */
     std::shared_ptr<Sparty> GetSparty() {return mSparty; }
 
+
     /**
      * Updates the money value
      */
@@ -129,9 +134,9 @@ public:
 
      /**
       * Gets the money multiplier
-      * @return the multiplier of money increase
+      * @return The money multiplier
       */
-     double GetMult() { return mMoneyMult; }
+      double GetMult() { return mMoneyMult; }
 
     /** Iterator that iterates over the items */
     class Iter
@@ -188,11 +193,12 @@ public:
     void SetItems();
 
     /**
-     * get the current level item
-     * @return a shared pointer to the current level
+     *  Gets the current level
+     * @return Returns the current level as a pointer from the vector of levels
      */
     std::shared_ptr<Level> GetLevel(){return mLevels[mCurrentLevel]; }
 
+    void RemoveItem(Item* item);
 
     std::shared_ptr<Item> CollisionTest(Item* item);
 
@@ -207,7 +213,7 @@ public:
 
     /**
      *  Returns the status of playing
-     * @return The boolean that determines if game is in play or not
+     *  @return The boolean that determines if game is in play or not
      */
     bool GetCurrentState(){return mPlaying; }
 

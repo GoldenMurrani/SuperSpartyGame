@@ -1,13 +1,11 @@
 /**
- * @file ReversePower.cpp
- * @author Yousif Murrani
+ * @file SpeedUp.cpp
+ * @author Matthew Hofmann
  */
 
 #include "pch.h"
-#include "ReversePower.h"
+#include "SpeedUp.h"
 #include "Game.h"
-
-using namespace std;
 
 /**
 * Reverse Power Constructor
@@ -15,7 +13,7 @@ using namespace std;
  * @param filename the name of image file
  * @param game thge game this power up is in
 */
-ReversePower::ReversePower(Level *level, const std::wstring &filename, Game* game)
+SpeedUp::SpeedUp(Level *level, const std::wstring &filename, Game* game)
         : Item(level, filename)
 {
     mGame = game;
@@ -27,23 +25,24 @@ ReversePower::ReversePower(Level *level, const std::wstring &filename, Game* gam
  * Base class, override for specific items
  * @param node Node that is being loaded in
  */
-void ReversePower::XmlLoad(wxXmlNode *node)
+void SpeedUp::XmlLoad(wxXmlNode *node)
 {
     Item::XmlLoad(node);
 }
 
 /**
- * Function to check collision between sparty and reverse item
+ * Function to check collision between sparty and speedup item
  * @param item that is colliding
  * @return true if there is a collision, false if not
  */
-bool ReversePower::CollisionTest(Item* item)
+bool SpeedUp::CollisionTest(Item* item)
 {
     bool check = Item::CollisionTest(item);
     if (check) {
         if (!mCollected)
         {
-            ReverseDirections();
+
+            Speed();
             mCollected = true;
             item -> SetCollected();
         }
@@ -52,18 +51,23 @@ bool ReversePower::CollisionTest(Item* item)
 }
 
 /**
- *  Function to reverse directions of sparty
+ *  Function to double the speed of Sparty
  */
-void ReversePower::ReverseDirections()
+void SpeedUp::Speed()
 {
-    mGame->GetSparty()->ReverseSpeed();
+ if(mGame -> GetSparty()->GetSpeedMult() == 1) {
+     mGame->GetSparty()->SetSpeedMult(2);
+ }
+ else{
+     mGame->GetSparty()->SetSpeedMult(mGame -> GetSparty()->GetSpeedMult() + 0.5);
+ }
 }
 
 /**
-* Handle updates for ReversePower
+* Handle updates for Speed Up
 * @param elapsed the time before last update
 */
-void ReversePower::Update(double elapsed)
+void SpeedUp::Update(double elapsed)
 {
     if (mCollected)
     {
@@ -76,4 +80,3 @@ void ReversePower::Update(double elapsed)
         }
     }
 }
-

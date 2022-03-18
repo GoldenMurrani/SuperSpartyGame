@@ -42,7 +42,7 @@ private:
     double mHeight = 0;
 
 public:
-    /// Default constructor (disabled)
+    ///  Default constructor (disabled)
     Platform() = delete;
 
     /// Copy constructor (disabled)

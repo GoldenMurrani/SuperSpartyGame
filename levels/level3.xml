@@ -7,9 +7,12 @@
         <wall id="i007" image="marblePillar.png"/>
         <door id="i011" image="underwaterDoor.png"/>
         <reverse-up id="i014" image="arrows.png"/>
+        <tuition-up id="i010" image="stanley.png"/>
         <villain id="i012" image="plankton.png"/>
+        <villain id="i013" image="kevinCucumber.png"/>
         <money id="i008" image="silverCoin.png" value="100"/>
         <money id="i009" image="goldCoin.png" value="1000"/>
+        <speed-up id="i015" image="plankton.png" />
     </declarations>
     <items>
         <background id="i301" x="512" y="512"/>
@@ -20,9 +23,9 @@
         <background id="i301" x="5632" y="512"/>
         <background id="i301" x="6656" y="512"/>
         <background id="i301" x="7680" y="512"/>
-        <background id="i301" x="7680" y="512"/>
-        <door id="i011" x="700" y="600"/>
-        <reverse-up id="i014" x="800" y="400"/>
+        <background id="i301" x="8704" y="512"/>
+        <background id="i301" x="9724" y="512"/>
+
         <platform id="i005" x="912" y="944" width="352" height="32"/>
         <platform id="i005" x="1400" y="700" width="200" height="32"/>
 
@@ -32,19 +35,19 @@
         <door id="i011" x="5000" y="828"/>
 
         <platform id="i005" x="2600" y="500" width="200" height="32"/>
+        <money id="i008" x="2600" y="450"/>
         <platform id="i005" x="2900" y="550" width="200" height="32"/>
+        <money id="i008" x="2900" y="500"/>
         <platform id="i005" x="3200" y="600" width="200" height="32"/>
+        <money id="i008" x="3200" y="550"/>
 
         <platform id="i005" x="3500" y="900" width="300" height="32"/>
-        <platform id="i005" x="4000" y="900" width="300" height="32"/>
-
-        <wall id="i007" x="3600" y="750" width="32" height="300"/>
-        <wall id="i007" x="3900" y="750" width="32" height="300"/>
-
         <money id="i009" x="3650" y="800"/>
         <money id="i009" x="3850" y="800"/>
-
-        <villain id="i012" x="3750" y="750"/>
+        <platform id="i005" x="4000" y="900" width="300" height="32"/>
+        <wall id="i007" x="3600" y="750" width="32" height="300"/>
+        <wall id="i007" x="3900" y="750" width="32" height="300"/>
+        <villain id="i013" x="3750" y="750"/>
 
         <platform id="i005" x="2000" y="350" width="200" height="32"/>
         <platform id="i005" x="2300" y="225" width="100" height="32"/>
@@ -52,6 +55,65 @@
         <wall id="i006" x="2095" y="270" width="32" height="200"/>
         <reverse-up id="i014" x="2000" y="220"/>
         <money id="i009" x="2000" y="300"/>
+
+        <platform id="i005" x="4500" y="700" width="1000" height="32"/>
+        <wall id="i006" x="4500" y="400" width="32" height="600"/>
+        <platform id="i005" x="4400" y="500" width="150" height="32"/>
+        <reverse-up id="i014" x="4400" y="430"/>
+        <platform id="i005" x="4500" y="100" width="150" height="32"/>
+        <money id="i009" x="4500" y="50"/>
+
+        <platform id="i005" x="4100" y="250" width="150" height="32"/>
+        <wall id="i006" x="4050" y="160" width="32" height="150"/>
+
+        <money id="i008" x="4700" y="150"/>
+        <money id="i008" x="4800" y="250"/>
+        <money id="i009" x="4900" y="350"/>
+        <money id="i008" x="5000" y="450"/>
+        <money id="i008" x="5100" y="550"/>
+        <tuition-up id="i010" x="4600" y="600"/>
+        <speed-up id="i015" x="4900" y="600" />
+
+        <money id="i009" x="5300" y="400"/>
+        <reverse-up id="i014" x="5500" y="350"/>
+        <money id="i009" x="5700" y="300"/>
+        <reverse-up id="i014" x="5900" y="350"/>
+        <money id="i009" x="6100" y="400"/>
+        <money id="i008" x="6200" y="450"/>
+        <money id="i008" x="6300" y="500"/>
+        <money id="i008" x="6400" y="550"/>
+
+        <platform id="i005" x="6500" y="800" width="250" height="32"/>
+        <reverse-up id="i014" x="6500" y="650"/>
+        <money id="i009" x="6500" y="750"/>
+
+
+
+        <platform id="i005" x="8000" y="800" width="250" height="32"/>
+        <wall id="i007" x="8000" y="450" width="32" height="700"/>
+        <platform id="i005" x="7935" y="400" width="100" height="32"/>
+        <platform id="i005" x="8000" y="100" width="200" height="32"/>
+
+
+
+        <villain id="i012" x="7700" y="750"/>
+
+        <platform id="i005" x="7500" y="600" width="100" height="32"/>
+        <reverse-up id="i014" x="7500" y="550"/>
+        <speed-up id="i015" x="7500" y="350" />
+
+        <villain id="i012" x="7150" y="750"/>
+
+        <platform id="i005" x="7300" y="200" width="100" height="32"/>
+        <money id="i009" x="7300" y="150"/>
+
+
+
+
+
+
+
+
 
 
 

@@ -9,7 +9,7 @@
 #include "ids.h"
 
 /**
- * Initialize the MainFrame window.
+ *  Initialize the MainFrame window.
  */
 void MainFrame::Initialize()
 {

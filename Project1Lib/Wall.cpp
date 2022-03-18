@@ -17,7 +17,7 @@ using namespace std;
  */
 Wall::Wall(Level *level, const std::wstring &filename) : Item(level, filename)
 {
-    mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+     mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
     mItemBitmap = make_unique<wxBitmap>(*mItemImage);
 }
 

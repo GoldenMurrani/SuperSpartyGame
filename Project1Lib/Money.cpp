@@ -56,18 +56,19 @@ bool Money::CollisionTest(Item* item)
         mCollected = true;
         return false;
     }
+
     return false;
 }
 
 /**
-* Handle updates for Money
+*  Handle updates for Money
 * @param elapsed the time before last update
 */
 void Money::Update(double elapsed)
 {
     if (mCollected)
     {
-        if (GetY() > -300)
+        if (GetY() > -1000)
         {
             SetLocation(GetX(), GetY() - 50);
         }

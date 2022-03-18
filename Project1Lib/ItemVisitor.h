@@ -16,6 +16,7 @@ class Platform;
 class PowerUp;
 class Wall;
 class ReversePower;
+class SpeedUp;
 
 /**
  * Item visitor base class
@@ -25,7 +26,7 @@ public:
     virtual ~ItemVisitor() {}
 
     /**
-     * Visit a door object
+     *  Visit a door object
      * @param door Door we are visiting
      */
     virtual void VisitDoor(Door* door) {}
@@ -65,6 +66,12 @@ public:
      * @param reversePower powerup we are visiting
      */
      virtual void VisitReversePower(ReversePower* reversePower) {}
+
+    /**
+    * Visit a reverse power up object
+    * @param reversePower powerup we are visiting
+    */
+    virtual void VisitSpeedUp(SpeedUp* speedUp) {}
 };
 
 #endif //PROJECT1_ITEMVISITOR_H

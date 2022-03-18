@@ -10,7 +10,7 @@
 using namespace std;
 
 /**
- * Constructor
+ *  Constructor
  * @param level level this item is in
  * @param filename the name of image file
  */

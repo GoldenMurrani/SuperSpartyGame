@@ -24,6 +24,8 @@ Sparty::Sparty(Game *game, const std::wstring &filename) : Item(game, filename)
     mGame = game;
 }
 
+
+
 /**
 * Handle updates for sparty
 * @param elapsed the time before last update
@@ -35,11 +37,11 @@ void Sparty::Update(double elapsed)
 
     double currentX = GetX();
     //Sideways Movement
-    double newX = currentX+mXVel*elapsed;
+    double newX = (currentX+mXVel*mSpeedMult*elapsed);
 
     double currentY = GetY();
     //new Y speed
-    mYVel = mYVel+Gravity*elapsed;
+    mYVel = (mYVel+Gravity*elapsed);
     double newY = currentY+mYVel*elapsed;
 
     //check for y direction
@@ -47,7 +49,7 @@ void Sparty::Update(double elapsed)
 
     auto collideItem = GetGame()->CollisionTest(this);
     if (mDead) {
-        mGame->SetPlaying();
+         mGame->SetPlaying();
     }
     if (!mStopUpdate) {
         //Jumping

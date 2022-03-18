@@ -34,7 +34,10 @@ public:
     /// Assignment operator
     void operator=(const ReversePower&) = delete;
 
-    ReversePower(Level* level, const std::wstring &filename, Game* game);
+    /**
+    * Constructor
+    */
+    ReversePower(Level* level, const std::wstring& filename, Game* game);
 
     void XmlLoad(wxXmlNode *node) override;
 
@@ -46,7 +49,7 @@ public:
 
     bool CollisionTest(Item* item) override;
 
-     void ReverseDirections();
+    void ReverseDirections();
 
     void Update(double elapsed);
 

@@ -40,7 +40,7 @@ public:
 
     void Update(double elapsed);
 
-    void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+     void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 
     void Reset();
 

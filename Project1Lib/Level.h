@@ -2,7 +2,7 @@
  * @file Level.h
  * @author Matthew Hofmann
  *
- *
+ * Class that is in charge of loading and storing level items
  */
 
 #ifndef PROJECT1_LEVEL_H
@@ -13,8 +13,9 @@
 
 class Game;
 
+
 /**
- * base level class
+ * Class that is in charge of loading and storing level items
  */
 class Level {
 private:
@@ -79,8 +80,8 @@ public:
     void LevelInfoSetter(wxXmlNode* node);
 
     /**
-     * get all the items in this level
-     * @return a shared pointer to a vector of all the items in this level
+     * Gets the vector of mItems from the level
+     * @return The vector of items from the level
      */
     const std::vector<std::shared_ptr<Item>>& GetItems() {return mItems;};
 
@@ -120,7 +121,7 @@ public:
         }
 
     private:
-        Level* mLevel;   ///< City we are iterating over
+        Level* mLevel;   ///<  City we are iterating over
         int mPos;       ///< Position in the collection
     };
     /**
@@ -140,7 +141,6 @@ public:
      */
     void Clear(){
         mItems.clear();
-    }
-};
+    }};
 
 #endif //PROJECT1_LEVEL_H

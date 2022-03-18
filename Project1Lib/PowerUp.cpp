@@ -34,7 +34,7 @@ PowerUp::PowerUp(Level *level, const std::wstring &filename, Game* game)
 }
 
 /**
- * Function to check collision between sparty and tuition power-up item
+ *  Function to check collision between sparty and tuition power-up item
  * @param item that is colliding
  * @return true if there is a collision, false if not
  */

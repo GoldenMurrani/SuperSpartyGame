@@ -11,7 +11,7 @@
 #include "Item.h"
 
 /**
-* Base class for Enemy item.
+*  Base class for Enemy item.
 */
 class Enemy : public Item{
 private:

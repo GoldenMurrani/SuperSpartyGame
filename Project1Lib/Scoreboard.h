@@ -30,7 +30,7 @@ private:
     Game* mGame;
 public:
     /// Initialize a timer
-    void SetTime();
+     void SetTime();
 
     Scoreboard(Game* game);
 

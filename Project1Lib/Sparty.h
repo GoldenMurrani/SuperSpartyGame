@@ -32,6 +32,7 @@ private:
 
     /// sparty velocity in x direction
     double mXVel = 0;
+
     /// sparty velocity in y direction
     double mYVel = 0;
 
@@ -53,6 +54,9 @@ private:
     /// the game this sparty is in
     Game* mGame;
 
+    /// Speed Multiplier
+    double mSpeedMult = 1;
+
 public:
     /// Default constructor (disabled)
     Sparty() = delete;
@@ -72,9 +76,25 @@ public:
     double GetSpeed() { return mHorizontalSpeed; }
 
     /**
+     *  Gets the speed mult
+     * @return Speed multiplier
+     */
+    double GetSpeedMult() {return mSpeedMult;};
+
+    /**
+     *  Sets the mult for Speed mult
+     */
+    void SetSpeedMult(int num)
+    {
+        mSpeedMult = num;
+    }
+
+    /**
      * Reverses the speed of Sparty
      */
     void ReverseSpeed() { mHorizontalSpeed = mHorizontalSpeed * -1; }
+
+
 
     /**
      * Sets mDead to true when he dies or loses
@@ -103,7 +123,7 @@ public:
      * Handle updates for sparty
      * @param elapsed the time before last update
      */
-    void Update(double elapsed);
+     void Update(double elapsed);
 
     /**
      * Updates the Y velocity of the sparty item.

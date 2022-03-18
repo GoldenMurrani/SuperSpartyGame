@@ -40,7 +40,7 @@ public:
     Money(Level* level, const std::wstring& filename, Game* game);
 
     /**
-     * Accept a visitor
+     * Accept a  visitor
      * @param visitor The visitor we accept
      */
     void Accept(ItemVisitor* visitor) override { visitor->VisitMoney(this); }

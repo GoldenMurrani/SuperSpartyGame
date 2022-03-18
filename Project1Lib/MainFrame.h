@@ -11,7 +11,7 @@
 class GameView;
 
 /**
- * The top-level (main) frame of the application
+ *  The top-level (main) frame of the application
  */
 class MainFrame : public wxFrame {
 private:

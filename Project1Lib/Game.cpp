@@ -56,7 +56,7 @@ Game::Game()
     mLevel3 = make_shared<Level>(this);
     mLevel3 ->Load(Level3);
     mLevels.push_back(mLevel3);
-    SetLevel(0);
+    SetLevel(3);
 }
 
 
@@ -114,10 +114,11 @@ void Game::Update(double elapsed)
     {
         for (auto item : mItems)
         {
-            item->Update(elapsed);
+            if (item !=nullptr) {
+                item->Update(elapsed);
+            }
         }
         mSparty->Update(elapsed);
-        //mScoreBoard -> Update(elapsed);
         mTimer ->Update(elapsed);
     }
     else
@@ -169,20 +170,25 @@ void Game::SetLevel(int numLevel)
 
     mCurrentLevel = numLevel;
     SetItems();
-    mPlaying = false;
-    mTimer -> Reset();
-    mScoreBoard -> ResetCash();
 }
 
 
 /**
- * Sets Items up in the game
+ *  Sets Items up in the game
  */
 void Game::SetItems()
 {
     Clear();
     auto checkSpeed = mSparty -> GetSpeed();
-    // Undo previous power ups or debuffs from different levels
+    // Undo previous power ups or debuffs from different levels and scoreboard and timer
+
+    mPlaying = false;
+    mTimer -> Reset();
+    mScoreBoard -> ResetCash();
+    mMoneyMult = 0;
+    if (mSparty -> GetSpeedMult() != 1) {
+        mSparty->SetSpeedMult(1);
+    }
     if (checkSpeed < 0)
     {
         mSparty ->ReverseSpeed();
@@ -226,11 +232,31 @@ shared_ptr<Item> Game::CollisionTest(Item* item)
 }
 
 /**
+ * Removes item from mItems
+ * @param item The items that is to be removed
+ */
+void Game::RemoveItem(Item* item)
+{
+  for (std::shared_ptr<Item> items : mItems)
+  {
+      if (items -> GetX() == item ->GetX() && items -> GetY() == item ->GetY()) {
+          auto loc = find(std::begin(mItems), std::end(mItems), items);
+          mItems.erase(loc);
+          mItems.push_back(items);
+          mItems.pop_back();
+
+          break;
+      }
+  }
+
+}
+
+/**
  * Handles the score
  * @param value value added to the score
  */
 void Game::AddScore(int value){
-     mScoreBoard->AddScore(value*(1+GetMult()));
+     mScoreBoard->AddScore(value*(1+mMoneyMult));
 }
 
 /**
