@@ -48,11 +48,13 @@ bool Money::CollisionTest(Item* item)
     bool check = Item::CollisionTest(item);
     if (check == true)
     {
-//        mGame -> GetSparty() ->SetStopUpdate();
+        if (mCollected == false)
+        {
+            mGame->AddScore(mMoneyValue);
+        }
         mCollected = true;
         return false;
     }
-    mGame->AddScore(mMoneyValue);
     return false;
 }
 
