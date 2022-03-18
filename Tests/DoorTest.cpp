@@ -36,7 +36,7 @@ TEST(TestDoor, Door)
     gameTest ->Add(gameTest->GetSparty());
     gameTest ->Update(5);
     // Test Level 0 to Level 1
-    ASSERT_TRUE (gameTest ->GetCurrentLevel() != 0);
+    ASSERT_FALSE (gameTest ->GetCurrentLevel() == 0);
     ASSERT_TRUE (gameTest ->GetCurrentLevel() == 1);
     levelTest -> Clear();
 

@@ -135,6 +135,12 @@ public:
      */
     Iter end() { return Iter(this, mItems.size()); }
 
+    /**
+     * Clear all the items in level
+     */
+    void Clear(){
+        mItems.clear();
+    }
 };
 
 #endif //PROJECT1_LEVEL_H
