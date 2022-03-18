@@ -20,12 +20,6 @@ const static int Height = 1024;
 ///gnome image temporary
 const wstring GnomeImageName = L"images/gnome.png";
 
-///enemy image temporary
-const wstring EnemyImageName = L"images/UofM.png";
-
-/// Temp image background
-const wstring BackgroundImageName = L"images/backgroundColorGrass.png";
-
 /// Level 0 file location
 const wstring Level0 = L"levels/level0.xml";
 
@@ -40,6 +34,7 @@ const wstring Level3 = L"levels/level3.xml";
 
 /// Time for pause time to last on death or complete level
 const double ScreenDuration = 3;
+
 /**
  * Game Constructor
  */
@@ -79,7 +74,6 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     mScale = double(height) / double(Height);
     graphics->Scale(mScale, mScale);
 
-    //mGraphics = graphics;
     auto virtualWidth = (double)width/mScale;
     // Compute the amount to scroll in the X dimension
     auto xOffset = (double)-mSparty->GetX() + virtualWidth / 2.0f;
@@ -111,26 +105,6 @@ void Game::Add(std::shared_ptr<Item> item)
 }
 
 /**
- * Test an x,y click location to see if it clicked
- * on some item in the aquarium.
- * @param x X location in pixels
- * @param y Y location in pixels
- * @returns Pointer to item we clicked on or nullptr if none.
-*/
-std::shared_ptr<Item> Game::HitTest(int x, int y)
-{
-    for (auto i = mItems.rbegin(); i!=mItems.rend(); i++)
-    {
-        if ((*i)->HitTest(x, y))
-        {
-            return *i;
-        }
-    }
-
-    return nullptr;
-}
-
-/**
  * Handle updates for animation
  * @param elapsed The time since the last update
  */
@@ -143,8 +117,6 @@ void Game::Update(double elapsed)
             if (item !=nullptr) {
                 item->Update(elapsed);
             }
-
-
         }
         mSparty->Update(elapsed);
         mTimer ->Update(elapsed);

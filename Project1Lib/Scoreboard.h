@@ -19,56 +19,36 @@ private:
     /// variable for how much money has been collected
     int mCash;
 
-    std::unique_ptr<wxImage> mItemImage;
-    std::unique_ptr<wxBitmap> mItemBitmap;
     /// Item location on screen
     double  mX = 0;     ///< X location for the center of the item
     double  mY = 0;     ///< Y location for the center of the item
-    double mWidth = 0;
 
+    /// the percent of money to be increased
     double mIncrease = 1.0;
 
-    double mHeight = 0;
-
+    /// the game this scoreboard is in
     Game* mGame;
 public:
     /// Initialize a timer
     void SetTime();
 
-    /// Reset a Timer
-    void ResetTimer();
-
     Scoreboard(Game* game);
 
     virtual ~Scoreboard();
 
-
-    /**
-     * Gets the amount of cash collected
-     */
-     int GetCash() const { return mCash; }
-
-     /**
-      * Increases the amount of cash when a player hits a Money item
-      * @param x
-      */
-     void AdjustCash(int x) { mCash += x; }
-
      /**
       * Resets the amount of cash to 0
-      */
+     */
      void ResetCash() { mCash = 0; }
 
-     /// Draws the scoreboard on the screen
      void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 
-
-    void AddScore(int value);
+     void AddScore(int value);
 
     /**
-   * The X location of the item
-   * @return X location in pixels
-   */
+    * The X location of the item
+    * @return X location in pixels
+    */
     double GetX() const { return mX; }
 
     /**

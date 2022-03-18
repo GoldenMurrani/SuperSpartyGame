@@ -62,7 +62,7 @@ public:
 
     /**
      * Visit a reverse power up object
-     * @param reverse powerup we are visiting
+     * @param reversePower powerup we are visiting
      */
      virtual void VisitReversePower(ReversePower* reversePower) {}
 };

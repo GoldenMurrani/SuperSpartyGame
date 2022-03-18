@@ -9,14 +9,14 @@
 
 using namespace std;
 
-
 /**
-* ReversePower Constructor
+* Reverse Power Constructor
  * @param level level this item is a member of
  * @param filename the name of image file
+ * @param game thge game this power up is in
 */
-ReversePower::ReversePower(Level* level, const wstring& filename, Game* game)
-        :Item(level, filename)
+ReversePower::ReversePower(Level *level, const std::wstring &filename, Game* game)
+        : Item(level, filename)
 {
     mGame = game;
 }
@@ -31,6 +31,7 @@ void ReversePower::XmlLoad(wxXmlNode *node)
 {
     Item::XmlLoad(node);
 }
+
 /**
  * Function to check collision between sparty and reverse item
  * @param item that is colliding
@@ -39,12 +40,10 @@ void ReversePower::XmlLoad(wxXmlNode *node)
 bool ReversePower::CollisionTest(Item* item)
 {
     bool check = Item::CollisionTest(item);
-    if (check==true) {
+    if (check) {
         if (!mCollected)
         {
             ReverseDirections();
-            //mGame->RemoveItem(this);
-//        mGame->GetSparty()->SetStopUpdate();
             mCollected = true;
             item -> SetCollected();
         }

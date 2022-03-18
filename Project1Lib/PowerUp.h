@@ -31,17 +31,8 @@ public:
     /// Assignment operator
     void operator=(const PowerUp&) = delete;
 
-
-    /**
-     * Constructor
-     */
     PowerUp(Level* level, const std::wstring &filename, Game* game);
 
-    /**
-     * Load attributes for an item node
-     *
-     * Base class, override for specific items
-     */
      void XmlLoad(wxXmlNode *node) override;
 
     /**
@@ -50,22 +41,10 @@ public:
      */
     void Accept(ItemVisitor* visitor) override { visitor->VisitPowerUp(this); }
 
-    /**
-     * Collision test for tuition item
-     * @param item to test collision against
-     * @return bool to see if there was a collision or not
-     */
     bool CollisionTest(Item* item) override;
 
-    /**
-     * Increases the amount per money item
-     */
     void TuitionUp();
 
-    /**
-    * Handle updates for PowerUp
-    * @param elapsed the time before last update
-    */
     void Update(double elapsed);
 };
 

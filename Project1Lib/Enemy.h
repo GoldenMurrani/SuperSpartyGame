@@ -16,13 +16,10 @@
 class Enemy : public Item{
 private:
 
-//    /// The underlying Enemy image
-//    std::unique_ptr<wxImage> mItemImage;
-//
-//    /// The bitmap we can display for this Enemy
-//    std::unique_ptr<wxBitmap> mItemBitmap;
+    ///enemy speed in y direction
     int mSpeedY = 50;
 
+    /// Game the level door object is being loaded into
     Game *mGame;
 public:
     /// Default constructor (disabled)
@@ -43,25 +40,8 @@ public:
      */
     void Accept(ItemVisitor* visitor) override { visitor->VisitEnemy(this); }
 
-    /**
-    * Handle updates in time of our enemy
-    *
-    * This is called before we draw and allows us to
-    * move our enemy. We add our speed times the amount
-     * of time that has elapsed.
-    * @param elapsed Time elapsed since the class call
-     */
     void Update(double elapsed) override;
 
-    /**
-    * Load the attributes for an item node.
-     *
-     * This is the  base class version that loads the attributes
-     * common to all items. Override this to load custom attributes
-    * for specific items.
-    *
-    * @param node The Xml node we are loading the item from
-     */
     void XmlLoad(wxXmlNode *node) override;
 
     bool CollisionTest(Item* item) override;

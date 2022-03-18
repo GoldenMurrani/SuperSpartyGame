@@ -41,12 +41,7 @@ private:
     /// Sparty start y loaction
     double mStartY = 0;
 
-
-
 public:
-
-    //double GetWidth() {return mWidth;};
-    //double GetHeight() {return mHeight;};
 
     /**
      * Gets startX for the level
@@ -95,7 +90,7 @@ public:
     {
     public:
         /** Constructor
-         * @param city The city we are iterating over
+         * @param level The level we are iterating over
          * @param pos Position in the collection
          */
         Iter(Level* level, int pos) : mLevel(level), mPos(pos) {}

@@ -20,11 +20,11 @@
 
 class Scoreboard;
 class Timer;
+
 /**
  * Main class that will represent our game
  */
 class Game {
-
 
 private:
     /// scale for game window
@@ -63,12 +63,6 @@ private:
     /// Contains all the levels to be selected from
     std::vector<std::shared_ptr<Level>> mLevels;
 
-    /// Level width
-    double mWidth = 0;
-
-    /// Level height
-    double mHeight = 0;
-
     /// Sparty start x loaction
     double mStartx = 0;
 
@@ -93,8 +87,6 @@ public:
     Game();
 
     void Add(std::shared_ptr<Item> item);
-
-    std::shared_ptr<Item> HitTest(int x, int y);
 
     void Update(double elapsed);
 

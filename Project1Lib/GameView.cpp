@@ -145,6 +145,10 @@ void GameView::OnLoadLevel2(wxCommandEvent& event)
      mGame.SetLevel(3);
  }
 
+ /**
+  * event handler to deal with different key pressed down
+  * @param event
+  */
 void GameView::OnKeyDown(wxKeyEvent& event)
 {
     switch (event.GetKeyCode())
@@ -169,6 +173,11 @@ void GameView::OnKeyDown(wxKeyEvent& event)
         break;
     }
 }
+
+/**
+ * event handler to deal with keyboard release
+ * @param event
+ */
 void GameView::OnKeyUp(wxKeyEvent& event)
 {
     switch (event.GetKeyCode())

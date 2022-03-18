@@ -10,13 +10,13 @@
 #include "Item.h"
 
 class Level;
+
 /**
 * Base class for the item platform.
 */
 
 class Platform : public Item {
 private:
-
 
     /// The underlying item image
     std::unique_ptr<wxImage> mLeftImage;
@@ -40,6 +40,7 @@ private:
 
     /// Height of platform
     double mHeight = 0;
+
 public:
     /// Default constructor (disabled)
     Platform() = delete;

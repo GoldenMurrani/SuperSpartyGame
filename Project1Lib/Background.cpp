@@ -11,7 +11,7 @@ using namespace std;
 
 /**
  * Constructor
- * @param game game this item is in
+ * @param level level this item is in
  * @param filename the name of image file
  */
 Background::Background(Level* level, const std::wstring &filename) : Item(level, filename)

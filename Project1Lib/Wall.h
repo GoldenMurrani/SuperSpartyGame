@@ -14,18 +14,15 @@
 */
 class Wall : public Item {
 private:
-//    /// The game window this item in going to be in
-//    Game *mGame;
-//    /// The underlying Wall image
-//    std::unique_ptr<wxImage> mItemImage;
-//
-//    /// The bitmap we can display for this Wall
-//    std::unique_ptr<wxBitmap> mItemBitmap;
+    /// the width of the item
     double mWidth = 0;
 
+    /// the height of the item
     double mHeight = 0;
 
+    /// underlying item image
     std::unique_ptr<wxImage> mItemImage;
+    /// underlying item bitmap
     std::unique_ptr<wxBitmap> mItemBitmap;
 public:
     /// Default constructor (disabled)

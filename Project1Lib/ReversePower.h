@@ -23,6 +23,7 @@ private:
 
     /// Game this item is in
     Game* mGame;
+
 public:
     /// Default constructor (disabled)
     ReversePower() = delete;
@@ -38,11 +39,6 @@ public:
     */
     ReversePower(Level* level, const std::wstring& filename, Game* game);
 
-    /**
-     * Load attributes for an item node
-     *
-     * Base class, override for specific items
-     */
     void XmlLoad(wxXmlNode *node) override;
 
     /**
@@ -51,21 +47,10 @@ public:
      */
     void Accept(ItemVisitor* visitor) override { visitor->VisitReversePower(this); }
 
-    /**
-     * Collision test for reverse item
-     * @param item to test collision against
-     */
     bool CollisionTest(Item* item) override;
 
-    /**
-     * Reverse directions for Sparty
-     */
      void ReverseDirections();
 
-    /**
-    * Handle updates for ReversePower
-    * @param elapsed the time before last update
-    */
     void Update(double elapsed);
 
 };

@@ -11,8 +11,9 @@ using namespace std;
 
 /**
  * Constructor
- * @param Level Level the money is a member of
+ * @param level Level the money is a member of
  * @param filename File that sets mItem to bitmap
+ * @param game the game this money is in
  */
 Money::Money(Level *level, const std::wstring &filename , Game* game) : Item(level, filename)
 {

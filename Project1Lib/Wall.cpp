@@ -12,7 +12,7 @@ using namespace std;
 
 /**
  * Constructor
- * @param game Game the Enemy is a member of
+ * @param level Level the Enemy is a member of
  * @param filename File that sets mItem to bitmap
  */
 Wall::Wall(Level *level, const std::wstring &filename) : Item(level, filename)

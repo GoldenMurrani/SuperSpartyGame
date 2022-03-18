@@ -30,7 +30,7 @@ TEST(ReversePowerUp, ReversePower)
     item1->SetLocation(200, 200);
     gameTest->GetSparty()->SetLocation(190, 200);
 
-    ASSERT_TRUE(gameTest->GetSparty()->GetSpeed() == 300);
+    ASSERT_TRUE(gameTest->GetSparty()->GetSpeed() == 500);
 
     gameTest ->Add(item1);
     levelTest ->Add(item1);
@@ -39,6 +39,6 @@ TEST(ReversePowerUp, ReversePower)
     gameTest->GetSparty()->SetLocation(230, 200);
     gameTest ->Update(0.001);
 
-    ASSERT_TRUE(gameTest->GetSparty()->GetSpeed() == 300);
+    ASSERT_TRUE(gameTest->GetSparty()->GetSpeed() == 500);
 
 }
