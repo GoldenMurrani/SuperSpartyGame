@@ -41,7 +41,8 @@ bool SpeedUp::CollisionTest(Item* item)
     if (check) {
         if (!mCollected)
         {
-
+            mTextX = GetX();
+            mTextY = GetY();
             Speed();
             mCollected = true;
             item -> SetCollected();
@@ -71,12 +72,32 @@ void SpeedUp::Update(double elapsed)
 {
     if (mCollected)
     {
-        if (GetY() < 1500)
+        if (GetY() < 2000)
         {
             SetLocation(GetX(), GetY() + 50);
+            mTextY -= 50;
+            mFontHeight += 1;
+            mFontWidth += 1;
         }
         else{
             mCollected = false;
         }
+    }
+}
+
+/**
+ * Draws the text for when the speed power up is hit
+ * @param graphics
+ */
+void SpeedUp::Draw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    Item::Draw(graphics);
+    if (mCollected) {
+        wxFont font(wxSize(mFontWidth, mFontHeight), wxFONTFAMILY_SWISS,
+                wxFONTSTYLE_NORMAL,
+                wxFONTWEIGHT_NORMAL);
+
+        graphics->SetFont(font, wxColor(90, 0, 0));
+        graphics->DrawText("Speed Boost!", mTextX, mTextY);
     }
 }
