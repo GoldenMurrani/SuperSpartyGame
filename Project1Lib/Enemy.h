@@ -17,7 +17,7 @@ class Enemy : public Item{
 private:
 
     ///enemy speed in y direction
-    int mSpeedY = 50;
+    int mSpeedY = 150;
 
     /// Game the level door object is being loaded into
     Game *mGame;

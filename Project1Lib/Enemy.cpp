@@ -19,7 +19,7 @@ using namespace std;
 Enemy::Enemy(Level *level, const std::wstring &filename,Game* game) : Item(level, filename)
 {
     mGame = game;
-    mSpeedY = 50;
+    mSpeedY = 150;
 }
 
 /**

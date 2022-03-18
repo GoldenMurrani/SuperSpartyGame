@@ -77,6 +77,10 @@ void PowerUp::Update(double elapsed)
         }
         else{
             mCollected = false;
+            mTextX = -1000;
+            mTextY = -1000;
+            mFontHeight = 25;
+            mFontWidth = 50;
         }
     }
 }
