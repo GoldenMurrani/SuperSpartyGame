@@ -78,6 +78,10 @@ void Money::Update(double elapsed)
     }
 }
 
+/**
+ * Override draw function to show up money text
+ * @param graphics the graphic we draw on
+ */
 void Money::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
     Item::Draw(graphics);
