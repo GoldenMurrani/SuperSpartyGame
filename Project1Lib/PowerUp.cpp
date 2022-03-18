@@ -6,7 +6,6 @@
 #include "pch.h"
 #include "PowerUp.h"
 #include "Game.h"
-#include "Money.h"
 
 using namespace std;
 
