@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<level width="8192" height="1024" start-y="-796" start-x="788">
+<level width="8192" height="1024" start-y="796" start-x="788">
     <declarations>
         <background id="i301" image="backgroundUnderwater.png"/>
         <platform id="i005" left-image="icePlatformLeft.png" mid-image="icePlatformMiddle.png" right-image="icePlatformRight.png"/>
@@ -111,6 +111,8 @@
         <money id="i009" x="7300" y="150"/>
 
 
+
+        <platform id="i005" x="8400" y="500" width="300" height="32"/>
 
 
 
