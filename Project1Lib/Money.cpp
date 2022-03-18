@@ -55,6 +55,7 @@ bool Money::CollisionTest(Item* item)
         mCollected = true;
         return false;
     }
+
     return false;
 }
 
@@ -66,7 +67,7 @@ void Money::Update(double elapsed)
 {
     if (mCollected)
     {
-        if (GetY() > -300)
+        if (GetY() > -1000)
         {
             SetLocation(GetX(), GetY() - 50);
         }

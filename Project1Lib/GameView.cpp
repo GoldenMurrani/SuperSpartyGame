@@ -55,8 +55,7 @@ void GameView::OnPaint(wxPaintEvent& event)
     auto newTime = mStopWatch.Time();
     auto elapsed = (double)(newTime - mTime) * 0.001;
     mTime = newTime;
-//    mGame.Update(elapsed);
-//
+
     //
     // Prevent tunnelling
     //
@@ -107,27 +106,7 @@ void GameView::OnPaint(wxPaintEvent& event)
  */
 void GameView::OnTimer(wxTimerEvent& event)
 {
-//    auto newTime = mStopWatch.Time();
-//    auto elapsed = (double)(newTime - mTime) * 0.001;
-//
-//    //
-//    // Prevent tunnelling
-//    //
-//    while (elapsed > MaxElapsed)
-//    {
-//        mGame.Update(MaxElapsed);
-//
-//        elapsed -= MaxElapsed;
-//    }
-//
-//    // Consume any remaining time
-//    if (elapsed > 0)
-//    {
-//        mGame.Update(elapsed);
-//    }
-
     Refresh();
-
 }
 
 /**

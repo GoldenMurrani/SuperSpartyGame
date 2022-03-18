@@ -23,6 +23,8 @@ Sparty::Sparty(Game *game, const std::wstring &filename) : Item(game, filename)
     mGame = game;
 }
 
+
+
 /**
 * Handle updates for sparty
 * @param elapsed the time before last update

@@ -10,7 +10,6 @@
 
 #include "Item.h"
 
-using namespace std;
 
 /**
  * Class for the reverse power up item
@@ -37,7 +36,7 @@ public:
     /**
     * Constructor
     */
-    ReversePower(Level* level, const wstring& filename, Game* game);
+    ReversePower(Level* level, const std::wstring& filename, Game* game);
 
     /**
      * Load attributes for an item node

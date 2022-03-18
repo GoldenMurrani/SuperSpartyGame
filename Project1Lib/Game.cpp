@@ -79,7 +79,7 @@ void Game::OnDraw(shared_ptr<wxGraphicsContext> graphics, int width, int height)
     mScale = double(height) / double(Height);
     graphics->Scale(mScale, mScale);
 
-    mGraphics = graphics;
+    //mGraphics = graphics;
     auto virtualWidth = (double)width/mScale;
     // Compute the amount to scroll in the X dimension
     auto xOffset = (double)-mSparty->GetX() + virtualWidth / 2.0f;
@@ -140,10 +140,13 @@ void Game::Update(double elapsed)
     {
         for (auto item : mItems)
         {
-            item->Update(elapsed);
+            if (item !=nullptr) {
+                item->Update(elapsed);
+            }
+
+
         }
         mSparty->Update(elapsed);
-        //mScoreBoard -> Update(elapsed);
         mTimer ->Update(elapsed);
     }
     else
@@ -195,9 +198,6 @@ void Game::SetLevel(int numLevel)
 
     mCurrentLevel = numLevel;
     SetItems();
-    mPlaying = false;
-    mTimer -> Reset();
-    mScoreBoard -> ResetCash();
 }
 
 
@@ -208,7 +208,12 @@ void Game::SetItems()
 {
     Clear();
     auto checkSpeed = mSparty -> GetSpeed();
-    // Undo previous power ups or debuffs from different levels
+    // Undo previous power ups or debuffs from different levels and scoreboard and timer
+
+    mPlaying = false;
+    mTimer -> Reset();
+    mScoreBoard -> ResetCash();
+    mMoneyMult = 0;
     if (checkSpeed < 0)
     {
         mSparty ->ReverseSpeed();
@@ -262,6 +267,9 @@ void Game::RemoveItem(Item* item)
       if (items -> GetX() == item ->GetX() && items -> GetY() == item ->GetY()) {
           auto loc = find(std::begin(mItems), std::end(mItems), items);
           mItems.erase(loc);
+          mItems.push_back(items);
+          mItems.pop_back();
+
           break;
       }
   }
@@ -273,7 +281,7 @@ void Game::RemoveItem(Item* item)
  * @param value value added to the score
  */
 void Game::AddScore(int value){
-     mScoreBoard->AddScore(value*(1+GetMult()));
+     mScoreBoard->AddScore(value*(1+mMoneyMult));
 }
 
 /**

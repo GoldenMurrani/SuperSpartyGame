@@ -2,7 +2,7 @@
  * @file Level.h
  * @author Matthew Hofmann
  *
- *
+ * Class that is in charge of loading and storing level items
  */
 
 #ifndef PROJECT1_LEVEL_H
@@ -14,7 +14,9 @@
 class Game;
 
 
-
+/**
+ * Class that is in charge of loading and storing level items
+ */
 class Level {
 private:
 
@@ -82,6 +84,10 @@ public:
 
     void LevelInfoSetter(wxXmlNode* node);
 
+    /**
+     * Gets the vector of mItems from the level
+     * @return The vector of items from the level
+     */
     const std::vector<std::shared_ptr<Item>>& GetItems() {return mItems;};
 
     /** Iterator that iterates over the city tiles */
@@ -135,9 +141,6 @@ public:
      */
     Iter end() { return Iter(this, mItems.size()); }
 
-    Level();
-
-    void Clear();
 };
 
 #endif //PROJECT1_LEVEL_H

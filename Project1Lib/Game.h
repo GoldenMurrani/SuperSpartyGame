@@ -17,13 +17,14 @@
 #include "Level.h"
 #include "Money.h"
 
-/**
- * Main class that will represent our game
- */
 
 class Scoreboard;
 class Timer;
+/**
+ * Main class that will represent our game
+ */
 class Game {
+
 
 private:
     /// scale for game window
@@ -38,15 +39,11 @@ private:
     /// Money multiplier
     double mMoneyMult = 0;
 
-    int mScore = 0;
     /// Scoreboard item
     std::shared_ptr<Scoreboard> mScoreBoard;
 
     /// Timer item
     std::shared_ptr<Timer> mTimer;
-
-    /// timer item
-    /// std::shared_ptr<Timer> mTimer = make_shared<Timer>();
 
     /// All of the items to populate our game
     std::vector<std::shared_ptr<Item>> mItems;
@@ -87,7 +84,7 @@ private:
    /// Boolean that indicates if a new level should be loaded or not
    bool mNewLevel = false;
 
-   std::shared_ptr<wxGraphicsContext> mGraphics;
+   //std::shared_ptr<wxGraphicsContext> mGraphics;
 
 
 public:
@@ -107,7 +104,12 @@ public:
 
     void SetLevel(int numLevel);
 
+    /**
+     * Gets a pointer of game
+     * @return A pointer of the game class
+     */
     Game* GetGameTest() {return this;};
+
     /**
      * Gets the size of mItems
      * @return Size of mItems
@@ -132,7 +134,6 @@ public:
      */
     std::shared_ptr<Sparty> GetSparty() {return mSparty; }
 
-    int GetScore() {return mScore;}
 
     /**
      * Updates the money value
@@ -141,6 +142,7 @@ public:
 
      /**
       * Gets the money multiplier
+      * @return The money multiplier
       */
       double GetMult() { return mMoneyMult; }
 
@@ -198,6 +200,10 @@ public:
 
     void SetItems();
 
+    /**
+     *  Gets the current level
+     * @return Returns the current level as a pointer from the vector of levels
+     */
     std::shared_ptr<Level> GetLevel(){return mLevels[mCurrentLevel]; }
 
     void RemoveItem(Item* item);
