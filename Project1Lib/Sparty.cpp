@@ -37,11 +37,11 @@ void Sparty::Update(double elapsed)
 
     double currentX = GetX();
     //Sideways Movement
-    double newX = currentX+mXVel*elapsed;
+    double newX = (currentX+mXVel*mSpeedMult*elapsed);
 
     double currentY = GetY();
     //new Y speed
-    mYVel = mYVel+Gravity*elapsed;
+    mYVel = (mYVel+Gravity*elapsed);
     double newY = currentY+mYVel*elapsed;
 
     //check for y direction

@@ -14,6 +14,7 @@
 #include "Wall.h"
 #include "Game.h"
 #include "ReversePower.h"
+#include "SpeedUp.h"
 
 using namespace::std;
 
@@ -151,6 +152,14 @@ void Level::XmlLevel(wxXmlNode* node)
         nodeChildren = XmlType(name, idType);
         item = make_shared<ReversePower>(this, nodeChildren[0], mGame);
     }
+    else if (name == "speed-up")
+    {
+        auto idType = node->GetAttribute(L"id");
+        nodeChildren = XmlType(name, idType);
+        item = make_shared<SpeedUp>(this, nodeChildren[0], mGame);
+    }
+
+
 
     if (item != nullptr)
     {

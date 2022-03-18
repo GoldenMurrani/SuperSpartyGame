@@ -56,7 +56,7 @@ Game::Game()
     mLevel3 = make_shared<Level>(this);
     mLevel3 ->Load(Level3);
     mLevels.push_back(mLevel3);
-    SetLevel(0);
+    SetLevel(3);
 }
 
 
@@ -186,6 +186,9 @@ void Game::SetItems()
     mTimer -> Reset();
     mScoreBoard -> ResetCash();
     mMoneyMult = 0;
+    if (mSparty -> GetSpeedMult() != 1) {
+        mSparty->SetSpeedMult(1);
+    }
     if (checkSpeed < 0)
     {
         mSparty ->ReverseSpeed();
