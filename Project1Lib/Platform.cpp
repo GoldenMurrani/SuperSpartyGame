@@ -15,7 +15,7 @@ using namespace std;
 /**
  * Platform constructor
  * @param level Level platform was a part of
- * @param leftFilename Left platform image
+ * @param leftFilename  Left platform image
  * @param midFilename Middle platform image
  * @param rightFilename Right platform image
  */

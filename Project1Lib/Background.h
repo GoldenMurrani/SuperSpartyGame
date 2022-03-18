@@ -11,7 +11,7 @@
 #include "Item.h"
 
 /**
-* Base class for moving background
+*  Base class for moving background
 */
 class Background : public Item
 {

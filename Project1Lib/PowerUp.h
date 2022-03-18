@@ -11,7 +11,7 @@
 #include "Item.h"
 
 /**
-* Base class for the item PowerUp.
+*  Base class for the item PowerUp.
 */
 class PowerUp : public Item
 {

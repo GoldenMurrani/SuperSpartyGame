@@ -52,7 +52,7 @@ bool ReversePower::CollisionTest(Item* item)
 }
 
 /**
- * Function to reverse directions of sparty
+ *  Function to reverse directions of sparty
  */
 void ReversePower::ReverseDirections()
 {

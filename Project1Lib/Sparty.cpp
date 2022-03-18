@@ -49,7 +49,7 @@ void Sparty::Update(double elapsed)
 
     auto collideItem = GetGame()->CollisionTest(this);
     if (mDead) {
-        mGame->SetPlaying();
+         mGame->SetPlaying();
     }
     if (!mStopUpdate) {
         //Jumping

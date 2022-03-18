@@ -25,7 +25,7 @@ public:
     virtual ~ItemVisitor() {}
 
     /**
-     * Visit a door object
+     *  Visit a door object
      * @param door Door we are visiting
      */
     virtual void VisitDoor(Door* door) {}

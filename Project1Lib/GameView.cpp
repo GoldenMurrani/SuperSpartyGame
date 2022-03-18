@@ -19,7 +19,7 @@ const int FrameDuration = 30;
 const double MaxElapsed = 0.050;
 
 /**
- * Initialize the game view class.
+ *  Initialize the game view class.
  * @param parent The parent window for this class
  */
 void GameView::Initialize(wxFrame* parent)

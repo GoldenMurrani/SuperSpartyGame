@@ -49,7 +49,7 @@ public:
 
     bool CollisionTest(Item* item) override;
 
-     void ReverseDirections();
+    void ReverseDirections();
 
     void Update(double elapsed);
 

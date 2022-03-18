@@ -103,7 +103,7 @@ public:
      * Handle updates for sparty
      * @param elapsed the time before last update
      */
-    void Update(double elapsed);
+     void Update(double elapsed);
 
     /**
      * Updates the Y velocity of the sparty item.

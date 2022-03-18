@@ -15,7 +15,7 @@
 class Wall : public Item {
 private:
     /// the width of the item
-    double mWidth = 0;
+     double mWidth = 0;
 
     /// the height of the item
     double mHeight = 0;

@@ -61,7 +61,7 @@ bool Money::CollisionTest(Item* item)
 }
 
 /**
-* Handle updates for Money
+*  Handle updates for Money
 * @param elapsed the time before last update
 */
 void Money::Update(double elapsed)

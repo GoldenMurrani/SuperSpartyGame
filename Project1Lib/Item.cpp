@@ -93,7 +93,7 @@ void Item::XmlLoad(wxXmlNode *node)
 }
 
 /**
- * collision test to see if the given item collide with this item
+ *  collision test to see if the given item collide with this item
  * @param item the given item need to be collision tested
  * @return true if collided, false otherwise
  */

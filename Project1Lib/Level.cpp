@@ -76,7 +76,7 @@ void Level::XmlDeclare(wxXmlNode* node)
 }
 
 /**
- * Iterates through all the item nodes
+ *  Iterates through all the item nodes
  * @param node The item node that holds all the items from the level xml
  */
 void Level::XmlItem(wxXmlNode* node)
@@ -243,6 +243,5 @@ void Level::LevelInfoSetter(wxXmlNode* node)
     node->GetAttribute(L"start-y", L"0").ToDouble(&mStartY);
     node->GetAttribute(L"start-x", L"0").ToDouble(&mStartx);
 }
-
 
 

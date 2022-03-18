@@ -174,7 +174,7 @@ void Game::SetLevel(int numLevel)
 
 
 /**
- * Sets Items up in the game
+ *  Sets Items up in the game
  */
 void Game::SetItems()
 {

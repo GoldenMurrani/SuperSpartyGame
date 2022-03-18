@@ -39,7 +39,7 @@ void Door::XmlLoad(wxXmlNode *node)
 }
 
 /**
- * override collision test to let item go into door
+ *  override collision test to let item go into door
  * @param item item need to be collision tested
  * @return true if collided, false otherwise
  */
