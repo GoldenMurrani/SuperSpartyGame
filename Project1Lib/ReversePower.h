@@ -24,6 +24,12 @@ private:
     /// Game this item is in
     Game* mGame;
 
+    /// X and Y values of the text
+    int mTextX = -1000;
+    int mTextY = -1000;
+
+    int mFontHeight = 25;
+    int mFontWidth = 50;
 public:
     /// Default constructor (disabled)
     ReversePower() = delete;
@@ -53,6 +59,7 @@ public:
 
     void Update(double elapsed);
 
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 };
 
 #endif //PROJECT1_REVERSEPOWER_H

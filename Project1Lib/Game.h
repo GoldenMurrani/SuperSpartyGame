@@ -213,7 +213,7 @@ public:
 
     /**
      *  Returns the status of playing
-     *  @return The boolean that determines if game is in play or not
+     *  F@return The boolean that determines if game is in play or not
      */
     bool GetCurrentState(){return mPlaying; }
 

@@ -42,9 +42,11 @@ bool PowerUp::CollisionTest(Item* item)
 {
     bool check = Item::CollisionTest(item);
     if (check==true) {
-        TuitionUp();
-        mCollected = true;
-        return false;
+        if (!mCollected) {
+            TuitionUp();
+            mCollected = true;
+            return false;
+        }
     }
     return false;
 }
