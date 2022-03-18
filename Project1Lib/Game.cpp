@@ -197,6 +197,7 @@ void Game::SetLevel(int numLevel)
     SetItems();
     mPlaying = false;
     mTimer -> Reset();
+    mScoreBoard -> ResetCash();
 }
 
 
@@ -272,7 +273,7 @@ void Game::RemoveItem(Item* item)
  * @param value value added to the score
  */
 void Game::AddScore(int value){
-     mScoreBoard->AddScore(value);
+     mScoreBoard->AddScore(value*(1+GetMult()));
 }
 
 /**

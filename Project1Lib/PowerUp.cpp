@@ -43,7 +43,6 @@ bool PowerUp::CollisionTest(Item* item)
     if (check==true) {
         TuitionUp();
         mCollected = true;
-//        mGame->GetSparty()->SetStopUpdate();
         return false;
     }
     return false;

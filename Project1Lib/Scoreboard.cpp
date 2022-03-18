@@ -15,14 +15,6 @@ void Scoreboard::SetTime()
 }
 
 /**
- * Function to reset the timer to 0
- */
-void Scoreboard::ResetTimer()
-{
-
-}
-
-/**
 * Scoreboard Constructor
  *
 */
@@ -57,3 +49,5 @@ void Scoreboard::AddScore(int value)
 {
     mCash = mCash + int(mIncrease * double(value));
 }
+
+
