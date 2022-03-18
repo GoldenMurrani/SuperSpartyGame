@@ -21,6 +21,14 @@ private:
 
     /// Bool if the powerup was collected
     bool mCollected = false;
+
+    /// X and Y value of the text
+    int mTextX = -1000;
+    int mTextY = -1000;
+
+    /// Height and Width of the Font
+    int mFontHeight = 25;
+    int mFontWidth = 50;
 public:
     /// Default constructor (disabled)
     PowerUp() = delete;
@@ -46,6 +54,8 @@ public:
     void TuitionUp();
 
     void Update(double elapsed);
+
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 };
 
 #endif //PROJECT1_POWERUP_H
