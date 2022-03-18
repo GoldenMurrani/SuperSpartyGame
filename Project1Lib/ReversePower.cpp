@@ -43,6 +43,8 @@ bool ReversePower::CollisionTest(Item* item)
     if (check) {
         if (!mCollected)
         {
+            mTextX = GetX();
+            mTextY = GetY();
             ReverseDirections();
             mCollected = true;
             item -> SetCollected();
@@ -70,10 +72,32 @@ void ReversePower::Update(double elapsed)
         if (GetY() < 1500)
         {
             SetLocation(GetX(), GetY() + 50);
+            mTextY -= 25;
+            mFontHeight += 2;
+            mFontWidth += 2;
         }
         else{
             mCollected = false;
         }
+    }
+}
+
+/**
+ * Override draw function to show up ReversePower text
+ * @param graphics the graphic we draw on
+ */
+void ReversePower::Draw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+    Item::Draw(graphics);
+    if (mCollected)
+    {
+        wxFont font(wxSize(mFontWidth, mFontHeight),
+                wxFONTFAMILY_SWISS,
+                wxFONTSTYLE_NORMAL,
+                wxFONTWEIGHT_NORMAL);
+
+        graphics->SetFont(font,wxColour(0,90,0));
+        graphics->DrawText("Movements Reversed!",mTextX, mTextY);
     }
 }
 
