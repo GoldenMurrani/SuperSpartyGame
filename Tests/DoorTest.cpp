@@ -20,8 +20,8 @@ TEST(TestDoor, Door)
     Game* gameTest = game.GetGameTest();
     std::shared_ptr<Level> level = gameTest -> GetLevel();
     Level* levelTest = level ->GetLevelTest();
-    gameTest ->SetLevel(0);
-    gameTest -> Clear();
+//    gameTest ->SetLevel(0);
+//    gameTest -> Clear();
 
     // Add some items
     auto item1 = make_shared<Door>(levelTest, DoorImageName, gameTest);
@@ -29,7 +29,7 @@ TEST(TestDoor, Door)
     ASSERT_TRUE (gameTest ->GetCurrentLevel() == 0);
 
     item1->SetLocation(300, 300);
-    gameTest -> GetSparty() ->SetLocation(300, 300);
+    gameTest -> GetSparty() ->SetLocation(601, 700);
 
     gameTest ->Add(item1);
     levelTest ->Add(item1);

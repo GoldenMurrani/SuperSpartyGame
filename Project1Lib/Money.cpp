@@ -3,12 +3,13 @@
  * @author Vijay
  */
 #include "pch.h"
-#include "Money.h"
-#include "Game.h"
+
 #include <string>
 #include <iomanip>
 #include <sstream>
-
+#include "Money.h"
+#include "Game.h"
+#include "IsEnemyVisitor.h"
 using namespace std;
 
 /**
@@ -49,16 +50,17 @@ void Money::XmlLoad(wxXmlNode *node)
 bool Money::CollisionTest(Item* item)
 {
     bool check = Item::CollisionTest(item);
-    if (check == true)
+    if (check)
     {
-        if (mCollected == false)
+        IsEnemyVisitor visitor;
+        item->Accept(&visitor);
+        if(!visitor.IsEnemy() && !mCollected)
         {
             mGame->AddScore(mMoneyValue);
+            mCollected = true;
         }
-        mCollected = true;
         return false;
     }
-
     return false;
 }
 
