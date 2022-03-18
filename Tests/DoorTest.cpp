@@ -33,8 +33,13 @@ TEST(TestDoor, Door)
 
     gameTest ->Add(item1);
     levelTest ->Add(item1);
+    gameTest ->Add(gameTest->GetSparty());
 
-    gameTest ->Update(5);
+    gameTest->SetStatePlaying();
+    // Tests if game is playing
+    ASSERT_TRUE(gameTest->GetCurrentState() == true);
+
+    gameTest ->Update(15);
 
     // Test Level 0 to Level 1
     ASSERT_FALSE (gameTest ->GetCurrentLevel() == 0);

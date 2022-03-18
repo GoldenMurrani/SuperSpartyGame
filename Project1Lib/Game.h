@@ -218,6 +218,11 @@ public:
     bool GetCurrentState(){return mPlaying; }
 
     /**
+     * Sets the current state of the game to playing
+     */
+    void SetStatePlaying(){mPlaying = true; }
+
+    /**
      * Returns the status if a new level should be loaded
      * @return The boolean that determines if a new level should be loaded or not
      */
