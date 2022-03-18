@@ -47,7 +47,7 @@ TEST(TestSparty, Falling)
 
     gameTest -> GetSparty() -> SetLocation(2000, 2000);
 
-    gameTest->Update(.001);
+    gameTest->Update(5);
 
     ASSERT_TRUE(gameTest->GetSparty()->GetX() != 400);
     ASSERT_TRUE(gameTest->GetSparty()->GetY() != 400);

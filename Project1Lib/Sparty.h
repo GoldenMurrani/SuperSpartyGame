@@ -18,7 +18,7 @@ const double Gravity = 1000.0;
 const double JumpSpeed = -800;
 
 /// Small value to ensure we do not stay in collision
-const double Epsilon = 5;
+const double Epsilon = 20;
 
 class Game;
 

@@ -28,13 +28,14 @@ TEST(TestDoor, Door)
 
     ASSERT_TRUE (gameTest ->GetCurrentLevel() == 0);
 
-    item1->SetLocation(500, 500);
-    gameTest -> GetSparty() ->SetLocation(500, 500);
+    item1->SetLocation(300, 300);
+    gameTest -> GetSparty() ->SetLocation(300, 300);
 
     gameTest ->Add(item1);
     levelTest ->Add(item1);
-    gameTest ->Add(gameTest->GetSparty());
+
     gameTest ->Update(5);
+
     // Test Level 0 to Level 1
     ASSERT_FALSE (gameTest ->GetCurrentLevel() == 0);
     ASSERT_TRUE (gameTest ->GetCurrentLevel() == 1);

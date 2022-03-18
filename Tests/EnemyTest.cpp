@@ -34,12 +34,11 @@ TEST(TestEnemy, Enemy)
 
     gameTest ->Add(item1);
     levelTest ->Add(item1);
-    gameTest ->Add(gameTest->GetSparty());
 
     ASSERT_TRUE (gameTest ->GetSparty() -> GetX() == 500);
     ASSERT_TRUE (gameTest ->GetSparty() -> GetY() == 500);
 
-    gameTest ->Update(0.001);
+    gameTest ->Update(5);
     // Should reset level and not be at postion x 500 y 500
     ASSERT_TRUE (gameTest ->GetSparty() -> GetX() != 500);
     ASSERT_TRUE (gameTest -> GetSparty() -> GetY() != 500);

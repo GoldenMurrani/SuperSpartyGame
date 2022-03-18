@@ -53,8 +53,6 @@ bool Door::CollisionTest(Item* item)
     {
         NextLevel();
         return true;
-
-
     }
     return false;
 }
