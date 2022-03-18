@@ -90,7 +90,7 @@ void Money::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     Item::Draw(graphics);
     if (mCollected)
     {
-        wxFont font(wxSize(GetWidth(), GetHeight()),
+        wxFont font(wxSize(64, 32),
                 wxFONTFAMILY_SWISS,
                 wxFONTSTYLE_NORMAL,
                 wxFONTWEIGHT_NORMAL);
