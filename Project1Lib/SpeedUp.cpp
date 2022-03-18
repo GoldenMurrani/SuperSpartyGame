@@ -55,7 +55,12 @@ bool SpeedUp::CollisionTest(Item* item)
  */
 void SpeedUp::Speed()
 {
- mGame -> GetSparty() -> SetSpeedMult(2);
+ if(mGame -> GetSparty()->GetSpeedMult() == 1) {
+     mGame->GetSparty()->SetSpeedMult(2);
+ }
+ else{
+     mGame->GetSparty()->SetSpeedMult(mGame -> GetSparty()->GetSpeedMult() + 0.5);
+ }
 }
 
 /**
