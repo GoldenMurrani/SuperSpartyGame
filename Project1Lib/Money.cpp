@@ -6,6 +6,8 @@
 #include "Money.h"
 #include "Game.h"
 #include <string>
+#include <iomanip>
+#include <sstream>
 
 using namespace std;
 
@@ -84,7 +86,7 @@ void Money::Update(double elapsed)
  */
 void Money::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-    wstring moneyVal = to_wstring(mMoneyValue);
+    wstring moneyVal = to_wstring(int(mMoneyValue + (mMoneyValue * mGame->GetMult())));
     Item::Draw(graphics);
     if (mCollected)
     {

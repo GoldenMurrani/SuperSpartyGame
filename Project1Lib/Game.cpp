@@ -256,7 +256,7 @@ void Game::RemoveItem(Item* item)
  * @param value value added to the score
  */
 void Game::AddScore(int value){
-     mScoreBoard->AddScore(value*(1+mMoneyMult));
+     mScoreBoard->AddScore(value + (value * mMoneyMult));
 }
 
 /**
