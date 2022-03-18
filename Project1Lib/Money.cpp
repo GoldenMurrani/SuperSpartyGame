@@ -86,7 +86,7 @@ void Money::Update(double elapsed)
  */
 void Money::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-    wstring moneyVal = to_wstring(int(mMoneyValue + (mMoneyValue * mGame->GetMult())));
+    wstring moneyVal = L"$"+ to_wstring(int(mMoneyValue + (mMoneyValue * mGame->GetMult())));
     Item::Draw(graphics);
     if (mCollected)
     {
